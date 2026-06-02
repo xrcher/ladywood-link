@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>LadywoodLink Dashboard</title>
   <link rel="stylesheet" href="../css/dashboard.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 </head>
 
 <body>
@@ -83,13 +84,7 @@
             <a href="waste-report.html">Report issue →</a>
           </div>
 
-          <div class="map-placeholder">
-            <div class="map-pin pin-one">🗑️</div>
-            <div class="map-pin pin-two">⚠️</div>
-            <div class="map-pin pin-three">💧</div>
-            <div class="map-pin pin-four">♻️</div>
-            <p>Map preview</p>
-          </div>
+          <div id="map"></div>
         </article>
 
         <aside class="right-column">
@@ -146,5 +141,8 @@
   </div>
 
   <script src="../js/dashboard.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="../js/map.js"></script>
+
 </body>
 </html>

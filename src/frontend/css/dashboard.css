@@ -608,4 +608,110 @@
     }
   }
 
+  /* ================================================= */
+  /* SMALLER SCREEN LAYOUT */
+  /* ================================================= */
+
+@media (max-width: 1000px) {
+    body {
+      overflow: auto;
+    }
   
+    .dashboard-shell {
+      height: auto;
+      min-height: 100vh;
+      grid-template-columns: 100px 1fr;
+      gap: 16px;
+      padding: 18px;
+      overflow: visible;
+    }
+  
+    .sidebar {
+      height: calc(100vh - 36px);
+      position: sticky;
+      top: 18px;
+      flex-direction: column;
+    }
+  
+    .logo {
+      width: 78px;
+      height: 112px;
+      border-radius: 34px;
+    }
+  
+    .nav-icons {
+      width: 78px;
+      flex: 1;
+      height: auto;
+      margin-top: 90px;
+      flex-direction: column;
+      padding-top: 55px;
+      padding-left: 10px;
+      padding-right: 10px;
+      padding-bottom: 22px;
+      gap: 20px;
+    }
+  
+    .logout {
+      margin-top: auto;
+    }
+  
+    .main-content {
+      height: auto;
+      overflow: visible;
+    }
+  
+    .top-header {
+      height: auto;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+  
+    .search-bar {
+      width: 100%;
+    }
+  
+    .stats-row {
+      height: auto;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+  
+    .stat-card {
+      min-height: 100px;
+    }
+  
+    .dashboard-grid {
+      height: auto;
+      grid-template-columns: 1fr;
+      grid-template-areas:
+        "map"
+        "side";
+    }
+  
+    .map-card {
+      min-height: 360px;
+    }
+  
+    .map-placeholder {
+      height: 280px;
+    }
+  
+    .right-column {
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: none;
+    }
+  }
+  
+  /* ================================================= */
+  /* MAP */
+  /* ================================================= */
+
+  #map {
+    width: 100%;
+    height: 520px;
+    border-radius: 28px;
+    overflow: hidden;
+  }
