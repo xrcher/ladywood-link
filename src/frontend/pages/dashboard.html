@@ -4,8 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>LadywoodLink Dashboard</title>
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <link rel="stylesheet" href="../css/dashboard.css" />
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 </head>
 
 <body>
@@ -14,20 +15,13 @@
       <div class="logo"></div>
 
       <nav class="nav-icons">
-
-        <a href="profile.html"data-label="Profile">👤</a>
-    
-        <a href="dashboard.html"class="active"data-label="Dashboard">🏠</a>
-    
-        <a href="recycling.html"data-label="Recycling">♻️</a>
-    
-        <a href="bin-collection.html"data-label="Bin Collection">🗑️</a>
-    
-        <a href="settings.html"data-label="Settings">⚙️</a>
-    
-        <a href="login.html"class="logout"data-label="Logout">↩</a>
-    
-    </nav>
+        <a href="profile.html" data-label="Profile">👤</a>
+        <a href="dashboard.html" class="active" data-label="Dashboard">🏠</a>
+        <a href="recycling.html" data-label="Recycling">♻️</a>
+        <a href="bin-collection.html" data-label="Bin Collection">🗑️</a>
+        <a href="settings.html" data-label="Settings">⚙️</a>
+        <a href="login.html" class="logout" data-label="Logout">↩</a>
+      </nav>
     </aside>
 
     <main class="main-content">
@@ -121,28 +115,22 @@
             <h2>Latest Reports</h2>
 
             <ul class="mini-report-list">
-              <li>
-                <span class="status-dot orange"></span>
-                Overflowing bin reported
-              </li>
-              <li>
-                <span class="status-dot green-dot"></span>
-                Fly-tipping resolved
-              </li>
-              <li>
-                <span class="status-dot blue"></span>
-                Sewage alert added
-              </li>
+              <li><span class="status-dot orange"></span> Overflowing bin reported</li>
+              <li><span class="status-dot green-dot"></span> Fly-tipping resolved</li>
+              <li><span class="status-dot blue"></span> Sewage alert added</li>
             </ul>
           </article>
         </aside>
       </section>
+
+      <footer class="footer">
+        © 2025 LadywoodLink · Community waste, sanitation and water alerts
+      </footer>
     </main>
   </div>
 
-  <script src="../js/dashboard.js"></script>
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="../js/dashboard.js"></script>
   <script src="../js/map.js"></script>
-
 </body>
 </html>

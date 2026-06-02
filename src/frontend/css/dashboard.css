@@ -1,51 +1,36 @@
-/* ================================================= */
-/* DASHBOARD */
-/* ================================================= */
-
 * {
     box-sizing: border-box;
   }
   
+  html,
   body {
     margin: 0;
+    width: 100%;
+    height: 100%;
     font-family: Arial, Helvetica, sans-serif;
     background: #e9ebe4;
     color: #202522;
     overflow: hidden;
   }
   
-  /* ================================================= */
-  /* MAIN PAGE LAYOUT */
-  /* ================================================= */
-  
   .dashboard-shell {
     height: 100vh;
     display: grid;
-    grid-template-columns: 100px 1fr;
-    gap: 20px;
-    padding: 20px;
-    overflow: hidden;
+    grid-template-columns: 100px minmax(0, 1fr);
+    gap: 18px;
+    padding: 16px 20px 10px;
   }
   
-  /* ================================================= */
-  /* SIDEBAR */
-  /* ================================================= */
-  
   .sidebar {
-    height: calc(100vh - 40px);
-    background: transparent;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
   }
   
-  /* ================================================= */
-  /* LOGO BLOCK */
-  /* ================================================= */
-  
   .logo {
     width: 78px;
-    height: 112px;
+    height: 104px;
     background: #ffffff;
     border-radius: 34px;
     display: flex;
@@ -67,33 +52,18 @@
     font-size: 1.15rem;
   }
   
-  /* ================================================= */
-  /* MAIN NAVIGATION BAR */
-  /* ================================================= */
-  
   .nav-icons {
     width: 78px;
     flex: 1;
-  
-    margin-top: 116px;
-  
+    margin-top: 104px;
     background: #ffffff;
     border-radius: 34px;
-  
-    padding-top: 70px;
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-bottom: 22px;
-  
+    padding: 64px 10px 18px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 22px;
+    gap: 18px;
   }
-  
-  /* ================================================= */
-  /* NAVIGATION LINKS */
-  /* ================================================= */
   
   .nav-icons a {
     width: 48px;
@@ -101,11 +71,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
-  
     text-decoration: none;
     font-size: 1.3rem;
     border-radius: 16px;
     transition: 0.2s ease;
+    position: relative;
   }
   
   .nav-icons a:hover {
@@ -115,49 +85,26 @@
   .nav-icons a.active {
     background: #202522;
   }
-
-  /* ================================================= */
-  /* NAVIGATION HOVER WORDS */
-  /* ================================================= */
-  
-  .nav-icons a {
-    position: relative;
-  }
   
   .nav-icons a::after {
     content: attr(data-label);
-  
     position: absolute;
     top: 50%;
     left: 72px;
-  
     transform: translateY(-50%);
-  
     background: #202522;
     color: #ffffff;
-  
     padding: 8px 14px;
-  
     border-radius: 12px;
-  
     font-size: 0.85rem;
     font-weight: 500;
-  
     white-space: nowrap;
-  
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  
     opacity: 0;
     visibility: hidden;
-  
     pointer-events: none;
-  
     z-index: 9999;
-  
-    transition:
-      opacity 0.25s ease,
-      visibility 0.25s ease;
-  
+    transition: opacity 0.25s ease, visibility 0.25s ease;
     transition-delay: 1.5s;
   }
   
@@ -166,53 +113,25 @@
     visibility: visible;
   }
   
-  /* ================================================= */
-  /* LOGOUT BUTTON INSIDE NAV BAR */
-  /* ================================================= */
-  
   .logout {
     margin-top: auto;
-  
-    width: 48px;
-    height: 48px;
-  
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  
     color: #5c866f;
-    text-decoration: none;
-    font-size: 1.35rem;
-  
-    border-radius: 16px;
-    transition: 0.2s ease;
   }
-  
-  .logout:hover {
-    background: #eef3ef;
-  }
-  
-  /* ================================================= */
-  /* MAIN CONTENT AREA */
-  /* ================================================= */
   
   .main-content {
-    height: calc(100vh - 40px);
-    padding: 0;
-    overflow: hidden;
+    min-width: 0;
+    height: 100%;
+    display: grid;
+    grid-template-rows: auto auto minmax(0, 1fr) 24px;
+    gap: 10px;
   }
   
-  /* ================================================= */
-  /* TOP HEADER */
-  /* ================================================= */
-  
   .top-header {
-    height: 82px;
+    min-height: 68px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 32px;
-    margin-bottom: 12px;
   }
   
   .top-header h1 {
@@ -234,26 +153,16 @@
     font-size: 0.95rem;
   }
   
-  /* ================================================= */
-  /* TOP STAT CARDS */
-  /* ================================================= */
-  
   .stats-row {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 14px;
-    height: 94px;
-    margin-bottom: 14px;
   }
-  
-  /* ================================================= */
-  /* GENERAL CARD STYLING */
-  /* ================================================= */
   
   .card {
     background: white;
     border-radius: 24px;
-    padding: 16px;
+    padding: 14px 16px;
     box-shadow: 0 10px 24px rgba(0, 0, 0, 0.04);
   }
   
@@ -262,11 +171,8 @@
     color: inherit;
   }
   
-  /* ================================================= */
-  /* STAT CARD DESIGN */
-  /* ================================================= */
-  
   .stat-card {
+    min-height: 78px;
     display: flex;
     align-items: center;
     gap: 12px;
@@ -308,24 +214,18 @@
     color: #e9f3ed;
   }
   
-  /* ================================================= */
-  /* DASHBOARD GRID */
-  /* ================================================= */
-  
   .dashboard-grid {
-    height: calc(100vh - 242px);
+    min-height: 0;
     display: grid;
     grid-template-columns: minmax(0, 2.2fr) minmax(290px, 1fr);
     grid-template-areas: "map side";
     gap: 14px;
+    align-items: stretch;
   }
-  
-  /* ================================================= */
-  /* MAP CARD */
-  /* ================================================= */
   
   .map-card {
     grid-area: map;
+    min-width: 0;
     min-height: 0;
     display: flex;
     flex-direction: column;
@@ -360,72 +260,22 @@
     text-transform: uppercase;
   }
   
-  .map-placeholder {
-    position: relative;
+  #map {
+    width: 100%;
     flex: 1;
     min-height: 0;
     border-radius: 20px;
-    background:
-      linear-gradient(90deg, rgba(92, 134, 111, 0.13) 1px, transparent 1px),
-      linear-gradient(rgba(92, 134, 111, 0.13) 1px, transparent 1px),
-      #eef3ef;
-    background-size: 30px 30px;
-    display: grid;
-    place-items: center;
-    color: #657069;
-    font-weight: 700;
+    overflow: hidden;
   }
-  
-  /* ================================================= */
-  /* MAP PINS */
-  /* ================================================= */
-  
-  .map-pin {
-    position: absolute;
-    width: 38px;
-    height: 38px;
-    background: white;
-    border-radius: 50%;
-    display: grid;
-    place-items: center;
-    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
-  }
-  
-  .pin-one {
-    left: 24%;
-    top: 30%;
-  }
-  
-  .pin-two {
-    right: 31%;
-    top: 43%;
-  }
-  
-  .pin-three {
-    left: 50%;
-    bottom: 25%;
-  }
-  
-  .pin-four {
-    right: 20%;
-    bottom: 23%;
-  }
-  
-  /* ================================================= */
-  /* RIGHT COLUMN */
-  /* ================================================= */
   
   .right-column {
     grid-area: side;
-    display: grid;
-    grid-template-rows: 1fr 0.85fr 1fr;
-    gap: 14px;
+    min-width: 0;
     min-height: 0;
+    display: grid;
+    grid-template-rows: 1fr 0.9fr 1.1fr;
+    gap: 14px;
   }
-  
-  /* ================================================= */
-  /* PROFILE CARD */
-  /* ================================================= */
   
   .profile-card {
     text-align: center;
@@ -469,10 +319,6 @@
     font-size: 0.75rem;
   }
   
-  /* ================================================= */
-  /* CARBON FOOTPRINT CARD */
-  /* ================================================= */
-  
   .meter {
     height: 13px;
     background: #dce7df;
@@ -492,10 +338,6 @@
     margin: 6px 0 0;
     font-size: 0.85rem;
   }
-  
-  /* ================================================= */
-  /* LATEST REPORTS CARD */
-  /* ================================================= */
   
   .latest-card {
     overflow: hidden;
@@ -520,10 +362,6 @@
     border-bottom: none;
   }
   
-  /* ================================================= */
-  /* STATUS DOTS */
-  /* ================================================= */
-  
   .status-dot {
     width: 10px;
     height: 10px;
@@ -543,20 +381,62 @@
     background: #4a90e2;
   }
   
-  /* ================================================= */
-  /* RESPONSIVE DESIGN */
-  /* ================================================= */
+  .footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #657069;
+    font-size: 0.74rem;
+    line-height: 1;
+  }
   
-  @media (max-width: 1000px) {
+  /* RESPONSIVE */
+  
+  @media (max-width: 1200px) {
+    html,
     body {
-      overflow: auto;
+      height: auto;
+      min-height: 100%;
+      overflow-y: auto;
     }
   
     .dashboard-shell {
       height: auto;
       min-height: 100vh;
+    }
+  
+    .main-content {
+      height: auto;
+      display: flex;
+      flex-direction: column;
+    }
+  
+    .dashboard-grid {
       grid-template-columns: 1fr;
-      overflow: visible;
+      grid-template-areas:
+        "map"
+        "side";
+    }
+  
+    #map {
+      height: 460px;
+      flex: none;
+    }
+  
+    .right-column {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-rows: none;
+    }
+  
+    .footer {
+      padding: 10px 0 4px;
+    }
+  }
+  
+  @media (max-width: 900px) {
+    .dashboard-shell {
+      grid-template-columns: 1fr;
+      padding: 16px;
     }
   
     .sidebar {
@@ -566,107 +446,35 @@
     }
   
     .logo {
-      height: 70px;
-      border-radius: 22px;
+      width: 72px;
+      height: 72px;
+      border-radius: 24px;
     }
   
     .nav-icons {
       width: auto;
-      height: auto;
-      flex: none;
       margin-top: 0;
-      flex-direction: row;
-    }
-  
-    .logout {
-      margin-top: 0;
-    }
-  
-    .main-content {
-      height: auto;
-      overflow: visible;
-    }
-  
-    .stats-row {
-      height: auto;
-      grid-template-columns: repeat(2, 1fr);
-    }
-  
-    .dashboard-grid {
-      height: auto;
-      grid-template-columns: 1fr;
-      grid-template-areas: "map" "side";
-    }
-  
-    .right-column {
-      grid-template-columns: repeat(3, 1fr);
-      grid-template-rows: none;
-    }
-  
-    .map-placeholder {
-      height: 380px;
-    }
-  }
-
-  /* ================================================= */
-  /* SMALLER SCREEN LAYOUT */
-  /* ================================================= */
-
-@media (max-width: 1000px) {
-    body {
-      overflow: auto;
-    }
-  
-    .dashboard-shell {
-      height: auto;
-      min-height: 100vh;
-      grid-template-columns: 100px 1fr;
-      gap: 16px;
-      padding: 18px;
-      overflow: visible;
-    }
-  
-    .sidebar {
-      height: calc(100vh - 36px);
-      position: sticky;
-      top: 18px;
-      flex-direction: column;
-    }
-  
-    .logo {
-      width: 78px;
-      height: 112px;
-      border-radius: 34px;
-    }
-  
-    .nav-icons {
-      width: 78px;
       flex: 1;
-      height: auto;
-      margin-top: 90px;
-      flex-direction: column;
-      padding-top: 55px;
-      padding-left: 10px;
-      padding-right: 10px;
-      padding-bottom: 22px;
-      gap: 20px;
+      flex-direction: row;
+      padding: 12px;
+      gap: 12px;
+      border-radius: 24px;
+      align-items: center;
     }
   
     .logout {
-      margin-top: auto;
+      margin-left: auto;
+      margin-top: 0;
     }
   
-    .main-content {
-      height: auto;
-      overflow: visible;
+    .nav-icons a::after {
+      display: none;
     }
   
     .top-header {
-      height: auto;
       display: grid;
       grid-template-columns: 1fr;
-      gap: 18px;
-      margin-bottom: 18px;
+      gap: 16px;
     }
   
     .search-bar {
@@ -674,44 +482,25 @@
     }
   
     .stats-row {
-      height: auto;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 14px;
-    }
-  
-    .stat-card {
-      min-height: 100px;
-    }
-  
-    .dashboard-grid {
-      height: auto;
-      grid-template-columns: 1fr;
-      grid-template-areas:
-        "map"
-        "side";
-    }
-  
-    .map-card {
-      min-height: 360px;
-    }
-  
-    .map-placeholder {
-      height: 280px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
   
     .right-column {
-      grid-template-columns: repeat(3, 1fr);
-      grid-template-rows: none;
+      grid-template-columns: 1fr;
     }
   }
   
-  /* ================================================= */
-  /* MAP */
-  /* ================================================= */
-
-  #map {
-    width: 100%;
-    height: 520px;
-    border-radius: 28px;
-    overflow: hidden;
+  @media (max-width: 600px) {
+    .stats-row {
+      grid-template-columns: 1fr;
+    }
+  
+    #map {
+      height: 340px;
+    }
+  
+    .footer {
+      font-size: 0.68rem;
+      text-align: center;
+    }
   }
