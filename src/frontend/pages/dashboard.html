@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LadywoodLink Dashboard</title>
+  <link rel="stylesheet" href="../css/dashboard.css" />
+</head>
+
+<body>
+  <div class="dashboard-shell">
+    <aside class="sidebar">
+      <div class="logo"></div>
+
+      <nav class="nav-icons">
+        <a href="dashboard.html" class="active" data-label="Dashboard">🏠</a>
+        <a href="waste-report.html" data-label="Waste Reports">🗑️</a>
+        <a href="flood-alerts.html" data-label="Water Alerts">💧</a>
+        <a href="profile.html" data-label="Profile">👤</a>
+        <a href="settings.html" data-label="Settings">⚙️</a>
+        <a href="login.html" class="logout" data-label="Logout">↩</a>
+    </nav>
+    </aside>
+
+    <main class="main-content">
+      <header class="top-header">
+        <div>
+          <h1>Welcome, User</h1>
+          <p>Track waste, sanitation and water alerts in Ladywood.</p>
+        </div>
+
+        <input type="search" class="search-bar" placeholder="Search..." />
+      </header>
+
+      <section class="stats-row">
+        <a href="water-alerts.html" class="card stat-card">
+          <span class="card-icon">🌧️</span>
+          <div>
+            <p>Flood Status</p>
+            <h2>No active flood alerts</h2>
+          </div>
+        </a>
+
+        <a href="water-alerts.html" class="card stat-card warning">
+          <span class="card-icon">⚠️</span>
+          <div>
+            <p>Sewage Status</p>
+            <h2>1 nearby alert</h2>
+          </div>
+        </a>
+
+        <a href="waste-report.html" class="card stat-card">
+          <span class="card-icon">🗑️</span>
+          <div>
+            <p>Waste Reports</p>
+            <h2>12 submitted</h2>
+          </div>
+        </a>
+
+        <a href="profile.html" class="card stat-card green">
+          <span class="card-icon">♻️</span>
+          <div>
+            <p>Green Points</p>
+            <h2>563 earned</h2>
+          </div>
+        </a>
+      </section>
+
+      <section class="dashboard-grid">
+        <article class="card map-card">
+          <div class="card-header">
+            <div>
+              <p class="eyebrow">Community Monitor</p>
+              <h2>Waste & Sanitation Map</h2>
+            </div>
+            <a href="waste-report.html">Report issue →</a>
+          </div>
+
+          <div class="map-placeholder">
+            <div class="map-pin pin-one">🗑️</div>
+            <div class="map-pin pin-two">⚠️</div>
+            <div class="map-pin pin-three">💧</div>
+            <div class="map-pin pin-four">♻️</div>
+            <p>Map preview</p>
+          </div>
+        </article>
+
+        <aside class="right-column">
+          <article class="card profile-card">
+            <div class="avatar">👤</div>
+            <h2>User Profile</h2>
+            <p>Ladywood Resident</p>
+
+            <div class="profile-stats">
+              <div>
+                <strong>12</strong>
+                <span>Reports</span>
+              </div>
+              <div>
+                <strong>7</strong>
+                <span>Resolved</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="card">
+            <p class="eyebrow">Environmental Impact</p>
+            <h2>Carbon Footprint</h2>
+
+            <div class="meter">
+              <div class="meter-fill"></div>
+            </div>
+
+            <p class="small-text">Lower than local average</p>
+          </article>
+
+          <article class="card latest-card">
+            <p class="eyebrow">Recent Activity</p>
+            <h2>Latest Reports</h2>
+
+            <ul class="mini-report-list">
+              <li>
+                <span class="status-dot orange"></span>
+                Overflowing bin reported
+              </li>
+              <li>
+                <span class="status-dot green-dot"></span>
+                Fly-tipping resolved
+              </li>
+              <li>
+                <span class="status-dot blue"></span>
+                Sewage alert added
+              </li>
+            </ul>
+          </article>
+        </aside>
+      </section>
+    </main>
+  </div>
+
+  <script src="../js/dashboard.js"></script>
+</body>
+</html>
