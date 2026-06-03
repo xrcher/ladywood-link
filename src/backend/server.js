@@ -35,6 +35,12 @@ app.get('/dev-bypass', (req, res) => {
      res.redirect('/dashboard');
 });
 
+app.get('/api/user', requireAuth, (req, res) => {
+    res.json({
+        name: req.session.userName || 'User'
+    });
+});
+
 // HTML Views
 app.get('/dashboard', requireAuth, (req, res) => {res.sendFile(getHtmlPage('dashboard.html'));});
 app.get('/profile', requireAuth, (req, res) => {res.sendFile(getHtmlPage('profile.html'));});

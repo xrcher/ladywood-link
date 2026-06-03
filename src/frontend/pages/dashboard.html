@@ -51,7 +51,7 @@
 
       <header class="top-header">
         <div>
-          <h1>Welcome, User</h1>
+          <h1 id="welcomeText">Welcome, User</h1>
           <p>Track waste, sanitation and water alerts in Ladywood.</p>
         </div>
 
@@ -197,6 +197,19 @@
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="/js/dashboard.js"></script>
   <script src="/js/map.js"></script>
+
+  <script>
+    fetch('/api/user')
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById('welcomeText').textContent =
+          `Welcome, ${data.name}`;
+      })
+      .catch(error => {
+        console.error('Failed to load user name:', error);
+      });
+  </script>
+  
 </body>
 
 </html>
