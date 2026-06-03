@@ -4,16 +4,59 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LadywoodLink - Login</title>
-    <link rel="stylesheet" href="/css/login.css">
+
+    <link rel="stylesheet" href="/css/auth.css">
 </head>
 <body>
 
-<div class="login-container">
-    <h1>LadywoodLink</h1>
-    <p>Login Page Placeholder</p>
+    <div class="login-container">
 
-    <a href="/dev-bypass" class="bypass-btn">Skip to Dashboard (DEVELOPER) →</a>
-</div>
+        <div class="login-card">
+
+            <div class="logo">LL</div>
+
+            <h1>LadywoodLink</h1>
+
+            <p class="subtitle">
+                Cleaner Communities. Smarter Reporting.
+            </p>
+
+            <form class="login-form">
+
+                <label for="email">Email Address</label>
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="Enter your email"
+                >
+
+                <label for="password">Password</label>
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="Enter your password"
+                >
+
+                <button type="button" class="login-btn">
+                    Login
+                </button>
+
+            </form>
+
+            <p class="register-text">
+                Don't have an account?
+                <a href="/register">Register here</a>
+            </p>
+
+            <a href="/dev-bypass" class="bypass-btn">
+                Skip to Dashboard (DEVELOPER) →
+            </a>
+
+        </div>
+
+    </div>
 
 </body>
 </html>

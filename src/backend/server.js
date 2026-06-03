@@ -36,7 +36,11 @@ app.get('/dev-bypass', (req, res) => {
 });
 
 // HTML Routes (Protected)
-app.get('/', (req, res) => res.sendFile(getHtmlPage('login.html')));
+app.get('/', (req, res) => res.sendFile(getHtmlPage('index.html')));
+
+app.get('/login', (req, res) => res.sendFile(getHtmlPage('login.html')));
+
+app.get('/register', (req, res) => res.sendFile(getHtmlPage('register.html')));
 
 app.get('/dashboard', requireAuth, (req, res) => {
     res.sendFile(getHtmlPage('dashboard.html'));
