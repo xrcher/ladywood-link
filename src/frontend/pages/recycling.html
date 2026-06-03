@@ -1,40 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LadywoodLink - Recycling</title>
 
     <script src="https://kit.fontawesome.com/692d4b5a4e.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="/css/dashboard.css">
+    <link rel="stylesheet" href="/css/recycling.css">
 </head>
+
 <body>
 
-<div class="dashboard-shell">
+    <div class="dashboard-shell">
 
-    <aside class="sidebar">
+        <aside class="sidebar">
 
-        <div class="logo">
-            LL
-        </div>
+            <div class="logo">
+                LL
+            </div>
 
-         <nav class="nav-icons">
-            <a href="/dashboard" data-label="Dashboard"><i class="fa-solid fa-house"></i></a>
-            <a href="/recycling" data-label="Recycling"><i class="fa-solid fa-recycle"></i></a>
-            <a href="/bin-collection" data-label="Bin Collection"><i class="fa-regular fa-trash-can"></i></a>
-             <a href="/settings" data-label="Settings"><i class="fa-solid fa-user-gear"></i></a>
-            <a href="/logout" class="logout" data-label="Logout">↩</a>
-        </nav>
+            <nav class="nav-icons">
+                <a href="/dashboard" data-label="Dashboard"><i class="fa-solid fa-house"></i></a>
+                <a href="/recycling" data-label="Recycling"><i class="fa-solid fa-recycle"></i></a>
+                <a href="/bin-collection" data-label="Bin Collection"><i class="fa-regular fa-trash-can"></i></a>
+                <a href="/settings" data-label="Settings"><i class="fa-solid fa-user-gear"></i></a>
+                <a href="/logout" class="logout" data-label="Logout">Logout</a>
+            </nav>
 
-        
+        </aside>
 
-    </aside>
 
-    <main class="main-content">
-        <h1>Recycling Page</h1>
-    </main>
 
-</div>
+        <main class="main-content">
+            <h1>Recycling Page</h1>
+
+            <article class="card-recycling-log">
+                <div class="card-recycling-header">
+                    <div>
+                        <p class="eyebrow">Recycle Log</p>
+                        <h2>Log your Recycling Redemptions here to earn Green Points</h2>
+                    </div>
+                </div>
+
+                <form class="recycling-form">
+                    <label>
+                        Issue type
+                        <select name="redemption">
+                            <option value="recycle">Recycled Waste</option>
+                            <option value="litter">Picked up litter</option>
+                        </select>
+                    </label>
+
+                    <label>
+                        Location
+                        <input type="text" name="location" placeholder="Enter street or area">
+                    </label>
+
+                    <label>
+                        Notes
+                        <textarea name="notes" rows="4" placeholder="Please provide details as to how you achieved your selected redemption"></textarea>
+                    </label>
+
+                    <button type="submit">Submit report</button>
+                </form>
+            </article>
+
+
+
+
+        </main>
+
+    </div>
 
 </body>
+
 </html>
