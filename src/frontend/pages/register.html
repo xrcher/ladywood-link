@@ -1,42 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Register | LadywoodLink</title>
-  <link rel="stylesheet" href="/css/auth.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register | LadywoodLink</title>
+    <link rel="stylesheet" href="/css/auth.css">
 </head>
 <body>
-  <main class="auth-page">
+<main class="auth-page">
     <section class="auth-card">
-      <div class="logo">LL</div>
+        <div class="logo">LL</div>
 
-      <h1>Create Account</h1>
-      <p class="subtitle">Join the LadywoodLink community.</p>
+        <h1>Create Account</h1>
+        <p class="subtitle">Join the LadywoodLink community.</p>
 
-      <form>
-        <label>Full Name</label>
-        <input type="text" placeholder="Enter your full name">
+        <form action="/register" method="POST">
 
-        <label>Email Address</label>
-        <input type="email" placeholder="Enter your email">
+            <label>Full Name</label>
+            <input type="text" name="name" placeholder="Enter your full name" required>
 
-        <label>Password</label>
-        <input type="password" placeholder="Create a password">
+            <label>Email Address</label>
+            <input type="email" name="email" placeholder="Enter your email" required>
 
-        <label>District Sign-up Code</label>
-        <input type="text" placeholder="Enter access code">
+            <label>Password</label>
+            <input type="password" name="password" placeholder="Create a password" required>
 
-        <button type="button" class="primary-btn">Register</button>
-      </form>
+            <button type="submit" class="primary-btn">Register</button>
+        </form>
 
-      <p class="switch-text">
-        Already have an account?
-        <a href="login.html">Login here</a>
-      </p>
+        <p class="switch-text">
+            Already have an account?
+            <a href="/login">Login here</a>
+        </p>
 
-      <a href="start.html" class="back-link">← Back</a>
+        <a href="/login" class="back-link">← Back</a>
     </section>
-  </main>
+</main>
 </body>
 </html>

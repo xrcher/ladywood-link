@@ -9,54 +9,56 @@
 </head>
 <body>
 
-    <div class="login-container">
+<div class="login-container">
 
-        <div class="login-card">
+    <div class="login-card">
 
-            <div class="logo">LL</div>
+        <div class="logo">LL</div>
 
-            <h1>LadywoodLink</h1>
+        <h1>LadywoodLink</h1>
 
-            <p class="subtitle">
-                Cleaner Communities. Smarter Reporting.
-            </p>
+        <p class="subtitle">
+            Cleaner Communities. Smarter Reporting.
+        </p>
 
-            <form class="login-form">
+        <form class="login-form" action="/login" method="POST">
 
-                <label for="email">Email Address</label>
-                <input
+            <label for="email">Email Address</label>
+            <input
                     type="email"
                     id="email"
                     name="email"
                     placeholder="Enter your email"
-                >
+                    required
+            >
 
-                <label for="password">Password</label>
-                <input
+            <label for="password">Password</label>
+            <input
                     type="password"
                     id="password"
                     name="password"
                     placeholder="Enter your password"
-                >
+                    required
+            >
 
-                <button type="button" class="login-btn">
-                    Login
-                </button>
+            <button type="submit" class="login-btn">
+                Login
+            </button>
 
-            </form>
+        </form>
 
-            <p class="register-text">
-                Don't have an account?
-                <a href="/register">Register here</a>
-            </p>
+        <p class="register-text">
+            Don't have an account?
+            <a href="/register">Register here</a>
+        </p>
 
-            <a href="/dev-bypass" class="bypass-btn">
-                Skip to Dashboard (DEVELOPER) →
-            </a>
-
-        </div>
+<!--        <a href="/dev-bypass" class="bypass-btn">-->
+<!--            Skip to Dashboard (DEVELOPER) →-->
+<!--        </a>-->
 
     </div>
+
+</div>
 
 </body>
 </html>
