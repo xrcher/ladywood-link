@@ -47,12 +47,9 @@ By integrating real-time environmental alerts, such as sewage spillage warnings 
 - Email: admin@test.com
 - Password: password
 
-**Connection Details (with Client)**
-🔌 Connect using a client like Beekeeper Studio, or a built-in IDE plugin if you fancy:
+🔌 **Connection Details (with Client)**
 - Host: 127.0.0.1 (localhost)
 - Port: 5432
 - User: admin
 - Password: password
 - Database: auth_dashboard_db
-
-****
