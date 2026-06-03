@@ -19,17 +19,17 @@ By integrating real-time environmental alerts, such as sewage spillage warnings 
 
 ---
 ### 🔗 Requirements
-- Docker (Docker Desktop Recommended)
-- npm (Install Using Instructions Below)
-- Internet Connection for CDN Assets (May Change) ✏️
+- Docker (Docker Desktop recommended)
+- npm (install using instructions below)
+- Internet Connection for CDN Assets (may change) ✏️
 
 ---
 ### 🔨 Usage (Development)
-📁 *Make sure you are in src folder before running any commands! Use `cd src
+**⚠️** *Ensure you are in the `src` folder in the terminal before running commands! Use `cd src`
 
 1️⃣ **First Time Setup**
-1. Run `docker compose up`
-2. Run `npm install` (if not already installed)
+1. Run `docker compose down -v` to wipe any existing DB data
+2. Run `npm install` if not already installed
 3. Test database connection at http://localhost:3000/test-db (green emoji indicates functioning)
 
 🟢 **Starting Server and NPM**
