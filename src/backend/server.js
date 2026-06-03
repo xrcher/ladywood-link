@@ -29,11 +29,11 @@ app.post('/register', authController.postRegister);
 app.get('/logout', authController.logout);
 
 // ⚠️⚠️⚠️ DEVELOPMENT ONLY - FAKE LOGIN SESSION - REMOVE BEFORE RELEASE ⚠️️️⚠️️️⚠️️️
-// app.get('/dev-bypass', (req, res) => {
-//     req.session.userId = 'mock-id';
-//     req.session.userName = 'Tester';
-//     res.redirect('/dashboard');
-// });
+app.get('/dev-bypass', (req, res) => {
+     req.session.userId = 'mock-id';
+     req.session.userName = 'Tester';
+     res.redirect('/dashboard');
+});
 
 // HTML Views
 app.get('/dashboard', requireAuth, (req, res) => {res.sendFile(getHtmlPage('dashboard.html'));});

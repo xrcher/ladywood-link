@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="bc4977d1-d15c-4ddd-a253-1d7ac2837f5b" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -34,6 +37,10 @@
     "git-widget-placeholder": "main",
     "javascript.preferred.runtime.type.id": "node",
     "junie.onboarding.icon.badge.shown": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "preferences.lookFeel",
     "to.speed.mode.migration.done": "true",
@@ -55,7 +62,7 @@
       <option name="presentableId" value="Default" />
       <updated>1748748334387</updated>
       <workItem from="1748748349194" duration="45000" />
-      <workItem from="1780504745220" duration="299000" />
+      <workItem from="1780504745220" duration="1251000" />
     </task>
     <servers />
   </component>
