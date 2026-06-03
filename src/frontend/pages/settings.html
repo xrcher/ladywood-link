@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LadywoodLink - Settings</title>
     <script src="https://kit.fontawesome.com/692d4b5a4e.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="/css/dashboard.css">
+    <link rel="stylesheet" href="/css/Dashboard.css">
+    <link rel="stylesheet" href="/css/settings.html">
 </head>
 <body>
 
@@ -21,22 +22,60 @@
             <a href="/dashboard" data-label="Dashboard"><i class="fa-solid fa-house"></i></a>
             <a href="/recycling" data-label="Recycling"><i class="fa-solid fa-recycle"></i></a>
             <a href="/bin-collection" data-label="Bin Collection"><i class="fa-regular fa-trash-can"></i></a>
-            <a href="/settings" data-label="Settings"><i class="fa-solid fa-user-gear"></i></a>
-            <a href="/logout" class="logout" data-label="Logout">↩</a>
+            <a href="/rewards" data-label="Rewards"><i class="fa-solid fa-shop"></i></a>
+            <a href="/waste-report" data-label="Waste Report"><i class="fa-solid fa-triangle-exclamation"></i></a>
+            <a href="/settings" class="active" data-label="Settings"><i class="fa-solid fa-user-gear"></i></a>
+            <a href="/logout" class="logout" data-label="Logout">Logout</a>
         </nav>
 
     </aside>
 
     <main class="main-content">
-        <h1>Settings Page</h1>
+        <h1>Settings</h1>
+        
+        <div class = "account-information">
+             <h2>Account Information</h2>
+
+             <div class="settings-field">
+                <label>Email</label>
+                <p id="user-email">syl********@gmail.com</p>
+             </div>
+
+             <div class="settings-field">
+                <label>Password</label>
+                <p>********</p>
+             </div>
+
+             <div class="settings-field">
+                <label for="new-password">Change Password</label>
+                <input type="password" id="new-password" placeholder="Enter new password">
+             </div>
+
+             <div class="settings-field">
+                <label for="confirm-password">Confirm Password</label>
+                <input type="password" id="confirm-password" placeholder="Confirm new passord">
+             </div>
+
+             <button id="save-password-btn">Save New Password</button>
+
+        </div>
+
+        <div class="accessibility">
+            <h2>Accessibility</h2>
+
+            <div class="ac">
+
+            </div>
+        </div>
     </main>
 
 </div>
 
 
 
+
 <footer class="footer">
-      © 2025 LadywoodLink · Community waste, sanitation and water alerts
+      © 2026 LadywoodLink · Community waste, sanitation and water alerts
     </footer>
 </body>
 </html>
