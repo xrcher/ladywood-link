@@ -434,37 +434,50 @@
   }
   
   @media (max-width: 900px) {
+
     .dashboard-shell {
-      grid-template-columns: 1fr;
-      padding: 16px;
+      grid-template-columns: 90px minmax(0, 1fr);
+      gap: 14px;
+      padding: 14px;
     }
   
     .sidebar {
-      height: auto;
-      flex-direction: row;
-      gap: 12px;
-    }
-  
-    .logo {
-      width: 72px;
-      height: 72px;
-      border-radius: 24px;
-    }
-  
-    .nav-icons {
-      width: auto;
-      margin-top: 0;
-      flex: 1;
-      flex-direction: row;
-      padding: 12px;
-      gap: 12px;
-      border-radius: 24px;
+      height: 100%;
+      flex-direction: column;
       align-items: center;
     }
   
+    .logo {
+      width: 70px;
+      height: 95px;
+      border-radius: 30px;
+    }
+  
+    .logo::after {
+      width: 50px;
+      height: 50px;
+      font-size: 1rem;
+    }
+  
+    .nav-icons {
+      width: 70px;
+      flex: 1;
+      margin-top: 85px;
+      padding: 45px 8px 16px;
+      flex-direction: column;
+      gap: 16px;
+      border-radius: 30px;
+    }
+  
+    .nav-icons a {
+      width: 42px;
+      height: 42px;
+      font-size: 1.1rem;
+    }
+  
     .logout {
-      margin-left: auto;
-      margin-top: 0;
+      margin-top: auto;
+      margin-left: 0;
     }
   
     .nav-icons a::after {
