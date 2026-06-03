@@ -44,6 +44,10 @@ app.get('/settings', requireAuth, (req, res) => {res.sendFile(getHtmlPage('setti
 app.get('/waste-report', requireAuth, (req, res) => {res.sendFile(getHtmlPage('waste-report.html'));});
 // app.get('/flood-alerts', requireAuth, (req, res) => res.sendFile(getHtmlPage('flood-alerts.html')));
 // app.get('/water-alerts', requireAuth, (req, res) => res.sendFile(getHtmlPage('flood-alerts.html')));
+app.get('/rewards', requireAuth, (req, res) => {
+    res.sendFile(getHtmlPage('rewards.html'));
+});
+
 
 // test-db Check
 app.get('/test-db', async (req, res) => {

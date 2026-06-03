@@ -8,25 +8,53 @@
 
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <link rel="stylesheet" href="/css/dashboard.css" />
-  <script src="/js/dashboard.js"></script>
+
   <script src="https://kit.fontawesome.com/692d4b5a4e.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
   <div class="dashboard-shell">
+
+    <!-- ================================================= -->
+    <!-- SIDEBAR NAVIGATION -->
+    <!-- ================================================= -->
+
     <aside class="sidebar">
       <div class="logo"></div>
 
       <nav class="nav-icons">
-        <a href="/dashboard" data-label="Dashboard"><i class="fa-solid fa-house"></i></a>
-        <a href="/recycling" data-label="Recycling"><i class="fa-solid fa-recycle"></i></a>
-        <a href="/bin-collection" data-label="Bin Collection"><i class="fa-regular fa-trash-can"></i></a>
-        <a href="/settings" data-label="Settings"><i class="fa-solid fa-user-gear"></i></a>
-        <a href="/logout" class="logout" data-label="Logout">Logout</a>
+        <a href="/dashboard" class="active" data-label="Dashboard">
+          <i class="fa-solid fa-house"></i>
+        </a>
+
+        <a href="/recycling" data-label="Recycling">
+          <i class="fa-solid fa-recycle"></i>
+        </a>
+
+        <a href="/bin-collection" data-label="Bin Collection">
+          <i class="fa-regular fa-trash-can"></i>
+        </a>
+
+        <a href="/settings" data-label="Settings">
+          <i class="fa-solid fa-user-gear"></i>
+        </a>
+
+        <a href="/logout" class="logout" data-label="Logout">
+          Logout
+        </a>
       </nav>
     </aside>
 
+    <!-- ================================================= -->
+    <!-- MAIN CONTENT -->
+    <!-- ================================================= -->
+
     <main class="main-content">
+
+      <!-- ================================================= -->
+      <!-- HEADER -->
+      <!-- ================================================= -->
+
       <header class="top-header">
         <div>
           <h1>Welcome, User</h1>
@@ -36,57 +64,78 @@
         <input type="search" class="search-bar" placeholder="Search..." />
       </header>
 
+      <!-- ================================================= -->
+      <!-- STATUS WIDGETS -->
+      <!-- ================================================= -->
+
       <section class="stats-row">
-        <a href="/water-alerts" class="card stat-card">
+
+        <div class="card stat-card">
           <span class="card-icon">🌧️</span>
           <div>
             <p>Flood Status</p>
             <h2>No active flood alerts</h2>
           </div>
-        </a>
+        </div>
 
-        <a href="/water-alerts" class="card stat-card warning">
+        <div class="card stat-card warning">
           <span class="card-icon">⚠️</span>
           <div>
             <p>Sewage Status</p>
             <h2>1 nearby alert</h2>
           </div>
-        </a>
+        </div>
 
-        <a href="/waste-report" class="card stat-card">
+        <div class="card stat-card">
           <span class="card-icon">🗑️</span>
           <div>
             <p>Waste Reports</p>
             <h2>12 submitted</h2>
           </div>
-        </a>
+        </div>
 
-        <a href="/profile" class="card stat-card green">
+        <a href="/rewards" class="card stat-card green">
           <span class="card-icon">♻️</span>
           <div>
             <p>Green Points</p>
             <h2>563 earned</h2>
           </div>
         </a>
+
       </section>
 
+      <!-- ================================================= -->
+      <!-- DASHBOARD GRID -->
+      <!-- ================================================= -->
+
       <section class="dashboard-grid">
+
+        <!-- ================================================= -->
+        <!-- MAP CARD -->
+        <!-- ================================================= -->
+
         <article class="card map-card">
           <div class="card-header">
             <div>
               <p class="eyebrow">Community Monitor</p>
               <h2>Waste & Sanitation Map</h2>
             </div>
+
             <a href="/waste-report">Report issue →</a>
           </div>
 
           <div id="map"></div>
         </article>
 
+        <!-- ================================================= -->
+        <!-- RIGHT COLUMN -->
+        <!-- ================================================= -->
+
         <aside class="right-column">
+
           <article class="card profile-card">
             <div class="avatar">👤</div>
-            <h2>User Profile</h2>
+            <h2>User Overview</h2>
             <p>Ladywood Resident</p>
 
             <div class="profile-stats">
@@ -94,6 +143,7 @@
                 <strong>12</strong>
                 <span>Reports</span>
               </div>
+
               <div>
                 <strong>7</strong>
                 <span>Resolved</span>
@@ -103,24 +153,16 @@
 
           <article class="card">
             <p class="eyebrow">Environmental Impact</p>
+
             <div class="impact-gauge">
 
               <svg class="gauge-svg" viewBox="0 0 240 140">
-                <!-- Background arc -->
                 <path class="gauge-bg" d="M30 120 A90 90 0 0 1 210 120" />
-
-                <!-- Progress arc -->
                 <path class="gauge-progress" d="M30 120 A90 90 0 0 1 210 120" />
 
-
-                <!-- Target markers -->
-                
                 <circle class="marker green" cx="58" cy="55" r="5" />
-                
                 <circle class="marker amber" cx="120" cy="30" r="5" />
-                
                 <circle class="marker red" cx="182" cy="55" r="5" />
-
               </svg>
 
               <div class="gauge-content">
@@ -130,8 +172,6 @@
             </div>
 
             <p class="small-text">Monthly carbon footprint</p>
-
-
           </article>
 
           <article class="card latest-card">
@@ -144,12 +184,19 @@
               <li><span class="status-dot blue"></span> Sewage alert added</li>
             </ul>
           </article>
+
         </aside>
+
       </section>
+
+      <!-- ================================================= -->
+      <!-- FOOTER -->
+      <!-- ================================================= -->
 
       <footer class="footer">
         © 2025 LadywoodLink · Community waste, sanitation and water alerts
       </footer>
+
     </main>
   </div>
 

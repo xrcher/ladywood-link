@@ -90,6 +90,7 @@ body {
 
 .nav-icons a.active {
   background: #202522;
+  color: #5c866f;
 }
 
 .nav-icons a::after {
@@ -561,6 +562,7 @@ a.card {
     border-radius: 16px;
     transition: 0.2s ease;
     position: relative;
+    color: #5c866f;
 }
 
 .nav-icons a.logout {
