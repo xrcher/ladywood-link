@@ -695,3 +695,27 @@ a.card {
     padding: 0;
   }
 }
+
+/* ================================================= */
+/* FULL SCREEN ICON COLOURS */
+/* ================================================= */
+
+@media (min-width: 901px) {
+
+  .nav-icons a {
+    color: #5c866f !important;
+  }
+
+  .nav-icons a i {
+    color: #5c866f !important;
+  }
+
+  .nav-icons a.active {
+    background: #202522;
+  }
+
+  .nav-icons a.active i {
+    color: #5c866f !important;
+  }
+
+}
