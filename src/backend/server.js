@@ -69,10 +69,6 @@ app.get('/waste-report', requireAuth, (req, res) => {
 app.get('/flood-alerts', requireAuth, (req, res) => res.sendFile(getHtmlPage('flood-alerts.html')));
 app.get('/water-alerts', requireAuth, (req, res) => res.sendFile(getHtmlPage('flood-alerts.html')));
 
-app.get('/green-points', requireAuth, (req, res) => {
-    res.sendFile(getHtmlPage('green-points.html'));
-});
-
 //  Check Node
 app.get('/test-db', async (req, res) => {
     try {
