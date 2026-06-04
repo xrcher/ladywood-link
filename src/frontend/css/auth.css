@@ -242,3 +242,16 @@
 .register-btn:hover {
     background: #dce7df;
 }
+
+#error-message {
+  display: none;
+  color: #fff;
+  background: red;
+  margin-bottom: 13px;
+  padding: 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  text-align: center;
+  font-weight: bold;
+  font-family: Arial, sans-serif;
+}
