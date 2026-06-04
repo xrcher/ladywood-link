@@ -234,6 +234,7 @@ body {
   border-radius: 24px;
   padding: 14px 16px;
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.04);
+  border: 1px solid transparent;
 }
 
 a.card {
@@ -880,4 +881,71 @@ body.font-century-gothic {
 
 body.font-trebuchet {
   font-family: "Trebuchet MS", Arial, sans-serif;
+}
+
+/* ================================================= */
+/* DARK MODE GREEN BORDERS */
+/* ================================================= */
+
+body.dark-mode .card,
+body.dark-mode .stat-card,
+body.dark-mode .map-card,
+body.dark-mode .profile-card,
+body.dark-mode .latest-card,
+body.dark-mode .account-information,
+body.dark-mode .accessibility,
+body.dark-mode .ac {
+  border: 1px solid #5c866f;
+}
+
+body.dark-mode .search-bar {
+  border: 1px solid #5c866f;
+}
+
+body.dark-mode #map {
+  border: 1px solid #5c866f;
+}
+
+body.dark-mode,
+body.dark-mode html {
+    background: #202522;
+}
+
+body.dark-mode .dashboard-shell {
+    background: #202522;
+}
+
+body.dark-mode .main-content {
+    background: #202522;
+}
+
+/* Carbon footprint */
+
+body.dark-mode .gauge-value {
+    color: #ffffff;
+}
+
+body.dark-mode .small-text {
+    color: #d8ded8;
+}
+
+/* User stats */
+
+body.dark-mode .profile-card p,
+body.dark-mode .profile-stats span {
+    color: #d8ded8;
+}
+
+/* Latest reports */
+
+body.dark-mode .mini-report-list li {
+    color: #ffffff;
+}
+
+/* Card headings */
+
+body.dark-mode .card h2,
+body.dark-mode .card-header h2,
+body.dark-mode .top-header h1 {
+    color: #ffffff;
 }
