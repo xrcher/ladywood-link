@@ -1,3 +1,7 @@
+/* ================================================= */
+/* GLOBAL RESET */
+/* ================================================= */
+
 * {
   box-sizing: border-box;
 }
@@ -6,26 +10,42 @@ html,
 body {
   margin: 0;
   width: 100%;
-  height: 100%;
+  min-height: 100%;
   font-family: Arial, Helvetica, sans-serif;
   background: #e9ebe4;
   color: #202522;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
-
-
+/* ================================================= */
+/* MAIN DASHBOARD LAYOUT */
+/* ================================================= */
 
 .dashboard-shell {
-  height: 100vh;
+  min-height: 100vh;
   display: grid;
   grid-template-columns: 100px minmax(0, 1fr);
   gap: 18px;
   padding: 16px 20px 10px;
 }
 
+.main-content {
+  min-width: 0;
+  min-height: 100%;
+  display: grid;
+  grid-template-rows: auto auto minmax(0, 1fr) auto;
+  gap: 10px;
+}
+
+/* ================================================= */
+/* SIDEBAR */
+/* ================================================= */
+
 .sidebar {
-  height: 100%;
+  height: calc(100vh - 26px);
+  position: sticky;
+  top: 16px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -47,7 +67,7 @@ body {
   width: 58px;
   height: 58px;
   background: #5c866f;
-  color: white;
+  color: #ffffff;
   border-radius: 50%;
   display: grid;
   place-items: center;
@@ -55,8 +75,9 @@ body {
   font-size: 1.15rem;
 }
 
-
-/*============ NAVBAR AND NAVBAR DECORATION ============ */
+/* ================================================= */
+/* NAVIGATION BAR */
+/* ================================================= */
 
 .nav-icons {
   width: 78px;
@@ -78,10 +99,15 @@ body {
   justify-content: center;
   align-items: center;
   text-decoration: none;
+  color: #5c866f !important;
   font-size: 1.3rem;
   border-radius: 16px;
   transition: 0.2s ease;
   position: relative;
+}
+
+.nav-icons a i {
+  color: #5c866f !important;
 }
 
 .nav-icons a:hover {
@@ -90,8 +116,37 @@ body {
 
 .nav-icons a.active {
   background: #202522;
+  color: #5c866f !important;
+}
+
+.nav-icons a.active i {
+  color: #5c866f !important;
+}
+
+/* ================================================= */
+/* LOGOUT BUTTON */
+/* ================================================= */
+
+.logout {
+  margin-top: auto;
   color: #5c866f;
 }
+
+.nav-icons a.logout {
+  width: auto !important;
+  height: auto !important;
+  font-size: 1rem !important;
+  font-weight: 700;
+  padding: 8px 0;
+  display: block;
+  text-align: center;
+  background: transparent !important;
+  border-radius: 0;
+}
+
+/* ================================================= */
+/* NAVIGATION TOOLTIPS */
+/* ================================================= */
 
 .nav-icons a::after {
   content: attr(data-label);
@@ -120,36 +175,9 @@ body {
   visibility: visible;
 }
 
-
-
-.logout {
-  margin-top: auto;
-  color: #5c866f;
-}
-
-.nav-icons a.logout {
-  width: auto !important;
-  height: auto !important;
-
-  font-size: 1rem !important;
-  font-weight: 700;
-
-  padding: 8px 0;
-
-  display: block;
-  text-align: center;
-
-  background: transparent !important;
-  border-radius: 0;
-}
-
-.main-content {
-  min-width: 0;
-  height: 100%;
-  display: grid;
-  grid-template-rows: auto auto minmax(0, 1fr) 24px;
-  gap: 10px;
-}
+/* ================================================= */
+/* HEADER */
+/* ================================================= */
 
 .top-header {
   min-height: 68px;
@@ -178,6 +206,10 @@ body {
   font-size: 0.95rem;
 }
 
+/* ================================================= */
+/* TOP STATUS WIDGETS */
+/* ================================================= */
+
 .stats-row {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -185,7 +217,7 @@ body {
 }
 
 .card {
-  background: white;
+  background: #ffffff;
   border-radius: 24px;
   padding: 14px 16px;
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.04);
@@ -196,10 +228,6 @@ a.card {
   color: inherit;
 }
 
-
-
-
-  /*============ WIDGETS DECORATION ============ */
 .stat-card {
   min-height: 78px;
   display: flex;
@@ -236,12 +264,16 @@ a.card {
 
 .stat-card.green {
   background: #5c866f;
-  color: white;
+  color: #ffffff;
 }
 
 .stat-card.green p {
   color: #e9f3ed;
 }
+
+/* ================================================= */
+/* DASHBOARD GRID */
+/* ================================================= */
 
 .dashboard-grid {
   min-height: 0;
@@ -259,6 +291,19 @@ a.card {
   display: flex;
   flex-direction: column;
 }
+
+.right-column {
+  grid-area: side;
+  min-width: 0;
+  min-height: 0;
+  display: grid;
+  grid-template-rows: 1fr 0.9fr 1.1fr;
+  gap: 14px;
+}
+
+/* ================================================= */
+/* MAP CARD */
+/* ================================================= */
 
 .card-header {
   display: flex;
@@ -291,20 +336,16 @@ a.card {
 
 #map {
   width: 100%;
+  height: 100%;
+  min-height: 430px;
   flex: 1;
-  min-height: 0;
   border-radius: 20px;
   overflow: hidden;
 }
 
-.right-column {
-  grid-area: side;
-  min-width: 0;
-  min-height: 0;
-  display: grid;
-  grid-template-rows: 1fr 0.9fr 1.1fr;
-  gap: 14px;
-}
+/* ================================================= */
+/* USER OVERVIEW CARD */
+/* ================================================= */
 
 .profile-card {
   text-align: center;
@@ -348,8 +389,10 @@ a.card {
   font-size: 0.75rem;
 }
 
+/* ================================================= */
+/* CARBON FOOTPRINT METER */
+/* ================================================= */
 
-  /*============ CARBON FOOTPRINT METER ============ */
 .impact-gauge {
   position: relative;
   width: 100%;
@@ -375,11 +418,7 @@ a.card {
   stroke: #5c866f;
   stroke-width: 8;
   stroke-linecap: round;
-
-  /* Arc length */
   stroke-dasharray: 283;
-
-  /* 75% filled */
   stroke-dashoffset: 212;
 }
 
@@ -399,7 +438,7 @@ a.card {
 }
 
 .marker {
-  stroke: white;
+  stroke: #ffffff;
   stroke-width: 2;
 }
 
@@ -417,9 +456,14 @@ a.card {
 
 .small-text {
   color: #657069;
-  margin: 0px 0 0;
+  margin: 8px 0 0;
   font-size: 0.85rem;
+  text-align: center;
 }
+
+/* ================================================= */
+/* LATEST REPORTS */
+/* ================================================= */
 
 .latest-card {
   overflow: hidden;
@@ -463,6 +507,10 @@ a.card {
   background: #4a90e2;
 }
 
+/* ================================================= */
+/* FOOTER */
+/* ================================================= */
+
 .footer {
   display: flex;
   align-items: center;
@@ -472,7 +520,9 @@ a.card {
   line-height: 1;
 }
 
-/* RESPONSIVE */
+/* ================================================= */
+/* RESPONSIVE - TABLET / MEDIUM SCREENS */
+/* ================================================= */
 
 @media (max-width: 1200px) {
   html,
@@ -502,6 +552,7 @@ a.card {
 
   #map {
     height: 460px;
+    min-height: 0;
     flex: none;
   }
 
@@ -515,8 +566,11 @@ a.card {
   }
 }
 
-@media (max-width: 900px) {
+/* ================================================= */
+/* RESPONSIVE - SMALL SCREENS */
+/* ================================================= */
 
+@media (max-width: 900px) {
   .dashboard-shell {
     grid-template-columns: 90px minmax(0, 1fr);
     gap: 14px;
@@ -554,29 +608,18 @@ a.card {
   .nav-icons a {
     width: 48px;
     height: 48px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-decoration: none;
     font-size: 1.3rem;
-    border-radius: 16px;
-    transition: 0.2s ease;
-    position: relative;
-    color: #5c866f;
-}
+  }
 
-.nav-icons a.logout {
-  width: auto !important;
-  height: auto !important;
-
-  font-size: 1rem !important;
-  font-weight: 700;
-
-  padding: 8px 0;
-
-  display: block;
-  text-align: center;
-}
+  .nav-icons a.logout {
+    width: auto !important;
+    height: auto !important;
+    font-size: 1rem !important;
+    font-weight: 700;
+    padding: 8px 0;
+    display: block;
+    text-align: center;
+  }
 
   .logout {
     margin-top: auto;
@@ -607,6 +650,10 @@ a.card {
   }
 }
 
+/* ================================================= */
+/* RESPONSIVE - MOBILE */
+/* ================================================= */
+
 @media (max-width: 600px) {
   .stats-row {
     grid-template-columns: 1fr;
@@ -623,7 +670,7 @@ a.card {
 }
 
 /* ================================================= */
-/* FULL SCREEN LAPTOP FIX */
+/* FULL-SCREEN LAPTOP FIX */
 /* ================================================= */
 
 @media (min-width: 1201px) and (max-height: 820px) {
@@ -694,28 +741,4 @@ a.card {
     margin: 0;
     padding: 0;
   }
-}
-
-/* ================================================= */
-/* FULL SCREEN ICON COLOURS */
-/* ================================================= */
-
-@media (min-width: 901px) {
-
-  .nav-icons a {
-    color: #5c866f !important;
-  }
-
-  .nav-icons a i {
-    color: #5c866f !important;
-  }
-
-  .nav-icons a.active {
-    background: #202522;
-  }
-
-  .nav-icons a.active i {
-    color: #5c866f !important;
-  }
-
 }
