@@ -1,221 +1,292 @@
 /* ================================================= */
-/* PAGE TITLE */
+/* SETTINGS PAGE BASE LAYOUT */
 /* ================================================= */
 
-.main-content h1 {
-    margin-bottom: 20px;
-}
-
-/* ================================================= */
-/* ACCOUNT INFORMATION CARD */
-/* ================================================= */
-
-.account-information {
+main.settings-content {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 22px !important;
+    min-height: 100vh;
+    height: auto !important;
+    padding: 14px 0 28px !important;
+    overflow: visible !important;
+  }
+  
+  .settings-content h1 {
+    margin: 0;
+    font-size: 2rem;
+  }
+  
+  /* ================================================= */
+  /* ACCOUNT INFORMATION */
+  /* ================================================= */
+  
+  .account-information {
     background: #ffffff;
     border-radius: 24px;
-    padding: 20px;
-    margin-bottom: 20px;
+    padding: 22px;
     box-shadow: 0 10px 24px rgba(0, 0, 0, 0.04);
-}
-
-.account-information h2 {
+    border: none;
+    height: auto !important;
+    min-height: auto !important;
+    overflow: visible !important;
+  }
+  
+  .account-information h2 {
+    margin: 0 0 18px;
     text-align: center;
-    margin-top: 0;
-    margin-bottom: 22px;
     color: #202522;
-}
-
-/* ================================================= */
-/* ACCOUNT FIELDS */
-/* ================================================= */
-
-.settings-field {
-    margin-bottom: 10px;
-}
-
-.settings-field label {
+  }
+  
+  /* ================================================= */
+  /* FORM FIELDS */
+  /* ================================================= */
+  
+  .settings-field {
+    margin-bottom: 14px;
+  }
+  
+  .settings-field label {
     display: block;
-    font-weight: 700;
     margin-bottom: 6px;
+    font-weight: 700;
     color: #202522;
-}
-
-.settings-field p,
-.settings-field input {
+  }
+  
+  .settings-field p,
+  .settings-field input {
     width: 100%;
-    padding: 13px 14px;
+    margin: 0;
+    padding: 12px 14px;
     border: 1px solid #d8ded8;
     border-radius: 14px;
     background: #f7f9f6;
-    font-size: 0.95rem;
-}
-
-.settings-field p {
-    margin: 0;
     color: #657069;
-}
-
-.settings-field input:focus {
+    font-size: 0.95rem;
+  }
+  
+  .settings-field input:focus {
     outline: none;
     border-color: #5c866f;
-}
-
-/* ================================================= */
-/* ACCESSIBILITY PANEL GRID */
-/* ================================================= */
-
-.accessibility {
+  }
+  
+  /* ================================================= */
+  /* ACCESSIBILITY SECTION */
+  /* ================================================= */
+  
+  .accessibility {
     background: #ffffff;
     border-radius: 24px;
-    padding: 20px;
-    margin-bottom: 20px;
+    padding: 22px;
+    margin: 0;
     box-shadow: 0 10px 24px rgba(0, 0, 0, 0.04);
-}
-
-.accessibility h2 {
-    text-align: center;
-    margin-top: 0;
-    margin-bottom: 22px;
-    color: #202522;
-}
-
-/* Grid layout like panelled accessibility cards */
-.accessibility {
-    display: grid;
+  
+    display: grid !important;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 16px;
-}
-
-.accessibility h2,
-#save-accessibility-btn {
+  
+    height: auto !important;
+    min-height: auto !important;
+    overflow: visible !important;
+  }
+  
+  .accessibility h2 {
     grid-column: 1 / -1;
-}
-
-/* Each accessibility option panel */
-.ac {
+    margin: 0 0 8px;
+    text-align: center;
+    color: #202522;
+  }
+  
+  .ac {
     background: #f7f9f6;
     border: 1px solid #d8ded8;
     border-radius: 18px;
     padding: 14px;
-    min-height: 90px;
-
+    min-height: 88px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-}
-
-/* Labels inside each panel */
-.ac label {
-    display: block;
+  }
+  
+  .ac label {
+    margin-bottom: 10px;
     font-weight: 700;
     color: #202522;
-    margin-bottom: 12px;
-}
-
-/* Dropdowns inside each panel */
-.ac select {
+  }
+  
+  .ac select {
     width: 100%;
-    padding: 12px 14px;
+    padding: 11px 14px;
     border-radius: 14px;
     border: 1px solid #d8ded8;
     background: #ffffff;
     color: #202522;
     font-size: 0.95rem;
-}
-
-.ac select:focus {
+  }
+  
+  .ac select:focus {
     outline: none;
     border-color: #5c866f;
-}
-
-/* Save accessibility button */
-#save-accessibility-btn {
+  }
+  
+  /* ================================================= */
+  /* BUTTONS */
+  /* ================================================= */
+  
+  #save-password-btn,
+  #save-accessibility-btn {
     width: 100%;
-    padding: 13px 16px;
+    padding: 12px 16px;
     border: none;
     border-radius: 14px;
     background: #5c866f;
     color: #ffffff;
     font-weight: 700;
     cursor: pointer;
-    margin-top: 8px;
-}
-
-#save-accessibility-btn:hover {
+  }
+  
+  #save-accessibility-btn {
+    grid-column: 1 / -1;
+  }
+  
+  #save-password-btn:hover,
+  #save-accessibility-btn:hover {
     background: #4d725e;
-}
-
-/* Mobile layout */
-@media (max-width: 700px) {
-    .accessibility {
-        grid-template-columns: 1fr;
+  }
+  
+  /* ================================================= */
+  /* FOOTER */
+  /* ================================================= */
+  
+  .settings-content .footer {
+    position: static !important;
+    margin-top: 8px;
+    padding: 10px 0 0;
+    text-align: center;
+    color: #657069;
+  }
+  
+  /* ================================================= */
+  /* SHORT LAPTOP HEIGHT FIX */
+  /* ================================================= */
+  
+  @media (min-width: 901px) and (max-height: 850px) {
+    main.settings-content {
+      gap: 16px !important;
+      padding-top: 8px !important;
     }
-}
-
-/* ================================================= */
-/* DARK MODE */
-/* ================================================= */
-
-body.dark-mode {
+  
+    .settings-content h1 {
+      font-size: 1.75rem;
+    }
+  
+    .account-information,
+    .accessibility {
+      padding: 16px;
+    }
+  
+    .account-information h2,
+    .accessibility h2 {
+      font-size: 1.25rem;
+      margin-bottom: 10px;
+    }
+  
+    .settings-field {
+      margin-bottom: 9px;
+    }
+  
+    .settings-field p,
+    .settings-field input,
+    .ac select {
+      padding: 9px 12px;
+      font-size: 0.9rem;
+    }
+  
+    .ac {
+      min-height: 74px;
+      padding: 12px;
+    }
+  
+    #save-password-btn,
+    #save-accessibility-btn {
+      padding: 10px 14px;
+    }
+  }
+  
+  /* ================================================= */
+  /* RESPONSIVE */
+  /* ================================================= */
+  
+  @media (max-width: 700px) {
+    .accessibility {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  /* ================================================= */
+  /* DARK MODE */
+  /* ================================================= */
+  
+  body.dark-mode {
     background: #202522;
     color: #ffffff;
-}
-
-body.dark-mode .main-content,
-body.dark-mode .account-information,
-body.dark-mode .accessibility {
+  }
+  
+  body.dark-mode .main-content,
+  body.dark-mode .account-information,
+  body.dark-mode .accessibility {
     background: #202522;
     color: #ffffff;
-}
-
-body.dark-mode .account-information,
-body.dark-mode .accessibility,
-body.dark-mode .ac {
+  }
+  
+  body.dark-mode .account-information,
+  body.dark-mode .accessibility,
+  body.dark-mode .ac {
     border: 1px solid #5c866f;
-}
-
-body.dark-mode h1,
-body.dark-mode h2,
-body.dark-mode label {
+  }
+  
+  body.dark-mode h1,
+  body.dark-mode h2,
+  body.dark-mode label {
     color: #ffffff;
-}
-
-body.dark-mode .settings-field p,
-body.dark-mode .settings-field input,
-body.dark-mode .ac select {
+  }
+  
+  body.dark-mode .settings-field p,
+  body.dark-mode .settings-field input,
+  body.dark-mode .ac select {
     background: #2d312f;
     color: #ffffff;
     border-color: #5c866f;
-}
-
-/* ================================================= */
-/* HIGH CONTRAST MODE */
-/* ================================================= */
-
-body.high-contrast {
+  }
+  
+  /* ================================================= */
+  /* HIGH CONTRAST MODE */
+  /* ================================================= */
+  
+  body.high-contrast {
     background: #000000;
     color: #ffffff;
-}
-
-body.high-contrast .main-content,
-body.high-contrast .account-information,
-body.high-contrast .accessibility,
-body.high-contrast .ac {
-    background: #000000;
-    color: #ffffff;
-    border: 2px solid #ffffff;
-}
-
-body.high-contrast h1,
-body.high-contrast h2,
-body.high-contrast label {
-    color: #ffffff;
-}
-
-body.high-contrast .settings-field p,
-body.high-contrast .settings-field input,
-body.high-contrast .ac select {
+  }
+  
+  body.high-contrast .main-content,
+  body.high-contrast .account-information,
+  body.high-contrast .accessibility,
+  body.high-contrast .ac {
     background: #000000;
     color: #ffffff;
     border: 2px solid #ffffff;
-}
+  }
+  
+  body.high-contrast h1,
+  body.high-contrast h2,
+  body.high-contrast label {
+    color: #ffffff;
+  }
+  
+  body.high-contrast .settings-field p,
+  body.high-contrast .settings-field input,
+  body.high-contrast .ac select {
+    background: #000000;
+    color: #ffffff;
+    border: 2px solid #ffffff;
+  }
