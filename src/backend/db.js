@@ -22,6 +22,7 @@ export async function initDb() {
                 name VARCHAR(100) NOT NULL,
                 email VARCHAR(255) UNIQUE NOT NULL,
                 password VARCHAR(255) NOT NULL,
+                national_insurance VARCHAR(20) UNIQUE,
                 green_points INTEGER DEFAULT 0,
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             );
@@ -30,6 +31,34 @@ export async function initDb() {
         await pool.query(`
             ALTER TABLE users
             ADD COLUMN IF NOT EXISTS green_points INTEGER DEFAULT 0;
+        `);
+
+        await pool.query(`
+            ALTER TABLE users
+            ADD COLUMN IF NOT EXISTS national_insurance VARCHAR(20) UNIQUE;
+        `);
+
+        /* ================================================= */
+        /* APPROVED RESIDENTS TABLE */
+        /* ================================================= */
+
+        await pool.query(`
+            CREATE TABLE IF NOT EXISTS approved_residents (
+                id SERIAL PRIMARY KEY,
+                national_insurance VARCHAR(20) UNIQUE NOT NULL,
+                postcode VARCHAR(10) NOT NULL,
+                area VARCHAR(100) NOT NULL
+            );
+        `);
+
+        await pool.query(`
+            INSERT INTO approved_residents
+                (national_insurance, postcode, area)
+            VALUES
+                ('AB123456C', 'B16 8AA', 'Ladywood'),
+                ('CD987654E', 'B16 8AB', 'Ladywood'),
+                ('EF456789G', 'B16 9BA', 'Ladywood')
+            ON CONFLICT (national_insurance) DO NOTHING;
         `);
 
         /* ================================================= */
@@ -48,31 +77,39 @@ export async function initDb() {
             );
         `);
 
-        console.log('🟢 Database initialized.');
-        console.log('Syncing team accounts...');
-
         /* ================================================= */
         /* SEED TEST ACCOUNTS */
         /* ================================================= */
+
+        console.log('🟢 Database initialized.');
+        console.log('Syncing team accounts...');
 
         const adminHash = await bcrypt.hash('password', 10);
         const testerHash = await bcrypt.hash('password', 10);
 
         await pool.query(`
-            INSERT INTO users (name, email, password)
+            INSERT INTO users 
+                (name, email, password, national_insurance)
             VALUES 
-                ($1, $2, $3),
-                ($4, $5, $6)
+                ($1, $2, $3, $4),
+                ($5, $6, $7, $8)
             ON CONFLICT (email) DO NOTHING;
         `, [
-            'Admin', 'admin@test.com', adminHash,
-            'Tester', 'tester@test.com', testerHash
+            'Admin',
+            'admin@test.com',
+            adminHash,
+            'AB123456C',
+
+            'Tester',
+            'tester@test.com',
+            testerHash,
+            'CD987654E'
         ]);
 
         await pool.query(`
             UPDATE users
             SET green_points = 0
-            WHERE email = 'tester@test.com';
+            WHERE email IN ('admin@test.com', 'tester@test.com');
         `);
 
         console.log('Admin: admin@test.com | password');
