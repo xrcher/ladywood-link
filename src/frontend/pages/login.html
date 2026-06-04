@@ -23,6 +23,8 @@
 
         <form class="login-form" action="/login" method="POST">
 
+            <div id="error-message"></div>
+
             <label for="email">Email Address</label>
             <input
                     type="email"
@@ -75,5 +77,38 @@ function googleTranslateElementInit() {
 
 <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 <script src="/js/settings.js"></script>
+
+<script>
+    const form = document.querySelector('.login-form');
+    const errorBox = document.getElementById('error-message');
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        errorBox.style.display = 'none';
+
+        const formData = new URLSearchParams(new FormData(form));
+
+        try {
+            const response = await fetch('/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: formData
+            });
+
+            const data = await response.json();
+
+            if (data.success) {
+                window.location.href = data.redirect;
+            } else {
+                errorBox.textContent = data.message;
+                errorBox.style.display = 'block';
+            }
+        } catch (err) {
+            errorBox.textContent = "Unable to reach security servers. Please try again.";
+            errorBox.style.display = 'block';
+        }
+    });
+</script>
+
 </body>
 </html>

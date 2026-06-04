@@ -16,6 +16,8 @@
 
         <form action="/register" method="POST">
 
+            <div id="error-message"></div>
+
             <label>National Insurance Number</label>
             <input type="text" name="nationalInsurance" placeholder="AB123456C" required>
 
@@ -56,5 +58,39 @@ function googleTranslateElementInit() {
 
 <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 <script src="/js/settings.js"></script>
+
+<script>
+    const form = document.querySelector('form');
+    const errorBox = document.getElementById('error-message');
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        errorBox.style.display = 'none';
+
+        const formData = new URLSearchParams(new FormData(form));
+
+        try {
+            const response = await fetch('/register', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: formData
+            });
+
+            const data = await response.json();
+
+            if (data.success) {
+                window.location.href = data.redirect;
+            } else {
+                errorBox.textContent = data.message;
+                errorBox.style.display = 'block';
+            }
+        } catch (err) {
+            errorBox.textContent = "Unable to reach registration servers. Please try again.";
+            errorBox.style.display = 'block';
+        }
+    });
+</script>
+
+
 </body>
 </html>

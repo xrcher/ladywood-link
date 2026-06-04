@@ -6,7 +6,7 @@ export const authController = {
         const { nationalInsurance, name, email, password } = req.body;
 
         if (!nationalInsurance || !name || !email || !password) {
-            return res.status(400).send('Form is missing required fields.');
+            return res.status(400).json({ success: false, message: 'Form is missing required fields.' });
         }
 
         try {
@@ -19,35 +19,34 @@ export const authController = {
             /* ================================================= */
             /* CHECK RESIDENT ELIGIBILITY */
             /* ================================================= */
-
             const residentCheck = await pool.query(
                 `
-                SELECT *
-                FROM approved_residents
-                WHERE national_insurance = $1
-                AND area = $2;
+                    SELECT *
+                    FROM approved_residents
+                    WHERE national_insurance = $1
+                      AND area = $2;
                 `,
                 [cleanNationalInsurance, 'Ladywood']
             );
 
             if (residentCheck.rows.length === 0) {
-                return res.status(400).send(
-                    "National Insurance number is not registered as a Ladywood resident. <a href='/register'>Try again</a>"
-                );
+                return res.status(400).json({
+                    success: false,
+                    message: "Your National Insurance number is not recognized as a registered Ladywood resident."
+                });
             }
 
             /* ================================================= */
             /* CREATE USER */
             /* ================================================= */
-
             const hashedPassword = await bcrypt.hash(password, 10);
 
             const query = `
-                INSERT INTO users 
+                INSERT INTO users
                     (national_insurance, name, email, password)
-                VALUES 
+                VALUES
                     ($1, $2, $3, $4)
-                RETURNING id, name;
+                    RETURNING id, name;
             `;
 
             const result = await pool.query(query, [
@@ -61,18 +60,19 @@ export const authController = {
 
             req.session.userId = newUser.id;
             req.session.userName = newUser.name;
-
-            res.redirect('/dashboard');
+            
+            return res.status(200).json({ success: true, redirect: '/dashboard' });
 
         } catch (error) {
             if (error.code === '23505') {
-                return res.status(400).send(
-                    "Email or National Insurance number is already registered. <a href='/register'>Try again</a> or <a href='/login'>login here</a>."
-                );
+                return res.status(400).json({
+                    success: false,
+                    message: "This email address or National Insurance number is already registered."
+                });
             }
 
             console.error('Registration Error:', error);
-            res.status(500).send('Mapping anomaly occurred during execution.');
+            return res.status(500).json({ success: false, message: 'A secure mapping anomaly occurred.' });
         }
     },
 
@@ -80,9 +80,7 @@ export const authController = {
         const { email, password } = req.body;
 
         if (!email || !password) {
-            return res.status(400).send(
-                'Email processing handles and security keys must be passed.'
-            );
+            return res.status(400).json({ success: false, message: 'Email and password are required.' });
         }
 
         try {
@@ -94,28 +92,24 @@ export const authController = {
             );
 
             if (result.rows.length === 0) {
-                return res.status(401).send(
-                    "Invalid login details. <a href='/login'>Click here to try again</a>"
-                );
+                return res.status(401).json({ success: false, message: 'Invalid email or password combination.' });
             }
 
             const user = result.rows[0];
             const match = await bcrypt.compare(password, user.password);
 
             if (!match) {
-                return res.status(401).send(
-                    "Invalid login details. <a href='/login'>Click here to try again</a>"
-                );
+                return res.status(401).json({ success: false, message: 'Invalid email or password combination.' });
             }
 
             req.session.userId = user.id;
             req.session.userName = user.name;
 
-            res.redirect('/dashboard');
+            return res.status(200).json({ success: true, redirect: '/dashboard' });
 
         } catch (error) {
             console.error('Login Error:', error);
-            res.status(500).send('Mapping anomaly occurred during execution.');
+            return res.status(500).json({ success: false, message: 'A secure mapping anomaly occurred.' });
         }
     },
 
@@ -124,7 +118,6 @@ export const authController = {
             if (err) {
                 console.error('Session Deletion Exception:', err);
             }
-
             res.clearCookie('connect.sid');
             res.redirect('/login');
         });
