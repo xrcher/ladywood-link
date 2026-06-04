@@ -273,3 +273,19 @@
       overflow: hidden !important;
     }
   }
+
+/* ================================================= */
+/* DARK MODE */
+/* ================================================= */
+
+body.dark-mode .reward-card p,
+body.dark-mode .points-list li,
+body.dark-mode .earn-points-card p,
+body.dark-mode .earn-points-card li {
+    color: #ffffff;
+}
+
+body.dark-mode .rewards-header p,
+body.dark-mode .small-text {
+    color: #d8ded8;
+}

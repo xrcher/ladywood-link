@@ -64,8 +64,51 @@
             <h2>Accessibility</h2>
 
             <div class="ac">
-
+                <label for="language-select">Language</label>
+                <select id="language-select">
+                    <option value="EN">English</option>
+                    <option value="PL">Polish</option>
+                    <option value="AR">Arabic</option>
+                    <option value="zh-mandarin">Chinese - Madarin</option>
+                    <option value="zh-cantonese">Chinese - Cantonese</option>
+                    <option value="fa">Farsi</option>
+                    <option value="ur">Urdu</option>
+                    <option value="pa">Punjabi</option>
+                    <option value="bn">Bengali</option>
+                </select>
             </div>
+
+            <div class="ac">
+                <label for="font-select">Readable Font</label>
+                <select id="font-select">
+                    <option value="arial">Arial</option>
+                    <option value="comic-sans">Comic Sans</option>
+                    <option value="verdana">Verdana</option>
+                    <option value="tahoma">Tahoma</option>
+                    <option value="century-gothic">Century Gothic</option>
+                    <option value="trebuchet">Trebuchet MS</option>
+                </select>
+            </div>
+
+            <div class="ac">
+                <label for="colour-mode">Colour Blind Mode</label>
+                <select id="colour-mode">
+                    <option value="none">None</option>
+                    <option value="red-green">Red-Green Support</option>
+                    <option value="blue-yellow">Blue-Yellow Support</option>
+                    <option value="high-contrast">High Contrast</option>
+                </select>
+            </div>
+
+            <div class="ac">
+                <label for="theme-mode">Theme</label>
+                <select id="theme-mode">
+                    <option value="light">Light Mode</option>
+                    <option value="dark">Dark Mode</option>
+                </select>
+            </div>
+
+            <button id="save-accessibility-btn">Save Accessibility Settings</button>
         </div>
     </main>
 
@@ -76,6 +119,9 @@
 
 <footer class="footer">
       © 2026 LadywoodLink · Community waste, sanitation and water alerts
-    </footer>
+</footer>
+
+<script src="/js/settings.js"></script>
+
 </body>
 </html>

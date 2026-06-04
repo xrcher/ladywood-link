@@ -234,6 +234,7 @@ body {
   border-radius: 24px;
   padding: 14px 16px;
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.04);
+  border: 1px solid transparent;
 }
 
 a.card {
@@ -763,4 +764,188 @@ a.card {
     margin: 0;
     padding: 0;
   }
+}
+
+/* ================================================= */
+/* GLOBAL ACCESSIBILITY THEMES */
+/* ================================================= */
+
+body.dark-mode {
+  background: #202522;
+  color: #ffffff;
+}
+
+body.dark-mode .dashboard-shell {
+  background: #202522;
+}
+
+body.dark-mode .main-content,
+body.dark-mode .card,
+body.dark-mode .logo,
+body.dark-mode .nav-icons,
+body.dark-mode .account-information,
+body.dark-mode .accessibility,
+body.dark-mode .ac {
+  background: #2d312f;
+  color: #ffffff;
+}
+
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode p,
+body.dark-mode label,
+body.dark-mode span,
+body.dark-mode strong {
+  color: #ffffff;
+}
+
+body.dark-mode input,
+body.dark-mode select,
+body.dark-mode textarea,
+body.dark-mode .search-bar {
+  background: #202522;
+  color: #ffffff;
+  border: 1px solid #5c866f;
+}
+
+body.dark-mode .nav-icons a:hover {
+  background: #3a403c;
+}
+
+/* ================================================= */
+/* HIGH CONTRAST / COLOUR BLIND SUPPORT */
+/* ================================================= */
+
+body.high-contrast {
+  background: #000000;
+  color: #ffffff;
+}
+
+body.high-contrast .dashboard-shell,
+body.high-contrast .main-content,
+body.high-contrast .card,
+body.high-contrast .logo,
+body.high-contrast .nav-icons,
+body.high-contrast .account-information,
+body.high-contrast .accessibility,
+body.high-contrast .ac {
+  background: #000000;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+}
+
+body.high-contrast h1,
+body.high-contrast h2,
+body.high-contrast h3,
+body.high-contrast p,
+body.high-contrast label,
+body.high-contrast span,
+body.high-contrast strong,
+body.high-contrast a {
+  color: #ffffff !important;
+}
+
+body.high-contrast input,
+body.high-contrast select,
+body.high-contrast textarea,
+body.high-contrast .search-bar {
+  background: #000000;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+}
+
+/* ================================================= */
+/* FONT ACCESSIBILITY */
+/* ================================================= */
+
+body.font-arial {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body.font-comic-sans {
+  font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+body.font-verdana {
+  font-family: Verdana, Geneva, sans-serif;
+}
+
+body.font-tahoma {
+  font-family: Tahoma, Geneva, sans-serif;
+}
+
+body.font-century-gothic {
+  font-family: "Century Gothic", Arial, sans-serif;
+}
+
+body.font-trebuchet {
+  font-family: "Trebuchet MS", Arial, sans-serif;
+}
+
+/* ================================================= */
+/* DARK MODE GREEN BORDERS */
+/* ================================================= */
+
+body.dark-mode .card,
+body.dark-mode .stat-card,
+body.dark-mode .map-card,
+body.dark-mode .profile-card,
+body.dark-mode .latest-card,
+body.dark-mode .account-information,
+body.dark-mode .accessibility,
+body.dark-mode .ac {
+  border: 1px solid #5c866f;
+}
+
+body.dark-mode .search-bar {
+  border: 1px solid #5c866f;
+}
+
+body.dark-mode #map {
+  border: 1px solid #5c866f;
+}
+
+body.dark-mode,
+body.dark-mode html {
+    background: #202522;
+}
+
+body.dark-mode .dashboard-shell {
+    background: #202522;
+}
+
+body.dark-mode .main-content {
+    background: #202522;
+}
+
+/* Carbon footprint */
+
+body.dark-mode .gauge-value {
+    color: #ffffff;
+}
+
+body.dark-mode .small-text {
+    color: #d8ded8;
+}
+
+/* User stats */
+
+body.dark-mode .profile-card p,
+body.dark-mode .profile-stats span {
+    color: #d8ded8;
+}
+
+/* Latest reports */
+
+body.dark-mode .mini-report-list li {
+    color: #ffffff;
+}
+
+/* Card headings */
+
+body.dark-mode .card h2,
+body.dark-mode .card-header h2,
+body.dark-mode .top-header h1 {
+    color: #ffffff;
 }

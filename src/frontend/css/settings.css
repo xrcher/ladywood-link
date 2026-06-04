@@ -1,0 +1,221 @@
+/* ================================================= */
+/* PAGE TITLE */
+/* ================================================= */
+
+.main-content h1 {
+    margin-bottom: 20px;
+}
+
+/* ================================================= */
+/* ACCOUNT INFORMATION CARD */
+/* ================================================= */
+
+.account-information {
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.04);
+}
+
+.account-information h2 {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 22px;
+    color: #202522;
+}
+
+/* ================================================= */
+/* ACCOUNT FIELDS */
+/* ================================================= */
+
+.settings-field {
+    margin-bottom: 10px;
+}
+
+.settings-field label {
+    display: block;
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: #202522;
+}
+
+.settings-field p,
+.settings-field input {
+    width: 100%;
+    padding: 13px 14px;
+    border: 1px solid #d8ded8;
+    border-radius: 14px;
+    background: #f7f9f6;
+    font-size: 0.95rem;
+}
+
+.settings-field p {
+    margin: 0;
+    color: #657069;
+}
+
+.settings-field input:focus {
+    outline: none;
+    border-color: #5c866f;
+}
+
+/* ================================================= */
+/* ACCESSIBILITY PANEL GRID */
+/* ================================================= */
+
+.accessibility {
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.04);
+}
+
+.accessibility h2 {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 22px;
+    color: #202522;
+}
+
+/* Grid layout like panelled accessibility cards */
+.accessibility {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.accessibility h2,
+#save-accessibility-btn {
+    grid-column: 1 / -1;
+}
+
+/* Each accessibility option panel */
+.ac {
+    background: #f7f9f6;
+    border: 1px solid #d8ded8;
+    border-radius: 18px;
+    padding: 14px;
+    min-height: 90px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Labels inside each panel */
+.ac label {
+    display: block;
+    font-weight: 700;
+    color: #202522;
+    margin-bottom: 12px;
+}
+
+/* Dropdowns inside each panel */
+.ac select {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 14px;
+    border: 1px solid #d8ded8;
+    background: #ffffff;
+    color: #202522;
+    font-size: 0.95rem;
+}
+
+.ac select:focus {
+    outline: none;
+    border-color: #5c866f;
+}
+
+/* Save accessibility button */
+#save-accessibility-btn {
+    width: 100%;
+    padding: 13px 16px;
+    border: none;
+    border-radius: 14px;
+    background: #5c866f;
+    color: #ffffff;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 8px;
+}
+
+#save-accessibility-btn:hover {
+    background: #4d725e;
+}
+
+/* Mobile layout */
+@media (max-width: 700px) {
+    .accessibility {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ================================================= */
+/* DARK MODE */
+/* ================================================= */
+
+body.dark-mode {
+    background: #202522;
+    color: #ffffff;
+}
+
+body.dark-mode .main-content,
+body.dark-mode .account-information,
+body.dark-mode .accessibility {
+    background: #202522;
+    color: #ffffff;
+}
+
+body.dark-mode .account-information,
+body.dark-mode .accessibility,
+body.dark-mode .ac {
+    border: 1px solid #5c866f;
+}
+
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode label {
+    color: #ffffff;
+}
+
+body.dark-mode .settings-field p,
+body.dark-mode .settings-field input,
+body.dark-mode .ac select {
+    background: #2d312f;
+    color: #ffffff;
+    border-color: #5c866f;
+}
+
+/* ================================================= */
+/* HIGH CONTRAST MODE */
+/* ================================================= */
+
+body.high-contrast {
+    background: #000000;
+    color: #ffffff;
+}
+
+body.high-contrast .main-content,
+body.high-contrast .account-information,
+body.high-contrast .accessibility,
+body.high-contrast .ac {
+    background: #000000;
+    color: #ffffff;
+    border: 2px solid #ffffff;
+}
+
+body.high-contrast h1,
+body.high-contrast h2,
+body.high-contrast label {
+    color: #ffffff;
+}
+
+body.high-contrast .settings-field p,
+body.high-contrast .settings-field input,
+body.high-contrast .ac select {
+    background: #000000;
+    color: #ffffff;
+    border: 2px solid #ffffff;
+}
