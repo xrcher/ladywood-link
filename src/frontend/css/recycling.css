@@ -32,7 +32,7 @@ body {
 
 .main-content {
   min-width: 0;
-  min-height: 100%;
+  min-height: calc(100vh - 26px);
   display: flex;
   flex-direction: column;
   gap: 18px;
@@ -44,20 +44,34 @@ body {
   font-size: 1.9rem;
 }
 
+/* ================================================= */
+/* RECYCLING TWO-COLUMN LAYOUT */
+/* ================================================= */
+
 .recycling-layout {
-  display: flex;
+  flex: 1;
+  min-height: 0;
+
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 24px;
   align-items: stretch;
 }
 
 .card-recycling-log,
 .recycling-map-card {
-  flex: 1;
   min-width: 0;
-  min-height: 650px;
+  min-height: 0;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 22px 24px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.04);
 }
-
-
 
 /* ================================================= */
 /* SIDEBAR */
@@ -67,6 +81,8 @@ body {
   height: calc(100vh - 26px);
   position: sticky;
   top: 16px;
+  z-index: 2000;
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -77,9 +93,11 @@ body {
   height: 104px;
   background: #ffffff;
   border-radius: 34px;
+
   display: flex;
   justify-content: center;
   align-items: center;
+
   font-size: 0;
 }
 
@@ -88,10 +106,12 @@ body {
   width: 58px;
   height: 58px;
   background: #5c866f;
-  color: white;
+  color: #ffffff;
   border-radius: 50%;
+
   display: grid;
   place-items: center;
+
   font-weight: 800;
   font-size: 1.15rem;
 }
@@ -107,6 +127,7 @@ body {
   background: #ffffff;
   border-radius: 34px;
   padding: 64px 10px 18px;
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -116,12 +137,15 @@ body {
 .nav-icons a {
   width: 48px;
   height: 48px;
+
   display: flex;
   justify-content: center;
   align-items: center;
+
   text-decoration: none;
   color: #5c866f;
   font-size: 1.3rem;
+
   border-radius: 16px;
   transition: 0.2s ease;
   position: relative;
@@ -136,13 +160,13 @@ body {
 }
 
 .nav-icons a.active {
-  background: #202522;
-  border: 3px solid #202522;
+  background: #202522 !important;
+  border: 2px solid #202522;
   color: #5c866f;
 }
 
 .nav-icons a.active i {
-  color: #5c866f;
+  color: #5c866f !important;
 }
 
 .logout {
@@ -156,8 +180,10 @@ body {
   font-size: 1rem !important;
   font-weight: 700;
   padding: 8px 0;
+
   display: block;
   text-align: center;
+
   background: transparent !important;
   border-radius: 0;
 }
@@ -168,22 +194,29 @@ body {
 
 .nav-icons a::after {
   content: attr(data-label);
+
   position: absolute;
   top: 50%;
   left: 72px;
   transform: translateY(-50%);
+
   background: #202522;
   color: #ffffff;
   padding: 8px 14px;
   border-radius: 12px;
+
   font-size: 0.85rem;
   font-weight: 500;
   white-space: nowrap;
+
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  z-index: 9999;
+
+  z-index: 99999;
+
   transition: opacity 0.25s ease, visibility 0.25s ease;
   transition-delay: 1.5s;
 }
@@ -194,27 +227,13 @@ body {
 }
 
 /* ================================================= */
-/* RECYCLING CARD */
+/* CARD HEADERS */
 /* ================================================= */
 
-.card-recycling-log {
-  max-width: 100%;
-  background: white;
-  border-radius: 24px;
-  padding: 22px 24px;
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.04);
-}
-
-.card-recycling-header h2{
+.card-recycling-header h2,
+.recycling-card-map-header h2 {
   margin: 0;
   font-size: 1.15rem;
-}
-
-.card-recycling-header a {
-  color: #5c866f;
-  text-decoration: none;
-  font-weight: 700;
-  font-size: 0.85rem;
 }
 
 .eyebrow {
@@ -236,7 +255,11 @@ body {
 /* ================================================= */
 
 .recycling-form {
+  flex: 1;
+  min-height: 0;
+
   margin-top: 16px;
+
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -245,36 +268,33 @@ body {
 .recycling-form label {
   display: flex;
   flex-direction: column;
-  font-size: 0.9rem;
   gap: 6px;
+
+  font-size: 0.9rem;
   color: #202522;
 }
 
 .recycling-form input,
 .recycling-form textarea {
+  width: 100%;
+
   padding: 10px 12px;
   border-radius: 12px;
   border: 1px solid #d7ddd9;
+
   font-size: 0.95rem;
   outline: none;
   background: #ffffff;
-  resize: none;
-}
 
-.recycling-form {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
+  resize: none;
 }
 
 .recycling-form textarea {
   flex: 1;
-  min-height: 250px;
-  resize: none;
+  min-height: 220px;
 }
 
 .recycling-form input:focus,
-.recycling-form select:focus,
 .recycling-form textarea:focus {
   border-color: #5c866f;
 }
@@ -282,10 +302,13 @@ body {
 .recycling-form button {
   margin-top: 6px;
   padding: 12px;
+
   border: none;
   border-radius: 12px;
+
   background: #5c866f;
-  color: white;
+  color: #ffffff;
+
   font-weight: 700;
   cursor: pointer;
 }
@@ -294,77 +317,64 @@ body {
   background: #4f7561;
 }
 
+/* ================================================= */
+/* MAP */
+/* ================================================= */
 
-/* ================================================= */
-/* RECYCLING MAP */
-/* ================================================= */
-.recycling-map-card {
-  width: 800px;
-  height: 650px;
-  max-width: 100%;
-  background: white;
-  border-radius: 24px;
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.04);
+.recycling-card-map-header {
   flex: 1;
-  min-width: 0;
+  min-height: 0;
+
   display: flex;
   flex-direction: column;
-  padding: 22px 24px;
-}
-
-.recycling-card-map-header h2{
-  margin: 0;
-  font-size: 1.15rem;
-}
-
-.recycling-card-map-header a {
-  color: #5c866f;
-  text-decoration: none;
-  font-weight: 700;
-  font-size: 0.85rem;
-}
-
-.eyebrow {
-  margin: 0 0 5px;
-  color: #5c866f;
-  font-size: 0.68rem;
-  font-weight: 800;
-  text-transform: uppercase;
-}
-
-.small-text {
-  color: #657069;
-  margin: 6px 0 0;
-  font-size: 0.85rem;
 }
 
 #map {
-  height: 520px;
-  width: 100%;
   flex: 1;
-  min-height: 0;
-  border-radius: 18px;
+  min-height: 420px;
+
+  width: 100%;
   margin-top: 16px;
 
+  border-radius: 18px;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.leaflet-container {
+  z-index: 1;
 }
 
 /* ================================================= */
-/* RESPONSIVE */
+/* RESPONSIVE - MEDIUM SCREENS */
 /* ================================================= */
 
-@media (max-width: 1200px) {
-  html,
-  body {
-    height: auto;
-    min-height: 100%;
-    overflow-y: auto;
+@media (max-width: 1000px) {
+  .recycling-layout {
+    grid-template-columns: 1fr;
+    align-items: start;
   }
 
-  .dashboard-shell {
+  .card-recycling-log,
+  .recycling-map-card {
     height: auto;
-    min-height: 100vh;
+  }
+
+  .recycling-form textarea {
+    min-height: 240px;
+    flex: none;
+  }
+
+  #map {
+    height: 420px;
+    min-height: 420px;
+    flex: none;
   }
 }
+
+/* ================================================= */
+/* RESPONSIVE - SMALL SCREENS */
+/* ================================================= */
 
 @media (max-width: 900px) {
   .dashboard-shell {
@@ -415,6 +425,10 @@ body {
   }
 }
 
+/* ================================================= */
+/* RESPONSIVE - MOBILE */
+/* ================================================= */
+
 @media (max-width: 600px) {
   .dashboard-shell {
     grid-template-columns: 82px minmax(0, 1fr);
@@ -422,25 +436,170 @@ body {
     padding: 10px;
   }
 
-  .card-recycling-log {
+  .main-content h1 {
+    font-size: 1.5rem;
+  }
+
+  .card-recycling-log,
+  .recycling-map-card {
     width: 100%;
     padding: 18px;
   }
 
-  .main-content h1 {
-    font-size: 1.5rem;
+  .recycling-form textarea {
+    min-height: 220px;
+  }
+
+  #map {
+    height: 340px;
+    min-height: 340px;
   }
 }
 
 /* ================================================= */
-/* ACTIVE RECYCLING BUTTON */
+/* DARK MODE */
 /* ================================================= */
 
-.nav-icons a.active {
+body.dark-mode {
   background: #202522 !important;
-  border: 2px solid #202522;
+  color: #ffffff;
 }
 
-.nav-icons a.active i {
-  color: #5c866f !important;
+body.dark-mode .dashboard-shell,
+body.dark-mode .main-content,
+body.dark-mode .recycling-layout {
+  background: transparent !important;
+}
+
+body.dark-mode .card-recycling-log,
+body.dark-mode .recycling-map-card {
+  background: #202522 !important;
+  border: 1px solid #5c866f;
+  color: #ffffff;
+}
+
+body.dark-mode .logo,
+body.dark-mode .nav-icons {
+  background: #252a27 !important;
+}
+
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode p,
+body.dark-mode label,
+body.dark-mode span,
+body.dark-mode strong {
+  color: #ffffff;
+}
+
+body.dark-mode .small-text {
+  color: #cfd8d2;
+}
+
+body.dark-mode .recycling-form input,
+body.dark-mode .recycling-form textarea {
+  background: #202522;
+  color: #ffffff;
+  border: 1px solid #5c866f;
+}
+
+body.dark-mode .recycling-form input::placeholder,
+body.dark-mode .recycling-form textarea::placeholder {
+  color: #aebdb4;
+}
+
+body.dark-mode .recycling-form button {
+  background: #5c866f;
+  color: #ffffff;
+}
+
+body.dark-mode .recycling-form button:hover {
+  background: #4f7561;
+}
+
+body.dark-mode #map {
+  border: 1px solid #5c866f;
+}
+
+body.dark-mode .nav-icons a:hover {
+  background: #353b37;
+}
+
+/* ================================================= */
+/* HIGH CONTRAST MODE */
+/* ================================================= */
+
+body.high-contrast {
+  background: #000000;
+  color: #ffffff;
+}
+
+body.high-contrast .dashboard-shell,
+body.high-contrast .main-content,
+body.high-contrast .recycling-layout {
+  background: transparent !important;
+}
+
+body.high-contrast .card-recycling-log,
+body.high-contrast .recycling-map-card,
+body.high-contrast .logo,
+body.high-contrast .nav-icons {
+  background: #000000;
+  color: #ffffff;
+}
+
+body.high-contrast .card-recycling-log,
+body.high-contrast .recycling-map-card,
+body.high-contrast #map {
+  border: 2px solid #ffffff;
+}
+
+body.high-contrast h1,
+body.high-contrast h2,
+body.high-contrast p,
+body.high-contrast label,
+body.high-contrast span,
+body.high-contrast strong,
+body.high-contrast a {
+  color: #ffffff !important;
+}
+
+body.high-contrast .recycling-form input,
+body.high-contrast .recycling-form textarea {
+  background: #000000;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+}
+
+body.high-contrast .recycling-form input::placeholder,
+body.high-contrast .recycling-form textarea::placeholder {
+  color: #ffffff;
+}
+
+/* ================================================= */
+/* FONT ACCESSIBILITY */
+/* ================================================= */
+
+body.font-arial {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body.font-comic-sans {
+  font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+body.font-verdana {
+  font-family: Verdana, Geneva, sans-serif;
+}
+
+body.font-tahoma {
+  font-family: Tahoma, Geneva, sans-serif;
+}
+
+body.font-century-gothic {
+  font-family: "Century Gothic", Arial, sans-serif;
+}
+
+body.font-trebuchet {
+  font-family: "Trebuchet MS", Arial, sans-serif;
 }
