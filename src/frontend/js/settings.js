@@ -1,7 +1,11 @@
+// =================================================
+// APPLY SAVED SETTINGS ON EVERY PAGE
+// =================================================
+
 function applySavedSettings() {
-    const savedTheme = localStorage.getItem("theme");
-    const savedColourMode = localStorage.getItem("colourMode");
-    const savedFont = localStorage.getItem("font");
+    const theme = localStorage.getItem("theme") || "light";
+    const colourMode = localStorage.getItem("colourMode") || "none";
+    const font = localStorage.getItem("font") || "arial";
 
     document.body.classList.remove(
         "dark-mode",
@@ -14,32 +18,50 @@ function applySavedSettings() {
         "font-trebuchet"
     );
 
-    if (savedTheme === "dark") {
+    if (theme === "dark") {
         document.body.classList.add("dark-mode");
     }
 
-    if (savedColourMode === "high-contrast") {
+    if (colourMode === "high-contrast") {
         document.body.classList.add("high-contrast");
     }
 
-    if (savedFont) {
-        document.body.classList.add("font-" + savedFont);
-    }
+    document.body.classList.add("font-" + font);
 }
 
-applySavedSettings();
+// =================================================
+// GOOGLE TRANSLATE LANGUAGE CHANGE
+// =================================================
+
+function changeGoogleTranslateLanguage(language) {
+    const googleSelect = document.querySelector(".goog-te-combo");
+
+    if (!googleSelect) {
+        setTimeout(() => changeGoogleTranslateLanguage(language), 500);
+        return;
+    }
+
+    googleSelect.value = language;
+    googleSelect.dispatchEvent(new Event("change"));
+}
+
+// =================================================
+// SETTINGS PAGE CONTROLS
+// =================================================
 
 const fontSelect = document.getElementById("font-select");
 const themeSelect = document.getElementById("theme-mode");
-const colourMode = document.getElementById("colour-mode");
+const colourModeSelect = document.getElementById("colour-mode");
 const languageSelect = document.getElementById("language-select");
 const saveButton = document.getElementById("save-accessibility-btn");
 
-if (fontSelect && themeSelect && colourMode && languageSelect && saveButton) {
-    if (localStorage.getItem("font")) fontSelect.value = localStorage.getItem("font");
-    if (localStorage.getItem("theme")) themeSelect.value = localStorage.getItem("theme");
-    if (localStorage.getItem("colourMode")) colourMode.value = localStorage.getItem("colourMode");
-    if (localStorage.getItem("language")) languageSelect.value = localStorage.getItem("language");
+applySavedSettings();
+
+if (fontSelect && themeSelect && colourModeSelect && languageSelect && saveButton) {
+    fontSelect.value = localStorage.getItem("font") || "arial";
+    themeSelect.value = localStorage.getItem("theme") || "light";
+    colourModeSelect.value = localStorage.getItem("colourMode") || "none";
+    languageSelect.value = localStorage.getItem("language") || "en";
 
     fontSelect.addEventListener("change", () => {
         localStorage.setItem("font", fontSelect.value);
@@ -51,23 +73,35 @@ if (fontSelect && themeSelect && colourMode && languageSelect && saveButton) {
         applySavedSettings();
     });
 
-    colourMode.addEventListener("change", () => {
-        localStorage.setItem("colourMode", colourMode.value);
+    colourModeSelect.addEventListener("change", () => {
+        localStorage.setItem("colourMode", colourModeSelect.value);
         applySavedSettings();
     });
 
     languageSelect.addEventListener("change", () => {
         localStorage.setItem("language", languageSelect.value);
+        changeGoogleTranslateLanguage(languageSelect.value);
     });
 
     saveButton.addEventListener("click", () => {
         localStorage.setItem("font", fontSelect.value);
         localStorage.setItem("theme", themeSelect.value);
-        localStorage.setItem("colourMode", colourMode.value);
+        localStorage.setItem("colourMode", colourModeSelect.value);
         localStorage.setItem("language", languageSelect.value);
 
         applySavedSettings();
+        changeGoogleTranslateLanguage(languageSelect.value);
 
         alert("Accessibility settings saved.");
     });
+}
+
+// =================================================
+// APPLY SAVED LANGUAGE ON OTHER PAGES
+// =================================================
+
+const savedLanguage = localStorage.getItem("language");
+
+if (savedLanguage && savedLanguage !== "en") {
+    changeGoogleTranslateLanguage(savedLanguage);
 }
