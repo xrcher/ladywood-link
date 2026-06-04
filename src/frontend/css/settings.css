@@ -13,7 +13,7 @@
 .account-information {
     background: #ffffff;
     border-radius: 24px;
-    padding: 24px;
+    padding: 20px;
     margin-bottom: 20px;
     box-shadow: 0 10px 24px rgba(0, 0, 0, 0.04);
 }
@@ -30,7 +30,7 @@
 /* ================================================= */
 
 .settings-field {
-    margin-bottom: 16px;
+    margin-bottom: 10px;
 }
 
 .settings-field label {
@@ -67,7 +67,7 @@
 .accessibility {
     background: #ffffff;
     border-radius: 24px;
-    padding: 24px;
+    padding: 20px;
     margin-bottom: 20px;
     box-shadow: 0 10px 24px rgba(0, 0, 0, 0.04);
 }
@@ -96,8 +96,8 @@
     background: #f7f9f6;
     border: 1px solid #d8ded8;
     border-radius: 18px;
-    padding: 18px;
-    min-height: 120px;
+    padding: 14px;
+    min-height: 90px;
 
     display: flex;
     flex-direction: column;
