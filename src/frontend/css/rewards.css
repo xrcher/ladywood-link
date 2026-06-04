@@ -1,0 +1,275 @@
+/* ================================================= */
+/* REWARDS PAGE LAYOUT */
+/* ================================================= */
+
+.rewards-content {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 22px;
+    height: auto !important;
+    min-height: 100vh;
+    padding: 10px 0 24px;
+  }
+  
+  /* ================================================= */
+  /* HEADER */
+  /* ================================================= */
+  
+  .rewards-header h1 {
+    margin: 0;
+    font-size: 2rem;
+  }
+  
+  .rewards-header p {
+    margin: 6px 0 0;
+    color: #657069;
+    font-size: 1rem;
+  }
+  
+  /* ================================================= */
+  /* POINTS BALANCE */
+  /* ================================================= */
+  
+  .rewards-balance {
+    max-width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 22px 26px;
+  }
+  
+  .rewards-balance h2 {
+    margin: 0;
+    font-size: 1.3rem;
+  }
+  
+  .rewards-balance .small-text {
+    margin: 0;
+    text-align: right;
+  }
+  
+  /* ================================================= */
+  /* REWARDS CAROUSEL */
+  /* ================================================= */
+  
+  .rewards-carousel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 22px;
+    width: 100%;
+    margin: 10px 0;
+  }
+  
+  .rewards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 280px);
+    gap: 24px;
+  }
+  
+  .reward-card {
+    width: 280px;
+    min-height: 300px;
+    padding: 26px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .reward-card.hidden-card {
+    display: none;
+  }
+  
+  .reward-icon {
+    font-size: 1.5rem;
+  }
+  
+  .reward-card h2 {
+    margin: 10px 0;
+    font-size: 1.15rem;
+  }
+  
+  .reward-card p {
+    margin: 0;
+    color: #202522;
+    line-height: 1.35;
+  }
+  
+  .reward-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 24px;
+  }
+  
+  .reward-bottom strong {
+    font-size: 0.95rem;
+  }
+  
+  .reward-bottom button {
+    border: none;
+    border-radius: 10px;
+    padding: 8px 12px;
+    background: #5c866f;
+    color: #ffffff;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  
+  .reward-bottom button:hover {
+    background: #4f7561;
+  }
+  
+  /* ================================================= */
+  /* CAROUSEL BUTTONS */
+  /* ================================================= */
+  
+  .carousel-btn {
+    width: 54px;
+    height: 54px;
+    border: none;
+    border-radius: 50%;
+    background: #5c866f;
+    color: #ffffff;
+    font-size: 2rem;
+    font-weight: 800;
+    line-height: 1;
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+    transition: 0.2s ease;
+  }
+  
+  .carousel-btn:hover {
+    transform: scale(1.08);
+    background: #4f7561;
+  }
+  
+  /* ================================================= */
+  /* HOW TO EARN POINTS */
+  /* ================================================= */
+  
+  .earn-points-card {
+    width: fit-content;
+    min-width: 1150px;
+    max-width: 100%;
+    margin: 10px auto 0;
+    padding: 24px 28px;
+  }
+  
+  .points-list {
+    margin: 10px 0 0;
+    padding-left: 22px;
+  }
+  
+  .points-list li {
+    margin-bottom: 8px;
+    color: #202522;
+  }
+  
+  /* ================================================= */
+  /* RESPONSIVE */
+  /* ================================================= */
+  
+  @media (max-width: 1200px) {
+    .rewards-grid {
+      grid-template-columns: repeat(3, 240px);
+    }
+  
+    .reward-card {
+      width: 240px;
+      min-height: 290px;
+    }
+  }
+  
+  @media (max-width: 900px) {
+    .rewards-carousel {
+      gap: 12px;
+    }
+  
+    .rewards-grid {
+      grid-template-columns: 1fr;
+      width: 100%;
+    }
+  
+    .reward-card {
+      width: 100%;
+      min-height: auto;
+    }
+  
+    .carousel-btn {
+      display: none;
+    }
+  
+    .rewards-balance {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+  
+    .rewards-balance .small-text {
+      text-align: left;
+    }
+  }
+
+  /* ================================================= */
+/* MOBILE / SMALL SCREEN CAROUSEL */
+/* ================================================= */
+
+@media (max-width: 900px) {
+    .rewards-carousel {
+      display: grid;
+      grid-template-columns: 44px 1fr 44px;
+      gap: 12px;
+      align-items: center;
+      margin-top: 20px;
+    }
+  
+    .rewards-grid {
+      display: block;
+      width: 100%;
+    }
+  
+    .reward-card {
+      width: 100%;
+      min-height: 340px;
+      padding: 30px;
+    }
+  
+    .reward-card.hidden-card {
+      display: none;
+    }
+  
+    .carousel-btn {
+      display: grid;
+      width: 44px;
+      height: 44px;
+      font-size: 1.7rem;
+    }
+  
+    .earn-points-card {
+      width: 100%;
+      margin-top: 24px;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .rewards-content {
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+  
+    .earn-points-card {
+      width: calc(100vw - 140px) !important;
+      max-width: calc(100vw - 140px) !important;
+      min-width: 0 !important;
+  
+      margin: 24px 0 24px 0 !important;
+      padding: 24px !important;
+  
+      border-radius: 28px !important;
+      overflow: hidden !important;
+    }
+  }

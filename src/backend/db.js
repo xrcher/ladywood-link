@@ -13,12 +13,20 @@ export async function initDb() {
             name VARCHAR(100) NOT NULL,
             email VARCHAR(255) UNIQUE NOT NULL,
             password VARCHAR(255) NOT NULL,
+            green_points INTEGER DEFAULT 0,
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             );
     `;
     try {
         // User table check
         await pool.query(createTableQuery);
+
+        // rewards
+        await pool.query(`
+            ALTER TABLE users
+            ADD COLUMN IF NOT EXISTS green_points INTEGER DEFAULT 0;
+        `);
+
         console.log("🟢 Database initialized.");
         console.log("Syncing team accounts...");
 
@@ -38,6 +46,13 @@ export async function initDb() {
             'Admin', 'admin@test.com', adminHash,
             'Tester', 'tester@test.com', testerHash
         ]);
+
+        // Give tester points for rewards testing
+        await pool.query(`
+            UPDATE users
+            SET green_points = 563
+            WHERE email = 'tester@test.com';
+        `);
 
         console.log("Admin: admin@test.com | password");
         console.log("Tester: tester@test.com | password");

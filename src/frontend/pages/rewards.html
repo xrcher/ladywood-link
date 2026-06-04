@@ -1,44 +1,173 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LadywoodLink - rewards</title>
-    <script src="https://kit.fontawesome.com/692d4b5a4e.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="/css/dashboard.css">
-</head>
-<body>
 
-<div class="dashboard-shell">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LadywoodLink - Rewards</title>
+
+  <link rel="stylesheet" href="/css/dashboard.css" />
+  <link rel="stylesheet" href="/css/rewards.css" />
+
+  <script src="https://kit.fontawesome.com/692d4b5a4e.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <div class="dashboard-shell">
 
     <aside class="sidebar">
+      <div class="logo"></div>
 
-        <div class="logo">
-            LL
-        </div>
+      <nav class="nav-icons">
+        <a href="/dashboard" data-label="Dashboard">
+          <i class="fa-solid fa-house"></i>
+        </a>
 
-        <nav class="nav-icons">
-            <a href="/dashboard" data-label="Dashboard"><i class="fa-solid fa-house"></i></a>
-            <a href="/recycling" data-label="Recycling"><i class="fa-solid fa-recycle"></i></a>
-            <a href="/bin-collection" data-label="Bin Collection"><i class="fa-regular fa-trash-can"></i></a>
-            <a href="/rewards" class="active" data-label="Rewards"><i class="fa-solid fa-shop"></i></a>
-            <a href="/waste-report" data-label="Waste Report"><i class="fa-solid fa-triangle-exclamation"></i></a>
-            <a href="/settings" data-label="Settings"><i class="fa-solid fa-user-gear"></i></a>
-            <a href="/logout" class="logout" data-label="Logout">Logout</a>
-        </nav>
+        <a href="/recycling" data-label="Recycling">
+          <i class="fa-solid fa-recycle"></i>
+        </a>
 
+        <a href="/bin-collection" data-label="Bin Collection">
+          <i class="fa-regular fa-trash-can"></i>
+        </a>
+
+        <a href="/rewards" class="active" data-label="Rewards">
+          <i class="fa-solid fa-shop"></i>
+        </a>
+
+        <a href="/waste-report" data-label="Waste Report">
+          <i class="fa-solid fa-triangle-exclamation"></i>
+        </a>
+
+        <a href="/settings" data-label="Settings">
+          <i class="fa-solid fa-user-gear"></i>
+        </a>
+
+        <a href="/logout" class="logout" data-label="Logout">
+          Logout
+        </a>
+      </nav>
     </aside>
 
-    <main class="main-content">
-        <h1>Rewards</h1>
+    <main class="main-content rewards-content">
+
+      <header class="rewards-header">
+        <h1>Green Rewards</h1>
+        <p>Earn points for recycling, reporting waste issues and supporting a cleaner Ladywood.</p>
+      </header>
+
+      <section class="card rewards-balance">
+        <div>
+          <p class="eyebrow">Current Balance</p>
+          <h2 id="points-balance">0 Green Points</h2>
+        </div>
+
+        <p class="small-text">
+          Keep recycling and reporting issues to unlock more rewards.
+        </p>
+      </section>
+
+      <section class="rewards-carousel">
+
+        <button class="carousel-btn" id="prevBtn" type="button">
+          ‹
+        </button>
+
+        <div class="rewards-grid">
+
+          <!-- First set -->
+
+          <article class="card reward-card">
+            <span class="reward-icon">🎟️</span>
+            <h2>£5 Local Shop Voucher</h2>
+            <p>Redeem at participating Ladywood community shops.</p>
+
+            <div class="reward-bottom">
+              <strong>500 points</strong>
+              <button class="redeem-btn" data-cost="500" type="button">Redeem</button>
+            </div>
+          </article>
+
+          <article class="card reward-card">
+            <span class="reward-icon">🛍️</span>
+            <h2>Reusable Bag</h2>
+            <p>Support waste reduction with a reusable shopping bag.</p>
+
+            <div class="reward-bottom">
+              <strong>250 points</strong>
+              <button class="redeem-btn" data-cost="250" type="button">Redeem</button>
+            </div>
+          </article>
+
+          <article class="card reward-card">
+            <span class="reward-icon">🏅</span>
+            <h2>Community Badge</h2>
+            <p>Show your contribution to a cleaner neighbourhood.</p>
+
+            <div class="reward-bottom">
+              <strong>100 points</strong>
+              <button class="redeem-btn" data-cost="100" type="button">Redeem</button>
+            </div>
+          </article>
+
+          <!-- Second set -->
+
+          <article class="card reward-card">
+            <span class="reward-icon">🌱</span>
+            <h2>Garden Seed Pack</h2>
+            <p>Grow plants at home and support greener local spaces.</p>
+
+            <div class="reward-bottom">
+              <strong>350 points</strong>
+              <button class="redeem-btn" data-cost="350" type="button">Redeem</button>
+            </div>
+          </article>
+
+          <article class="card reward-card">
+            <span class="reward-icon">☕</span>
+            <h2>Café Discount</h2>
+            <p>Get a small discount at participating local cafés.</p>
+
+            <div class="reward-bottom">
+              <strong>400 points</strong>
+              <button class="redeem-btn" data-cost="400" type="button">Redeem</button>
+            </div>
+          </article>
+
+          <article class="card reward-card">
+            <span class="reward-icon">♻️</span>
+            <h2>Recycling Champion</h2>
+            <p>Unlock a special community recognition badge.</p>
+
+            <div class="reward-bottom">
+              <strong>700 points</strong>
+              <button class="redeem-btn" data-cost="700" type="button">Redeem</button>
+            </div>
+          </article>
+
+        </div>
+
+        <button class="carousel-btn" id="nextBtn" type="button">
+          ›
+        </button>
+
+      </section>
+
+      <section class="card earn-points-card">
+        <p class="eyebrow">How to Earn Points</p>
+
+        <ul class="points-list">
+          <li>Submit recycling activity</li>
+          <li>Report overflowing bins or fly-tipping</li>
+          <li>Resolve submitted waste reports</li>
+          <li>Follow correct bin collection guidance</li>
+        </ul>
+      </section>
+
     </main>
+  </div>
 
-</div>
-
-
-
-<footer class="footer">
-      © 2025 LadywoodLink · Community waste, sanitation and water alerts
-    </footer>
+  <script src="/js/rewards.js"></script>
 </body>
+
 </html>
