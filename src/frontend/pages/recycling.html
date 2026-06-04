@@ -8,6 +8,7 @@
 
     <script src="https://kit.fontawesome.com/692d4b5a4e.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/css/recycling.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 </head>
 
 <body>
@@ -37,6 +38,8 @@
         <main class="main-content">
             <h1>Recycling</h1>
 
+            <div class="recycling-layout">
+
             <article class="card-recycling-log">
                 <div class="card-recycling-header">
                     <div>
@@ -47,11 +50,8 @@
 
                 <form class="recycling-form">
                     <label>
-                        Issue type
-                        <select name="redemption">
-                            <option value="recycle">Recycled Waste</option>
-                            <option value="litter">Picked up litter</option>
-                        </select>
+                        How much KG of waste did you recycle? 1KG = 10 points
+                        <input type="number" name="weight" placeholder="Enter the amount of waste to the nearest KG">
                     </label>
 
                     <label>
@@ -68,6 +68,16 @@
                 </form>
             </article>
 
+            <article class="recycling-map-card">
+                <div class="recycling-card-map-header">
+                    <div>
+                        <p class="eyebrow">Recycle Points in Ladywood</p>
+                        <h2>Here are the local recycling points in the area of Ladywood</h2>
+                    </div>
+                    <div id="map"></div>
+                </div>
+            </article>
+
 
 
 
@@ -76,5 +86,8 @@
     </div>
 
 </body>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="/js/recmap.js"></script>
 
 </html>

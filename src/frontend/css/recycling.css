@@ -44,6 +44,25 @@ body {
   font-size: 1.9rem;
 }
 
+.recycling-layout {
+  display: flex;
+  gap: 24px;
+  align-items: stretch;
+}
+
+.card-recycling-log,
+.recycling-map-card {
+  flex: 1;
+  min-width: 0;
+  height: 900px;
+
+  display: flex;
+  flex-direction: column;
+  padding: 22px 24px;
+}
+
+
+
 /* ================================================= */
 /* SIDEBAR */
 /* ================================================= */
@@ -183,7 +202,6 @@ body {
 /* ================================================= */
 
 .card-recycling-log {
-  width: 520px;
   max-width: 100%;
   background: white;
   border-radius: 24px;
@@ -191,8 +209,7 @@ body {
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.04);
 }
 
-.card-recycling-header h2,
-.card h2 {
+.card-recycling-header h2{
   margin: 0;
   font-size: 1.15rem;
 }
@@ -238,7 +255,6 @@ body {
 }
 
 .recycling-form input,
-.recycling-form select,
 .recycling-form textarea {
   padding: 10px 12px;
   border-radius: 12px;
@@ -246,6 +262,11 @@ body {
   font-size: 0.95rem;
   outline: none;
   background: #ffffff;
+  resize: none;
+}
+
+.recycling-form textarea{
+  height: 500px;
 }
 
 .recycling-form input:focus,
@@ -267,6 +288,60 @@ body {
 
 .recycling-form button:hover {
   background: #4f7561;
+}
+
+
+/* ================================================= */
+/* RECYCLING MAP */
+/* ================================================= */
+.recycling-map-card {
+  width: 800px;
+  height: 900px;
+  max-width: 100%;
+  background: white;
+  border-radius: 24px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.04);
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 22px 24px;
+}
+
+.recycling-card-map-header h2{
+  margin: 0;
+  font-size: 1.15rem;
+}
+
+.recycling-card-map-header a {
+  color: #5c866f;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.eyebrow {
+  margin: 0 0 5px;
+  color: #5c866f;
+  font-size: 0.68rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.small-text {
+  color: #657069;
+  margin: 6px 0 0;
+  font-size: 0.85rem;
+}
+
+#map {
+  height: 750px;
+  width: 100%;
+  flex: 1;
+  min-height: 0;
+  border-radius: 18px;
+  margin-top: 16px;
+
 }
 
 /* ================================================= */
