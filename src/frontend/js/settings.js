@@ -15,7 +15,9 @@ function applySavedSettings() {
         "font-verdana",
         "font-tahoma",
         "font-century-gothic",
-        "font-trebuchet"
+        "font-trebuchet",
+        "colour-red-green",
+        "colour-blue-yellow"
     );
 
     if (theme === "dark") {
@@ -24,6 +26,14 @@ function applySavedSettings() {
 
     if (colourMode === "high-contrast") {
         document.body.classList.add("high-contrast");
+    }
+
+    if (colourMode === "red-green") {
+    document.body.classList.add("colour-red-green");
+    }
+
+    if (colourMode === "blue-yellow") {
+    document.body.classList.add("colour-blue-yellow");
     }
 
     document.body.classList.add("font-" + font);

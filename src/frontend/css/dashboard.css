@@ -949,3 +949,41 @@ body.dark-mode .card-header h2,
 body.dark-mode .top-header h1 {
     color: #ffffff;
 }
+
+/* ================================================= */
+/* COLOUR BLIND MODES */
+/* ================================================= */
+
+body.colour-red-green .green,
+body.colour-red-green .green-dot,
+body.colour-red-green .stat-card.green,
+body.colour-red-green button,
+body.colour-red-green .carousel-btn {
+    background: #0072b2 !important;
+    color: #ffffff !important;
+}
+
+body.colour-red-green .orange {
+    background: #e69f00 !important;
+}
+
+body.colour-red-green .red,
+body.colour-red-green .marker.red {
+    fill: #cc79a7 !important;
+    background: #cc79a7 !important;
+}
+
+body.colour-blue-yellow button,
+body.colour-blue-yellow .carousel-btn,
+body.colour-blue-yellow .stat-card.green {
+    background: #009e73 !important;
+    color: #ffffff !important;
+}
+
+body.colour-blue-yellow .blue {
+    background: #d55e00 !important;
+}
+
+body.colour-blue-yellow .marker.amber {
+    fill: #d55e00 !important;
+}
