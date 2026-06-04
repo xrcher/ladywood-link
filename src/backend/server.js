@@ -201,6 +201,107 @@ app.post('/redeem', requireAuth, async (req, res) => {
     }
 });
 
+app.post('/api/recycling-log', requireAuth, async (req, res) => {
+    try {
+        const userId = req.session.userId;
+        const { weight, location, notes } = req.body;
+
+        const validLocations = [
+            'Green Channel',
+            'Rob Metals',
+            'Enviro City'
+        ];
+
+        const recycledKg = Number(weight);
+
+        if (!Number.isInteger(recycledKg) || recycledKg <= 0) {
+            return res.status(400).json({
+                success: false,
+                message: 'Please enter a valid whole number for KG recycled.'
+            });
+        }
+
+        if (!validLocations.includes(location)) {
+            return res.status(400).json({
+                success: false,
+                message: 'Please select a valid recycling location.'
+            });
+        }
+
+        const pointsEarned = recycledKg * 10;
+
+        await pool.query(`
+            INSERT INTO recycling_logs 
+                (user_id, weight, location, notes, points_earned)
+            VALUES 
+                ($1, $2, $3, $4, $5);
+        `, [
+            userId,
+            recycledKg,
+            location,
+            notes || '',
+            pointsEarned
+        ]);
+
+        const result = await pool.query(`
+            UPDATE users
+            SET green_points = green_points + $1
+            WHERE id = $2
+            RETURNING green_points;
+        `, [
+            pointsEarned,
+            userId
+        ]);
+
+        res.json({
+            success: true,
+            message: `Report submitted successfully. You earned ${pointsEarned} Green Points!`,
+            pointsEarned,
+            totalPoints: result.rows[0].green_points
+        });
+
+    } catch (error) {
+        console.error('Recycling log error:', error);
+
+        res.status(500).json({
+            success: false,
+            message: 'Something went wrong while submitting your recycling report.'
+        });
+    }
+});
+
+app.get('/api/recycling-history', requireAuth, async (req, res) => {
+    try {
+        const result = await pool.query(`
+            SELECT 
+                weight,
+                location,
+                notes,
+                points_earned,
+                created_at
+            FROM recycling_logs
+            WHERE user_id = $1
+            ORDER BY created_at DESC
+            LIMIT 5;
+        `, [
+            req.session.userId
+        ]);
+
+        res.json({
+            success: true,
+            logs: result.rows
+        });
+
+    } catch (error) {
+        console.error('Recycling history error:', error);
+
+        res.status(500).json({
+            success: false,
+            message: 'Could not load recycling history.'
+        });
+    }
+});
+
 /* ================================================= */
 /* DATABASE TEST ROUTE */
 /* ================================================= */

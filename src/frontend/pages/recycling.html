@@ -37,50 +37,73 @@
 
         <main class="main-content">
             <h1>Recycling</h1>
-
+        
             <div class="recycling-layout">
-
-            <article class="card-recycling-log">
-                <div class="card-recycling-header">
-                    <div>
-                        <p class="eyebrow">Recycle Log</p>
-                        <h2>Log your Recycling Redemptions here to earn Green Points</h2>
-                    </div>
+        
+                <div class="recycling-left-column">
+        
+                    <article class="card-recycling-log">
+                        <div class="card-recycling-header">
+                            <p class="eyebrow">Recycle Log</p>
+                            <h2>Log your Recycling Redemptions here to earn Green Points</h2>
+                        </div>
+        
+                        <form class="recycling-form" id="recyclingForm">
+                            <label>
+                                How much KG of waste did you recycle? 1KG = 10 points
+                                <input 
+                                    type="number" 
+                                    name="weight" 
+                                    min="1" 
+                                    step="1" 
+                                    placeholder="Enter KG recycled" 
+                                    required
+                                >
+                            </label>
+        
+                            <label>
+                                Location
+                                <select name="location" required>
+                                    <option value="">Select recycling point</option>
+                                    <option value="Green Channel">Green Channel</option>
+                                    <option value="Rob Metals">Rob Metals</option>
+                                    <option value="Enviro City">Enviro City</option>
+                                </select>
+                            </label>
+        
+                            <label>
+                                Notes
+                                <textarea 
+                                    name="notes" 
+                                    rows="4" 
+                                    placeholder="Add any details"
+                                ></textarea>
+                            </label>
+        
+                            <button type="submit">Submit report</button>
+                        </form>
+                    </article>
+        
+                    <article class="recycling-history-card">
+                        <p class="eyebrow">Recent Activity</p>
+                        <h2>Recycling History</h2>
+        
+                        <div id="recycling-history">
+                            <p class="empty-history">No recycling logs yet.</p>
+                        </div>
+                    </article>
+        
                 </div>
-
-                <form class="recycling-form">
-                    <label>
-                        How much KG of waste did you recycle? 1KG = 10 points
-                        <input type="number" name="weight" placeholder="Enter the amount of waste to the nearest KG">
-                    </label>
-
-                    <label>
-                        Location
-                        <input type="text" name="location" placeholder="Enter street or area">
-                    </label>
-
-                    <label>
-                        Notes
-                        <textarea name="notes" rows="4" placeholder="Please provide details as to how you achieved your selected redemption"></textarea>
-                    </label>
-
-                    <button type="submit">Submit report</button>
-                </form>
-            </article>
-
-            <article class="recycling-map-card">
-                <div class="recycling-card-map-header">
-                    <div>
+        
+                <article class="recycling-map-card">
+                    <div class="recycling-card-map-header">
                         <p class="eyebrow">Recycle Points in Ladywood</p>
                         <h2>Here are the local recycling points in the area of Ladywood</h2>
+                        <div id="map"></div>
                     </div>
-                    <div id="map"></div>
-                </div>
-            </article>
-
-
-
-
+                </article>
+        
+            </div>
         </main>
 
     </div>
@@ -90,5 +113,6 @@
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="/js/recmap.js"></script>
+<script src="/js/recycling.js"></script>
 
 </html>
