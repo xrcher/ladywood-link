@@ -115,3 +115,38 @@ const savedLanguage = localStorage.getItem("language");
 if (savedLanguage && savedLanguage !== "en") {
     changeGoogleTranslateLanguage(savedLanguage);
 }
+
+const passwordButton = document.getElementById("save-password-btn");
+
+if (passwordButton) {
+
+    passwordButton.addEventListener("click", async () => {
+
+        const newPassword =
+            document.getElementById("new-password").value;
+
+        const confirmPassword =
+            document.getElementById("confirm-password").value;
+
+        const response = await fetch("/api/change-password", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                newPassword,
+                confirmPassword
+            })
+        });
+
+        const data = await response.json();
+
+        alert(data.message);
+
+        if (data.success) {
+            document.getElementById("new-password").value = "";
+            document.getElementById("confirm-password").value = "";
+        }
+    });
+
+}

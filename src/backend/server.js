@@ -1,6 +1,7 @@
 import express from 'express';
 import path from 'path';
 import session from 'express-session';
+import bcrypt from 'bcrypt';
 
 import { initDb, pool } from './db.js';
 import { authController } from './controllers/authController.js';
@@ -112,10 +113,25 @@ app.get('/rewards', requireAuth, (req, res) => {
 /* API ROUTES */
 /* ================================================= */
 
-app.get('/api/user', requireAuth, (req, res) => {
-    res.json({
-        name: req.session.userName || 'User'
-    });
+app.get('/api/user', requireAuth, async (req, res) => {
+    try {
+        const result = await pool.query(
+            'SELECT name FROM users WHERE id = $1',
+            [req.session.userId]
+        );
+
+        if (result.rows.length === 0) {
+            return res.json({ name: 'User' });
+        }
+
+        res.json({
+            name: result.rows[0].name
+        });
+
+    } catch (error) {
+        console.error('User fetch error:', error);
+        res.json({ name: 'User' });
+    }
 });
 
 app.get('/api/points', requireAuth, async (req, res) => {
@@ -300,6 +316,56 @@ app.get('/api/recycling-history', requireAuth, async (req, res) => {
             message: 'Could not load recycling history.'
         });
     }
+});
+
+app.post('/api/change-password', requireAuth, async (req, res) => {
+    try {
+        const { newPassword, confirmPassword } = req.body;
+
+        if (!newPassword || !confirmPassword) {
+            return res.status(400).json({
+                success: false,
+                message: 'Please fill in both password fields.'
+            });
+        }
+
+        if (newPassword !== confirmPassword) {
+            return res.status(400).json({
+                success: false,
+                message: 'Passwords do not match.'
+            });
+        }
+
+        const hashedPassword = await bcrypt.hash(newPassword, 10);
+
+        await pool.query(
+            `UPDATE users
+             SET password = $1
+             WHERE id = $2`,
+            [hashedPassword, req.session.userId]
+        );
+
+        const userResult = await pool.query(
+            'SELECT name FROM users WHERE id = $1',
+            [req.session.userId]
+        );
+
+        req.session.userName = userResult.rows[0].name;
+
+        res.json({
+            success: true,
+            message: 'Password updated successfully.'
+        });
+
+    } catch (error) {
+        console.error('Password update error:', error);
+
+        res.status(500).json({
+            success: false,
+            message: 'Failed to update password.'
+        });
+    }
+
 });
 
 /* ================================================= */
