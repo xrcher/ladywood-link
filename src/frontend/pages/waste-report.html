@@ -1,21 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LadywoodLink - Waste Report</title>
+
     <script src="https://kit.fontawesome.com/692d4b5a4e.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <link rel="stylesheet" href="/css/dashboard.css">
+    <link rel="stylesheet" href="/css/waste-report.css">
 </head>
+
 <body>
 
 <div class="dashboard-shell">
 
     <aside class="sidebar">
-
-        <div class="logo">
-            LL
-        </div>
+        <div class="logo">LL</div>
 
         <nav class="nav-icons">
             <a href="/dashboard" data-label="Dashboard"><i class="fa-solid fa-house"></i></a>
@@ -26,22 +28,95 @@
             <a href="/settings" data-label="Settings"><i class="fa-solid fa-user-gear"></i></a>
             <a href="/logout" class="logout" data-label="Logout">Logout</a>
         </nav>
-
     </aside>
 
     <main class="main-content">
         <h1>Waste Report</h1>
-        
+
+        <div class="waste-layout">
+
+            <div class="waste-left-column">
+
+                <article class="waste-report-card">
+                    <div class="waste-card-header">
+                        <p class="eyebrow">Waste Report</p>
+                        <h2>Submit a waste issue and earn 5 Green Points</h2>
+                        <p class="small-text">Report overflowing bins, fly-tipping or other local waste problems.</p>
+                    </div>
+
+                    <form class="waste-form" id="wasteReportForm">
+
+                        <label>
+                            Waste issue type
+                            <select name="issueType" required>
+                                <option value="">Select issue type</option>
+                                <option value="Overflowing bin">Overflowing bin</option>
+                                <option value="Fly-tipping">Fly-tipping</option>
+                                <option value="Missed bin collection">Missed bin collection</option>
+                                <option value="Street litter">Street litter</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </label>
+
+                        <label>
+                            Location
+                            <input
+                                type="text"
+                                name="location"
+                                id="waste-location"
+                                placeholder="Enter street name or click the map"
+                                required
+                            >
+                        </label>
+
+                        <label>
+                            Details
+                            <textarea
+                                name="details"
+                                rows="4"
+                                placeholder="Describe the waste issue"
+                                required
+                            ></textarea>
+                        </label>
+
+                        <input type="hidden" name="latitude" id="waste-latitude">
+                        <input type="hidden" name="longitude" id="waste-longitude">
+
+                        <button type="submit">Submit Waste Report</button>
+                    </form>
+                </article>
+
+                <article class="waste-history-card">
+                    <p class="eyebrow">Recent Activity</p>
+                    <h2>Waste Report History</h2>
+
+                    <div id="waste-history">
+                        <p class="empty-history">No waste reports submitted yet.</p>
+                    </div>
+                </article>
+
+            </div>
+
+            <article class="waste-map-card">
+                <div class="waste-card-map-header">
+                    <p class="eyebrow">Report Location</p>
+                    <h2>Click the map to choose where the waste issue is located</h2>
+                    <p class="small-text">A marker will appear where you click.</p>
+                    <div id="map"></div>
+                </div>
+            </article>
+
+        </div>
+
+        <footer class="footer">
+            © 2026 LadywoodLink · Community waste, sanitation and water alerts
+        </footer>
     </main>
 
 </div>
 
 <div id="google_translate_element" style="display:none;"></div>
 
-<footer class="footer">
-      © 2025 LadywoodLink · Community waste, sanitation and water alerts
-</footer>
- 
 <script>
 function googleTranslateElementInit() {
     new google.translate.TranslateElement(
@@ -57,5 +132,9 @@ function googleTranslateElementInit() {
 
 <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 <script src="/js/settings.js"></script>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="/js/waste-report.js"></script>
+
 </body>
 </html>

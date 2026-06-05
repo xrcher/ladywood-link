@@ -1,0 +1,232 @@
+/* ================================================= */
+/* WASTE REPORT LAYOUT */
+/* ================================================= */
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.main-content h1 {
+    margin: 0;
+    padding-top: 30px;
+    font-size: 1.9rem;
+}
+
+.waste-layout {
+    flex: 1;
+    min-height: 0;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    align-items: stretch;
+}
+
+.waste-left-column {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    min-height: 0;
+}
+
+/* ================================================= */
+/* CARDS */
+/* ================================================= */
+
+.waste-report-card,
+.waste-map-card,
+.waste-history-card {
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 22px 24px;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.04);
+}
+
+.waste-report-card,
+.waste-map-card {
+    min-width: 0;
+    min-height: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.waste-card-header h2,
+.waste-card-map-header h2,
+.waste-history-card h2 {
+    margin: 0;
+    font-size: 1.15rem;
+}
+
+/* ================================================= */
+/* FORM */
+/* ================================================= */
+
+.waste-form {
+    flex: 1;
+    min-height: 0;
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.waste-form label {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 0.9rem;
+    color: #202522;
+}
+
+.waste-form input,
+.waste-form select,
+.waste-form textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 12px;
+    border: 1px solid #d7ddd9;
+    font-size: 0.95rem;
+    outline: none;
+    background: #ffffff;
+    resize: none;
+}
+
+.waste-form textarea {
+    flex: 1;
+    min-height: 220px;
+}
+
+.waste-form input:focus,
+.waste-form select:focus,
+.waste-form textarea:focus {
+    border-color: #5c866f;
+}
+
+.waste-form button {
+    margin-top: 6px;
+    padding: 12px;
+    border: none;
+    border-radius: 12px;
+    background: #5c866f;
+    color: #ffffff;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.waste-form button:hover {
+    background: #4f7561;
+}
+
+/* ================================================= */
+/* MAP */
+/* ================================================= */
+
+.waste-card-map-header {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+#map {
+    flex: 1;
+    min-height: 420px;
+    width: 100%;
+    margin-top: 16px;
+    border-radius: 18px;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.leaflet-container {
+    z-index: 1;
+}
+
+/* ================================================= */
+/* HISTORY */
+/* ================================================= */
+
+.history-item {
+    padding: 12px 0;
+    border-bottom: 1px solid #d7ddd9;
+}
+
+.history-item:last-child {
+    border-bottom: none;
+}
+
+.history-location {
+    font-weight: 700;
+}
+
+.history-points {
+    color: #5c866f;
+    font-weight: 700;
+}
+
+.history-date,
+.empty-history {
+    color: #657069;
+    font-size: 0.85rem;
+}
+
+/* ================================================= */
+/* DARK MODE */
+/* ================================================= */
+
+body.dark-mode .waste-report-card,
+body.dark-mode .waste-map-card,
+body.dark-mode .waste-history-card {
+    background: #202522 !important;
+    border: 1px solid #5c866f;
+    color: #ffffff;
+}
+
+body.dark-mode .waste-form input,
+body.dark-mode .waste-form select,
+body.dark-mode .waste-form textarea {
+    background: #202522;
+    color: #ffffff;
+    border: 1px solid #5c866f;
+}
+
+body.dark-mode .waste-form input::placeholder,
+body.dark-mode .waste-form textarea::placeholder {
+    color: #aebdb4;
+}
+
+body.dark-mode .history-item {
+    border-bottom: 1px solid #5c866f;
+}
+
+body.dark-mode .history-date,
+body.dark-mode .empty-history {
+    color: #cfd8d2;
+}
+
+body.dark-mode #map {
+    border: 1px solid #5c866f;
+}
+
+/* ================================================= */
+/* RESPONSIVE */
+/* ================================================= */
+
+@media (max-width: 1000px) {
+    .waste-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .waste-report-card,
+    .waste-map-card {
+        height: auto;
+    }
+
+    #map {
+        height: 420px;
+        min-height: 420px;
+        flex: none;
+    }
+}

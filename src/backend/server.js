@@ -368,6 +368,87 @@ app.post('/api/change-password', requireAuth, async (req, res) => {
 
 });
 
+app.post('/api/waste-report', requireAuth, async (req, res) => {
+    try {
+        const userId = req.session.userId;
+        const { issueType, location, details, latitude, longitude } = req.body;
+
+        if (!issueType || !location || !details) {
+            return res.status(400).json({
+                success: false,
+                message: 'Please complete all required fields.'
+            });
+        }
+
+        await pool.query(`
+            INSERT INTO waste_reports
+                (user_id, issue_type, location, details, latitude, longitude, points_earned)
+            VALUES
+                ($1, $2, $3, $4, $5, $6, $7);
+        `, [
+            userId,
+            issueType,
+            location,
+            details,
+            latitude || null,
+            longitude || null,
+            5
+        ]);
+
+        const result = await pool.query(`
+            UPDATE users
+            SET green_points = green_points + 5
+            WHERE id = $1
+            RETURNING green_points;
+        `, [userId]);
+
+        res.json({
+            success: true,
+            message: 'Waste report submitted successfully. You earned 5 Green Points!',
+            pointsEarned: 5,
+            totalPoints: result.rows[0].green_points
+        });
+
+    } catch (error) {
+        console.error('Waste report error:', error);
+
+        res.status(500).json({
+            success: false,
+            message: 'Something went wrong while submitting your waste report.'
+        });
+    }
+});
+
+app.get('/api/waste-history', requireAuth, async (req, res) => {
+    try {
+        const result = await pool.query(`
+            SELECT
+                issue_type,
+                location,
+                details,
+                points_earned,
+                created_at
+            FROM waste_reports
+            WHERE user_id = $1
+            ORDER BY created_at DESC
+            LIMIT 5;
+        `, [req.session.userId]);
+
+        res.json({
+            success: true,
+            reports: result.rows
+        });
+
+    } catch (error) {
+        console.error('Waste history error:', error);
+
+        res.status(500).json({
+            success: false,
+            message: 'Could not load waste report history.'
+        });
+    }
+});
+
 /* ================================================= */
 /* DATABASE TEST ROUTE */
 /* ================================================= */

@@ -51,7 +51,7 @@
 
       <header class="top-header">
         <div>
-          <h1 id="welcomeHeading" class="notranslate" translate="no">Welcome, <span id="welcomeName">User</span></h1>
+          <h1 id="welcomeHeading" class="notranslate" translate="no">Welcome, <span id="welcomeName">...</span></h1>
           <p>Track waste, sanitation and water alerts in Ladywood.</p>
         </div>
 
@@ -206,7 +206,7 @@ function loadUserName() {
             const heading = document.getElementById('welcomeHeading');
 
             if (heading) {
-                heading.innerHTML = `Welcome, <span id="welcomeName">${data.name || 'User'}</span>`;
+                heading.innerHTML = `Welcome, <span id="welcomeName" class="notranslate" translate="no">${data.name || 'User'}</span>`;
             }
         })
         .catch(error => {

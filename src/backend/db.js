@@ -78,6 +78,24 @@ export async function initDb() {
         `);
 
         /* ================================================= */
+        /* WASTE REPORTS TABLE */
+        /* ================================================= */
+
+        await pool.query(`
+            CREATE TABLE IF NOT EXISTS waste_reports (
+                id SERIAL PRIMARY KEY,
+                user_id UUID REFERENCES users(id) ON DELETE CASCADE,
+                issue_type VARCHAR(100) NOT NULL,
+                location TEXT NOT NULL,
+                details TEXT NOT NULL,
+                latitude DECIMAL,
+                longitude DECIMAL,
+                points_earned INTEGER DEFAULT 5,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            );
+        `);
+
+        /* ================================================= */
         /* SEED TEST ACCOUNTS */
         /* ================================================= */
 
