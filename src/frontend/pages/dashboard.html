@@ -15,52 +15,32 @@
 <body>
   <div class="dashboard-shell">
 
-    <!-- ================================================= -->
-    <!-- SIDEBAR NAVIGATION -->
-    <!-- ================================================= -->
-
     <aside class="sidebar">
       <div class="logo"></div>
 
       <nav class="nav-icons">
         <a href="/dashboard" class="active" data-label="Dashboard"><i class="fa-solid fa-house"></i></a>
-
         <a href="/recycling" data-label="Recycling"><i class="fa-solid fa-recycle"></i></a>
-
         <a href="/bin-collection" data-label="Bin Collection"><i class="fa-regular fa-trash-can"></i></a>
-
         <a href="/rewards" data-label="Rewards"><i class="fa-solid fa-shop"></i></a>
-
         <a href="/waste-report" data-label="Waste Report"><i class="fa-solid fa-triangle-exclamation"></i></a>
-
         <a href="/settings" data-label="Settings"><i class="fa-solid fa-user-gear"></i></a>
-
         <a href="/logout" class="logout" data-label="Logout">Logout</a>
       </nav>
     </aside>
 
-    <!-- ================================================= -->
-    <!-- MAIN CONTENT -->
-    <!-- ================================================= -->
-
     <main class="main-content">
-
-      <!-- ================================================= -->
-      <!-- HEADER -->
-      <!-- ================================================= -->
 
       <header class="top-header">
         <div>
-          <h1 id="welcomeHeading" class="notranslate" translate="no">Welcome, <span id="welcomeName">...</span></h1>
+          <h1 id="welcomeHeading" class="notranslate" translate="no" style="visibility:hidden;">
+            Welcome, <span id="welcomeName"></span>
+          </h1>
           <p>Track waste, sanitation and water alerts in Ladywood.</p>
         </div>
 
         <input type="search" class="search-bar" placeholder="Search..." />
       </header>
-
-      <!-- ================================================= -->
-      <!-- STATUS WIDGETS -->
-      <!-- ================================================= -->
 
       <section class="stats-row">
 
@@ -84,7 +64,7 @@
           <span class="card-icon">🗑️</span>
           <div>
             <p>Waste Reports</p>
-            <h2>12 submitted</h2>
+            <h2><span id="dashboard-report-count">0</span> submitted</h2>
           </div>
         </a>
 
@@ -98,15 +78,7 @@
 
       </section>
 
-      <!-- ================================================= -->
-      <!-- DASHBOARD GRID -->
-      <!-- ================================================= -->
-
       <section class="dashboard-grid">
-
-        <!-- ================================================= -->
-        <!-- MAP CARD -->
-        <!-- ================================================= -->
 
         <article class="card map-card">
           <div class="card-header">
@@ -121,10 +93,6 @@
           <div id="map"></div>
         </article>
 
-        <!-- ================================================= -->
-        <!-- RIGHT COLUMN -->
-        <!-- ================================================= -->
-
         <aside class="right-column">
 
           <article class="card profile-card">
@@ -134,13 +102,13 @@
 
             <div class="profile-stats">
               <div>
-                <strong>12</strong>
+                <strong id="reportCount">0</strong>
                 <span>Reports</span>
               </div>
 
               <div>
-                <strong>7</strong>
-                <span>Resolved</span>
+                <strong id="greenPointsCount">0</strong>
+                <span>Points</span>
               </div>
             </div>
           </article>
@@ -149,7 +117,6 @@
             <p class="eyebrow">Environmental Impact</p>
 
             <div class="impact-gauge">
-
               <svg class="gauge-svg" viewBox="0 0 240 140">
                 <path class="gauge-bg" d="M30 120 A90 90 0 0 1 210 120" />
                 <path class="gauge-progress" d="M30 120 A90 90 0 0 1 210 120" />
@@ -162,7 +129,6 @@
               <div class="gauge-content">
                 <div class="gauge-value">125kg</div>
               </div>
-
             </div>
 
             <p class="small-text">Monthly carbon footprint</p>
@@ -183,10 +149,6 @@
 
       </section>
 
-      <!-- ================================================= -->
-      <!-- FOOTER -->
-      <!-- ================================================= -->
-
       <footer class="footer">
         © 2026 LadywoodLink · Community waste, sanitation and water alerts
       </footer>
@@ -198,47 +160,60 @@
   <script src="/js/dashboard.js"></script>
   <script src="/js/map.js"></script>
 
- <script>
-function loadUserName() {
-    fetch('/api/user')
+  <script>
+    function loadUserName() {
+      fetch('/api/user')
         .then(response => response.json())
         .then(data => {
-            const heading = document.getElementById('welcomeHeading');
+          const heading = document.getElementById('welcomeHeading');
+          const nameElement = document.getElementById('welcomeName');
 
-            if (heading) {
-                heading.innerHTML = `Welcome, <span id="welcomeName" class="notranslate" translate="no">${data.name || 'User'}</span>`;
-            }
+          if (heading && nameElement) {
+            nameElement.textContent = data.name || 'User';
+            heading.style.visibility = 'visible';
+          }
         })
         .catch(error => {
-            console.error('Failed to load user name:', error);
+          console.error('Failed to load user name:', error);
         });
-}
+    }
 
-loadUserName();
-setTimeout(loadUserName, 1000);
-setTimeout(loadUserName, 2500);
-setTimeout(loadUserName, 5000);
-</script>
-  
+    function loadUserOverview() {
+      fetch('/api/user-overview')
+        .then(response => response.json())
+        .then(data => {
+          document.getElementById('reportCount').textContent = data.reports;
+          document.getElementById('greenPointsCount').textContent = data.points;
+          document.getElementById('dashboard-report-count').textContent = data.reports;
+        })
+        .catch(error => {
+          console.error('Failed to load overview:', error);
+        });
+    }
+
+    loadUserName();
+    loadUserOverview();
+  </script>
+
   <script src="/js/points.js"></script>
 
+  <div id="google_translate_element" style="display:none;"></div>
 
-<div id="google_translate_element" style="display:none;"></div>
-<script>
-function googleTranslateElementInit() {
-    new google.translate.TranslateElement(
+  <script>
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement(
         {
-            pageLanguage: "en",
-            includedLanguages: "en,pl,ar,fa,ur,pa,bn,zh-CN,zh-TW",
-            autoDisplay: false
+          pageLanguage: "en",
+          includedLanguages: "en,pl,ar,fa,ur,pa,bn,zh-CN,zh-TW",
+          autoDisplay: false
         },
         "google_translate_element"
-    );
-}
-</script>
+      );
+    }
+  </script>
 
-<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-<script src="/js/settings.js"></script>
+  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  <script src="/js/settings.js"></script>
 </body>
 
 </html>

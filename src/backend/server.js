@@ -449,6 +449,36 @@ app.get('/api/waste-history', requireAuth, async (req, res) => {
     }
 });
 
+app.get('/api/user-overview', requireAuth, async (req, res) => {
+    try {
+
+        const reportCount = await pool.query(`
+            SELECT COUNT(*) 
+            FROM waste_reports
+            WHERE user_id = $1
+        `, [req.session.userId]);
+
+        const points = await pool.query(`
+            SELECT green_points
+            FROM users
+            WHERE id = $1
+        `, [req.session.userId]);
+
+        res.json({
+            reports: reportCount.rows[0].count,
+            points: points.rows[0].green_points
+        });
+
+    } catch (error) {
+        console.error('User overview error:', error);
+
+        res.status(500).json({
+            success: false,
+            message: 'Could not load overview data.'
+        });
+    }
+});
+
 /* ================================================= */
 /* DATABASE TEST ROUTE */
 /* ================================================= */
