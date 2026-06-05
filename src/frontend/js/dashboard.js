@@ -1,9 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const username = localStorage.getItem("username") || "User";
-
-  const title = document.querySelector(".top-header h1");
-  title.textContent = `Welcome, ${username}`;
-
   const searchBar = document.querySelector(".search-bar");
 
   searchBar.addEventListener("input", () => {
