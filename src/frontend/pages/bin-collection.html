@@ -29,8 +29,130 @@
     </aside>
 
     <main class="main-content">
-        <h1>Bin Collection</h1>
-    </main>
+
+        <header class="top-header">
+            <div>
+                <h1>Bin Collection</h1>
+                <p>Find your collection day and learn what can go in each bin.</p>
+            </div>
+        </header>
+
+        <!-- POSTCODE LOOKUP -->
+
+        <section class="card postcode-card">
+
+            <p class="eyebrow">Collection Finder</p>
+            <h2>Enter Your Postcode</h2>
+
+            <div class="postcode-search">
+
+                <input
+                    type="text"
+                    id="postcodeInput"
+                    placeholder="e.g. B16 8SZ"
+                >
+
+                <button id="postcodeBtn">
+                    Search
+                </button>
+
+            </div>
+
+            <div id="collectionResult"></div>
+
+        </section>
+
+        <!-- BIN GUIDE -->
+
+        <section class="dashboard-grid">
+
+            <article class="card">
+                <p class="eyebrow">Black Bin</p>
+                <h2>General Waste</h2>
+
+                <ul class="mini-report-list">
+                    <li>Food waste</li>
+                    <li>Nappies</li>
+                    <li>Pet waste</li>
+                    <li>Broken ceramics</li>
+                    <li>Non-recyclable packaging</li>
+                </ul>
+            </article>
+
+            <article class="card">
+                <p class="eyebrow">Blue Bin</p>
+                <h2>Recycling</h2>
+
+                <ul class="mini-report-list">
+                    <li>Paper</li>
+                    <li>Cardboard</li>
+                    <li>Plastic bottles</li>
+                    <li>Food tins</li>
+                    <li>Glass jars</li>
+                </ul>
+            </article>
+
+            <article class="card">
+                <p class="eyebrow">Green Bin</p>
+                <h2>Garden Waste</h2>
+
+                <ul class="mini-report-list">
+                    <li>Grass cuttings</li>
+                    <li>Leaves</li>
+                    <li>Plants</li>
+                    <li>Flowers</li>
+                    <li>Small branches</li>
+                </ul>
+            </article>
+
+        </section>
+
+        <!-- COLLECTION DAYS -->
+
+        <section style="margin-top:2rem;">
+
+            <article class="card">
+
+                <p class="eyebrow">Collection Schedule</p>
+                <h2>Typical Collection Pattern</h2>
+
+                <table class="collection-table">
+
+                    <thead>
+                        <tr>
+                            <th>Bin</th>
+                            <th>Frequency</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>General Waste</td>
+                            <td>Weekly</td>
+                        </tr>
+
+                        <tr>
+                            <td>Recycling</td>
+                            <td>Fortnightly</td>
+                        </tr>
+
+                        <tr>
+                            <td>Garden Waste</td>
+                            <td>Fortnightly</td>
+                        </tr>
+                    </tbody>
+
+                </table>
+
+            </article>
+
+        </section>
+
+        <footer class="footer">
+            © 2026 LadywoodLink · Community waste, sanitation and water alerts
+        </footer>
+
+</main>
 
 </div>
 
