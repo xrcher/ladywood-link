@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const errorBox = document.getElementById('error-message');
 
     if (!form) {
-        console.error("❌ JavaScript Error: Could not find the .login-form element!");
+        console.error("JS Error - Couldnt find form");
         return;
     }
 
@@ -29,8 +29,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 errorBox.style.display = 'block';
             }
         } catch (err) {
-            console.error("💥 Network Error:", err);
-            errorBox.textContent = "Unable to reach security servers. Please try again.";
+            console.error("Network Error:", err);
+            errorBox.textContent = "Unable to reach servers. Please try again.";
             errorBox.style.display = 'block';
         }
     });

@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bc4977d1-d15c-4ddd-a253-1d7ac2837f5b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/controllers/authController.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/authController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/css/auth.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/css/auth.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/pages/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/pages/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/pages/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/pages/register.html" afterDir="false" />
-    </list>
+    <list default="true" id="bc4977d1-d15c-4ddd-a253-1d7ac2837f5b" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
