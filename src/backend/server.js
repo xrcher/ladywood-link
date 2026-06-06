@@ -109,6 +109,10 @@ app.get('/rewards', requireAuth, (req, res) => {
     res.sendFile(getHtmlPage('rewards.html'));
 });
 
+app.get('/sewage-status', requireAuth, (req, res) => {
+    res.sendFile(getHtmlPage('sewage-status.html'));
+});
+
 /* ================================================= */
 /* API ROUTES */
 /* ================================================= */

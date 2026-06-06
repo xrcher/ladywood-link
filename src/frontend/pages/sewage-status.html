@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LadywoodLink - Sewage</title>
+
+    <script src="https://kit.fontawesome.com/692d4b5a4e.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="/css/recycling.css">
+</head>
+
+<body>
+
+<div class="dashboard-shell">
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            LL
+        </div>
+
+        <nav class="nav-icons">
+            <a href="/dashboard" data-label="Dashboard"><i class="fa-solid fa-house"></i></a>
+            <a href="/recycling" data-label="Recycling"><i class="fa-solid fa-recycle"></i></a>
+            <a href="/bin-collection" data-label="Bin Collection"><i class="fa-regular fa-trash-can"></i></a>
+            <a href="/rewards" data-label="Rewards"><i class="fa-solid fa-shop"></i></a>
+            <a href="/waste-report" data-label="Waste Report"><i class="fa-solid fa-triangle-exclamation"></i></a>
+            <a href="/settings" data-label="Settings"><i class="fa-solid fa-user-gear"></i></a>
+            <a href="/logout" class="logout" data-label="Logout">Logout</a>
+        </nav>
+
+    </aside>
+
+
+
+    <main class="main-content">
+        <h1>Sewage Status</h1>
+    </main>
+
+</div>
+
+<div id="google_translate_element" style="display:none;"></div>
+<script>
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement(
+            {
+                pageLanguage: "en",
+                includedLanguages: "en,pl,ar,fa,ur,pa,bn,zh-CN,zh-TW",
+                autoDisplay: false
+            },
+            "google_translate_element"
+        );
+    }
+</script>
+
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<script src="/js/settings.js"></script>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="/js/recmap.js"></script>
+<script src="/js/recycling.js"></script>
+
+</body>
+
+
+</html>
