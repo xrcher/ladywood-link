@@ -178,7 +178,7 @@ body {
   z-index: 99999;
 
   transition: opacity 0.25s ease,
-              visibility 0.25s ease;
+  visibility 0.25s ease;
 
   transition-delay: 1.5s;
 }
@@ -225,7 +225,8 @@ body {
 
 .stats-row {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  /*change back to 4 if there's time for flood alert*/
   gap: 14px;
 }
 
@@ -649,7 +650,7 @@ a.card {
     margin-left: 0;
     font-size: 0.85rem;
   }
-  
+
   .nav-icons a::after {
     display: none;
   }
@@ -665,7 +666,7 @@ a.card {
   }
 
   .stats-row {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   }
 
   .right-column {
@@ -908,38 +909,38 @@ body.dark-mode #map {
 
 body.dark-mode,
 body.dark-mode html {
-    background: #202522;
+  background: #202522;
 }
 
 body.dark-mode .dashboard-shell {
-    background: #202522;
+  background: #202522;
 }
 
 body.dark-mode .main-content {
-    background: #202522;
+  background: #202522;
 }
 
 /* Carbon footprint */
 
 body.dark-mode .gauge-value {
-    color: #ffffff;
+  color: #ffffff;
 }
 
 body.dark-mode .small-text {
-    color: #d8ded8;
+  color: #d8ded8;
 }
 
 /* User stats */
 
 body.dark-mode .profile-card p,
 body.dark-mode .profile-stats span {
-    color: #d8ded8;
+  color: #d8ded8;
 }
 
 /* Latest reports */
 
 body.dark-mode .mini-report-list li {
-    color: #ffffff;
+  color: #ffffff;
 }
 
 /* Card headings */
@@ -947,7 +948,7 @@ body.dark-mode .mini-report-list li {
 body.dark-mode .card h2,
 body.dark-mode .card-header h2,
 body.dark-mode .top-header h1 {
-    color: #ffffff;
+  color: #ffffff;
 }
 
 /* ================================================= */
@@ -959,31 +960,31 @@ body.colour-red-green .green-dot,
 body.colour-red-green .stat-card.green,
 body.colour-red-green button,
 body.colour-red-green .carousel-btn {
-    background: #0072b2 !important;
-    color: #ffffff !important;
+  background: #0072b2 !important;
+  color: #ffffff !important;
 }
 
 body.colour-red-green .orange {
-    background: #e69f00 !important;
+  background: #e69f00 !important;
 }
 
 body.colour-red-green .red,
 body.colour-red-green .marker.red {
-    fill: #cc79a7 !important;
-    background: #cc79a7 !important;
+  fill: #cc79a7 !important;
+  background: #cc79a7 !important;
 }
 
 body.colour-blue-yellow button,
 body.colour-blue-yellow .carousel-btn,
 body.colour-blue-yellow .stat-card.green {
-    background: #009e73 !important;
-    color: #ffffff !important;
+  background: #009e73 !important;
+  color: #ffffff !important;
 }
 
 body.colour-blue-yellow .blue {
-    background: #d55e00 !important;
+  background: #d55e00 !important;
 }
 
 body.colour-blue-yellow .marker.amber {
-    fill: #d55e00 !important;
+  fill: #d55e00 !important;
 }

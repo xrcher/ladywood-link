@@ -4,11 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LadywoodLink - Sewage</title>
+    <title>LadywoodLink - Sewage Status</title>
 
     <script src="https://kit.fontawesome.com/692d4b5a4e.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    <link rel="stylesheet" href="/css/recycling.css">
+    <link rel="stylesheet" href="../css/sewage.css">
+
+    <script src="../js/settings.js" defer></script>
 </head>
 
 <body>
@@ -16,11 +18,7 @@
 <div class="dashboard-shell">
 
     <aside class="sidebar">
-
-        <div class="logo">
-            LL
-        </div>
-
+        <div class="logo"></div>
         <nav class="nav-icons">
             <a href="/dashboard" data-label="Dashboard"><i class="fa-solid fa-house"></i></a>
             <a href="/recycling" data-label="Recycling"><i class="fa-solid fa-recycle"></i></a>
@@ -30,13 +28,60 @@
             <a href="/settings" data-label="Settings"><i class="fa-solid fa-user-gear"></i></a>
             <a href="/logout" class="logout" data-label="Logout">Logout</a>
         </nav>
-
     </aside>
 
-
-
     <main class="main-content">
-        <h1>Sewage Status</h1>
+
+        <header class="top-header">
+            <div>
+                <h1>Sewage & Overflow Tracking</h1>
+                <p>Real-time Sewage Tracking across Birmingham Ladywood.</p>
+            </div>
+        </header>
+
+        <section class="stats-row">
+            <div class="card stat-card warning">
+                <div class="card-icon"><i class="fa-solid fa-triangle-exclamation" style="color: #f39c12;"></i></div>
+                <div>
+                    <p>ACTIVE SPILLS</p>
+                    <h2 id="active-spills-count">Loading...</h2>
+                </div>
+            </div>
+
+            <div class="card stat-card">
+                <div class="card-icon"><i class="fa-solid fa-water"></i></div>
+                <div>
+                    <p>MONITORED OUTLETS</p>
+                    <h2 id="total-outlets-count">Loading...</h2>
+                </div>
+            </div>
+            <div class="card stat-card green">
+                <div class="card-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                <div>
+                    <p>WATER PROVIDER</p>
+                    <h2>Severn Trent</h2>
+                </div>
+            </div>
+        </section>
+
+        <section class="card map-card">
+            <div class="card-header">
+                <div>
+                    <p class="eyebrow">Spatial Distribution</p>
+                    <h2>Live Overflow Discharge Monitor</h2>
+                </div>
+                <div class="map-toggle-container">
+                    <button id="toggle-all" class="toggle-btn active">All Outlets</button>
+                    <button id="toggle-spills" class="toggle-btn">Spills Only</button>
+                </div>
+            </div>
+            <div id="map"></div>
+        </section>
+
+        <footer class="footer">
+            <p>&copy; 2026 LadywoodLink. Environment Agency Real-Time Open Data Data-Feed.</p>
+        </footer>
+
     </main>
 
 </div>
@@ -45,24 +90,13 @@
 <script>
     function googleTranslateElementInit() {
         new google.translate.TranslateElement(
-            {
-                pageLanguage: "en",
-                includedLanguages: "en,pl,ar,fa,ur,pa,bn,zh-CN,zh-TW",
-                autoDisplay: false
-            },
+            {pageLanguage: "en", includedLanguages: "en,pl,ar,fa,ur,pa,bn,zh-CN,zh-TW", autoDisplay: false},
             "google_translate_element"
         );
     }
 </script>
 
-<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-<script src="/js/settings.js"></script>
-
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-<script src="/js/recmap.js"></script>
-<script src="/js/recycling.js"></script>
-
+<script src="../js/sewage.js"></script>
 </body>
-
-
 </html>

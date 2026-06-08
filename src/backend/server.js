@@ -6,6 +6,7 @@ import bcrypt from 'bcrypt';
 import { initDb, pool } from './db.js';
 import { authController } from './controllers/authController.js';
 import { requireAuth } from './middleware/authMiddleware.js';
+import { sewageController } from './controllers/sewageController.js';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -116,6 +117,7 @@ app.get('/sewage-status', requireAuth, (req, res) => {
 /* ================================================= */
 /* API ROUTES */
 /* ================================================= */
+app.get('/api/sewage/alerts', requireAuth, sewageController.getAlerts);
 
 app.get('/api/user', requireAuth, async (req, res) => {
     try {
@@ -455,7 +457,6 @@ app.get('/api/waste-history', requireAuth, async (req, res) => {
 
 app.get('/api/user-overview', requireAuth, async (req, res) => {
     try {
-
         const reportCount = await pool.query(`
             SELECT COUNT(*) 
             FROM waste_reports

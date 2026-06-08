@@ -96,6 +96,36 @@ export async function initDb() {
         `);
 
         /* ================================================= */
+        /* SEWAGE ALERTS TABLE */
+        /* ================================================= */
+
+        await pool.query(`
+            CREATE TABLE IF NOT EXISTS sewage_alerts (
+                id SERIAL PRIMARY KEY,
+                location_name VARCHAR(255) UNIQUE NOT NULL,
+                water_company VARCHAR(100) DEFAULT 'Severn Trent Water',
+                river_catchment VARCHAR(150),
+                latitude DECIMAL(9,6),
+                longitude DECIMAL(9,6),
+                spill_count INT NOT NULL,
+                duration_hours DECIMAL(10,2) NOT NULL,
+                year_monitored INT NOT NULL,
+                is_active_alert BOOLEAN DEFAULT FALSE
+            );
+        `);
+
+        // Demo Data for Map
+        await pool.query(`
+            INSERT INTO sewage_alerts 
+                (location_name, river_catchment, latitude, longitude, spill_count, duration_hours, year_monitored, is_active_alert)
+            VALUES 
+                ('Hockley Brook Overflow', 'Tame (Catchment)', 52.4912, -1.9314, 42, 184.50, 2025, true),
+                ('River Rea Sewerage Network', 'Trent (Catchment)', 52.4741, -1.8892, 19, 62.15, 2025, false),
+                ('Bourn Brook Branch', 'Rea (Catchment)', 52.4485, -1.9421, 8, 14.30, 2025, false)
+            ON CONFLICT (location_name) DO NOTHING;
+        `);
+
+        /* ================================================= */
         /* SEED TEST ACCOUNTS */
         /* ================================================= */
 

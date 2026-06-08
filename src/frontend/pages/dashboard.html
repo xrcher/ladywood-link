@@ -13,219 +13,203 @@
 </head>
 
 <body>
-  <div class="dashboard-shell">
+<div class="dashboard-shell">
 
-    <!-- ================================================= -->
-    <!-- SIDEBAR NAVIGATION -->
-    <!-- ================================================= -->
+  <aside class="sidebar">
+    <div class="logo"></div>
 
-    <aside class="sidebar">
-      <div class="logo"></div>
+    <nav class="nav-icons">
+      <a href="/dashboard" class="active" data-label="Dashboard"><i class="fa-solid fa-house"></i></a>
 
-      <nav class="nav-icons">
-        <a href="/dashboard" class="active" data-label="Dashboard"><i class="fa-solid fa-house"></i></a>
+      <a href="/recycling" data-label="Recycling"><i class="fa-solid fa-recycle"></i></a>
 
-        <a href="/recycling" data-label="Recycling"><i class="fa-solid fa-recycle"></i></a>
+      <a href="/bin-collection" data-label="Bin Collection"><i class="fa-regular fa-trash-can"></i></a>
 
-        <a href="/bin-collection" data-label="Bin Collection"><i class="fa-regular fa-trash-can"></i></a>
+      <a href="/rewards" data-label="Rewards"><i class="fa-solid fa-shop"></i></a>
 
-        <a href="/rewards" data-label="Rewards"><i class="fa-solid fa-shop"></i></a>
+      <a href="/waste-report" data-label="Waste Report"><i class="fa-solid fa-triangle-exclamation"></i></a>
 
-        <a href="/waste-report" data-label="Waste Report"><i class="fa-solid fa-triangle-exclamation"></i></a>
+      <a href="/settings" data-label="Settings"><i class="fa-solid fa-user-gear"></i></a>
 
-        <a href="/settings" data-label="Settings"><i class="fa-solid fa-user-gear"></i></a>
+      <a href="/logout" class="logout" data-label="Logout">Logout</a>
+    </nav>
+  </aside>
 
-        <a href="/logout" class="logout" data-label="Logout">Logout</a>
-      </nav>
-    </aside>
+  <main class="main-content">
 
-    <!-- ================================================= -->
-    <!-- MAIN CONTENT -->
-    <!-- ================================================= -->
+    <header class="top-header">
+      <div>
+        <h1 id="welcomeHeading" class="notranslate" translate="no" style="visibility:hidden;">Welcome, <span id="welcomeName"></span></h1>
+        <p>Track waste, sanitation and water alerts in Ladywood.</p>
+      </div>
 
-    <main class="main-content">
+      <input type="search" class="search-bar" placeholder="Search..." />
+    </header>
 
-      <!-- ================================================= -->
-      <!-- HEADER -->
-      <!-- ================================================= -->
-
-      <header class="top-header">
+    <section class="stats-row">
+      <a href="/sewage-status" class="card stat-card warning" style="text-decoration: none; color: inherit;">
+        <span class="card-icon">⚠️</span>
         <div>
-          <h1 id="welcomeHeading" class="notranslate" translate="no" style="visibility:hidden;">Welcome, <span id="welcomeName"></span></h1>
-          <p>Track waste, sanitation and water alerts in Ladywood.</p>
+          <p>Sewage Status</p>
+          <h2 id="dashboard-active-spills">Loading...</h2>
+        </div>
+      </a>
+
+      <a href="/waste-report" class="card stat-card">
+        <span class="card-icon">🗑️</span>
+        <div>
+          <p>Waste Reports</p>
+          <h2>12 submitted</h2>
+        </div>
+      </a>
+
+      <a href="/rewards" class="card stat-card green">
+        <span class="card-icon">♻️</span>
+        <div>
+          <p>Green Points</p>
+          <h2 id="dashboard-points">0 earned</h2>
+        </div>
+      </a>
+
+    </section>
+
+    <section class="dashboard-grid">
+
+      <article class="card map-card">
+        <div class="card-header">
+          <div>
+            <p class="eyebrow">Community Monitor</p>
+            <h2>Waste & Sanitation Map</h2>
+          </div>
+
+          <a href="/waste-report">Report issue →</a>
         </div>
 
-        <input type="search" class="search-bar" placeholder="Search..." />
-      </header>
+        <div id="map"></div>
+      </article>
 
-      <!-- ================================================= -->
-      <!-- STATUS WIDGETS -->
-      <!-- ================================================= -->
+      <aside class="right-column">
 
-      <section class="stats-row">
+        <article class="card profile-card">
+          <div class="avatar">👤</div>
+          <h2>User Overview</h2>
+          <p>Ladywood Resident</p>
 
-        <div class="card stat-card">
-          <span class="card-icon">🌧️</span>
-          <div>
-            <p>Flood Status</p>
-            <h2>No active flood alerts</h2>
-          </div>
-        </div>
-        
-        <div class="card stat-card warning">
-          <span class="card-icon">⚠️</span>
-          <div>
-            <p>Sewage Status</p>
-            <h2>1 nearby alert</h2>
-          </div>
-        </div>
-
-        <a href="/waste-report" class="card stat-card">
-          <span class="card-icon">🗑️</span>
-          <div>
-            <p>Waste Reports</p>
-            <h2>12 submitted</h2>
-          </div>
-        </a>
-
-        <a href="/rewards" class="card stat-card green">
-          <span class="card-icon">♻️</span>
-          <div>
-            <p>Green Points</p>
-            <h2 id="dashboard-points">0 earned</h2>
-          </div>
-        </a>
-
-      </section>
-
-      <!-- ================================================= -->
-      <!-- DASHBOARD GRID -->
-      <!-- ================================================= -->
-
-      <section class="dashboard-grid">
-
-        <!-- ================================================= -->
-        <!-- MAP CARD -->
-        <!-- ================================================= -->
-
-        <article class="card map-card">
-          <div class="card-header">
+          <div class="profile-stats">
             <div>
-              <p class="eyebrow">Community Monitor</p>
-              <h2>Waste & Sanitation Map</h2>
+              <strong>12</strong>
+              <span>Reports</span>
             </div>
 
-            <a href="/waste-report">Report issue →</a>
+            <div>
+              <strong>7</strong>
+              <span>Resolved</span>
+            </div>
           </div>
-
-          <div id="map"></div>
         </article>
 
-        <!-- ================================================= -->
-        <!-- RIGHT COLUMN -->
-        <!-- ================================================= -->
+        <article class="card">
+          <p class="eyebrow">Environmental Impact</p>
 
-        <aside class="right-column">
+          <div class="impact-gauge">
 
-          <article class="card profile-card">
-            <div class="avatar">👤</div>
-            <h2>User Overview</h2>
-            <p>Ladywood Resident</p>
+            <svg class="gauge-svg" viewBox="0 0 240 140">
+              <path class="gauge-bg" d="M30 120 A90 90 0 0 1 210 120" />
+              <path class="gauge-progress" d="M30 120 A90 90 0 0 1 210 120" />
 
-            <div class="profile-stats">
-              <div>
-                <strong>12</strong>
-                <span>Reports</span>
-              </div>
+              <circle class="marker green" cx="58" cy="55" r="5" />
+              <circle class="marker amber" cx="120" cy="30" r="5" />
+              <circle class="marker red" cx="182" cy="55" r="5" />
+            </svg>
 
-              <div>
-                <strong>7</strong>
-                <span>Resolved</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="card">
-            <p class="eyebrow">Environmental Impact</p>
-
-            <div class="impact-gauge">
-
-              <svg class="gauge-svg" viewBox="0 0 240 140">
-                <path class="gauge-bg" d="M30 120 A90 90 0 0 1 210 120" />
-                <path class="gauge-progress" d="M30 120 A90 90 0 0 1 210 120" />
-
-                <circle class="marker green" cx="58" cy="55" r="5" />
-                <circle class="marker amber" cx="120" cy="30" r="5" />
-                <circle class="marker red" cx="182" cy="55" r="5" />
-              </svg>
-
-              <div class="gauge-content">
-                <div class="gauge-value">125kg</div>
-              </div>
-
+            <div class="gauge-content">
+              <div class="gauge-value">125kg</div>
             </div>
 
-            <p class="small-text">Monthly carbon footprint</p>
-          </article>
+          </div>
 
-          <article class="card latest-card">
-            <p class="eyebrow">Recent Activity</p>
-            <h2>Latest Reports</h2>
+          <p class="small-text">Monthly carbon footprint</p>
+        </article>
 
-            <ul class="mini-report-list">
-              <li><span class="status-dot orange"></span> Overflowing bin reported</li>
-              <li><span class="status-dot green-dot"></span> Fly-tipping resolved</li>
-              <li><span class="status-dot blue"></span> Sewage alert added</li>
-            </ul>
-          </article>
+        <article class="card latest-card">
+          <p class="eyebrow">Recent Activity</p>
+          <h2>Latest Reports</h2>
 
-        </aside>
+          <ul class="mini-report-list">
+            <li><span class="status-dot orange"></span> Overflowing bin reported</li>
+            <li><span class="status-dot green-dot"></span> Fly-tipping resolved</li>
+            <li><span class="status-dot blue"></span> Sewage alert added</li>
+          </ul>
+        </article>
 
-      </section>
+      </aside>
 
-      <!-- ================================================= -->
-      <!-- FOOTER -->
-      <!-- ================================================= -->
+    </section>
 
-      <footer class="footer">
-        © 2026 LadywoodLink · Community waste, sanitation and water alerts
-      </footer>
+    <footer class="footer">
+      © 2026 LadywoodLink · Community waste, sanitation and water alerts
+    </footer>
 
-    </main>
-  </div>
+  </main>
+</div>
 
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <script src="/js/dashboard.js"></script>
-  <script src="/js/map.js"></script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="/js/dashboard.js"></script>
+<script src="/js/map.js"></script>
 
 <script>
-fetch('/api/user')
-    .then(response => response.json())
-    .then(data => {
-        document.getElementById('welcomeName').textContent = data.name;
+  // Fetch active user context metadata
+  fetch('/api/user')
+          .then(response => response.json())
+          .then(data => {
+            document.getElementById('welcomeName').textContent = data.name;
+            document.getElementById('welcomeHeading').style.visibility = 'visible';
+          })
+          .catch(error => {
+            console.error('Failed to load user name:', error);
+          });
 
-        document.getElementById('welcomeHeading').style.visibility = 'visible';
-    })
-    .catch(error => {
-        console.error('Failed to load user name:', error);
-    });
+  // Fetch active sewage system spill telemetry numbers
+  fetch('/api/sewage/alerts')
+          .then(response => response.json())
+          .then(data => {
+            if (Array.isArray(data)) {
+              const activeSpillsCount = data.filter(item =>
+                      item.is_active_alert === true ||
+                      item.is_active_alert === 1 ||
+                      item.status === 'active'
+              ).length;
+
+              const targetEl = document.getElementById('dashboard-active-spills');
+              if (targetEl) {
+                targetEl.textContent = activeSpillsCount === 1
+                        ? '1 active spill'
+                        : `${activeSpillsCount} active spills`;
+              }
+            }
+          })
+          .catch(error => {
+            console.error('Failed to update dashboard telemetry metric:', error);
+            const targetEl = document.getElementById('dashboard-active-spills');
+            if (targetEl) targetEl.textContent = 'Unavailable';
+          });
 </script>
-  
-  <script src="/js/points.js"></script>
+
+<script src="/js/points.js"></script>
 
 
 <div id="google_translate_element" style="display:none;"></div>
 <script>
-function googleTranslateElementInit() {
+  function googleTranslateElementInit() {
     new google.translate.TranslateElement(
-        {
-            pageLanguage: "en",
-            includedLanguages: "en,pl,ar,fa,ur,pa,bn,zh-CN,zh-TW",
-            autoDisplay: false
-        },
-        "google_translate_element"
+            {
+              pageLanguage: "en",
+              includedLanguages: "en,pl,ar,fa,ur,pa,bn,zh-CN,zh-TW",
+              autoDisplay: false
+            },
+            "google_translate_element"
     );
-}
+  }
 </script>
 
 <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
