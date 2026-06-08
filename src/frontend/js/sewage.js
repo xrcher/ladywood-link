@@ -20,8 +20,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             if (lat && lon) {
                 const isActive = locationItem.is_active_alert === true ||
-                    locationItem.is_active_alert === 1 ||
-                    locationItem.status === 'active';
+                    locationItem.is_active_alert === 1;
 
                 if (filterType === 'spills' && !isActive) {
                     return;
@@ -50,7 +49,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         const totalOutlets = sewageData.length;
         const activeSpills = sewageData.filter(item =>
-            item.is_active_alert === true || item.is_active_alert === 1 || item.status === 'active'
+            item.is_active_alert === true || item.is_active_alert === 1
         ).length;
         const totalHours = sewageData.reduce((sum, item) => sum + (Number(item.duration_hours) || 0), 0);
 
