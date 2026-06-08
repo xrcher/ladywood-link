@@ -988,3 +988,54 @@ body.colour-blue-yellow .blue {
 body.colour-blue-yellow .marker.amber {
   fill: #d55e00 !important;
 }
+
+/*Bin collection*/
+
+.postcode-card{
+  margin-bottom: 2rem
+}
+
+.postcode-search{
+  display: flex;
+  gap:1rem;
+  margin-top: 1rem;
+}
+
+.postcode-search input{
+  flex: 1;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  font-size:1rem;
+}
+
+.postcode-search-button{
+  padding: 12px 20px;
+  border: none;
+  border-radius:10px;
+  cursor: pointer;
+}
+
+.collection-table{
+  width: 100%;
+  border-collapse:collapse;
+  margin-top: 1rem;
+}
+
+.collection-table th,
+.collecction-table td{
+  padding:14px;
+  text-align: left;
+  border-bottom: 1px solid regba(255, 255, 255,0.1);
+}
+
+.result-card{
+  margin-top:1rem;
+}
+
+@media(max-width:768px){
+  .postcode-search{
+    flex-direction:column;
+  }
+  
+}
