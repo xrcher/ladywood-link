@@ -530,3 +530,48 @@ async function startServer() {
 }
 
 startServer();
+
+/*Bin colection*/
+
+app.get('/api/bin-collection/:postcode',(req,res) => {
+
+    const postcode =
+        req.params.postcode.toUpperCase();
+    
+    const collections ={
+
+        'B16 8SZ':{
+            nextCollection: 'Tuesday 9 June',
+            binType:'General Waste',
+            area: 'Ladywood'
+        },
+
+        'B16 0NA':{
+            nextCollection:'Friday 12 June',
+            binType:'Recycling',
+            area:'Ladywood'
+        },
+
+        'B16 8LP':{
+            nextCollection: "Tuesday 9 June",
+            binType: "Garden Waste",
+            area: "Ladywood"
+        }
+
+    };
+
+    const result = 
+        collections[postcode];
+
+    if(!result){
+
+        return res.json({
+            nextCollection:'Not Found',
+            binType:'Contact Birmingham City Council',
+            area:postcode
+        }); 
+    }
+
+    res.json(result);
+
+});
