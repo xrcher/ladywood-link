@@ -55,34 +55,6 @@ app.post('/register', authController.postRegister);
 app.get('/logout', authController.logout);
 
 /* ================================================= */
-/* DEVELOPMENT BYPASS - REMOVE BEFORE FINAL RELEASE */
-/* ================================================= */
-
-app.get('/dev-bypass', async (req, res) => {
-    try {
-        const result = await pool.query(
-            'SELECT id, name FROM users WHERE email = $1',
-            ['tester@test.com']
-        );
-
-        if (result.rows.length === 0) {
-            return res.status(404).send('Tester account not found.');
-        }
-
-        const tester = result.rows[0];
-
-        req.session.userId = tester.id;
-        req.session.userName = tester.name;
-
-        res.redirect('/dashboard');
-
-    } catch (error) {
-        console.error('Dev bypass error:', error);
-        res.status(500).send('Dev bypass failed.');
-    }
-});
-
-/* ================================================= */
 /* PAGE ROUTES */
 /* ================================================= */
 
