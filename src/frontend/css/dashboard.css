@@ -1039,3 +1039,38 @@ body.colour-blue-yellow .marker.amber {
   }
   
 }
+
+/* ================================================= */
+/* MAP KEY */
+/* ================================================= */
+
+.map-key {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #e5e5e5;
+}
+
+.map-key h3 {
+    margin: 0 0 10px 0;
+    font-size: 0.9rem;
+}
+
+.key-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.blue-marker {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #3388ff;
+}
+
+.red-marker {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #d9534f;
+}

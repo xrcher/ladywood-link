@@ -516,6 +516,37 @@ app.get('/api/reward-history', requireAuth, async (req, res) => {
     }
 });
 
+app.get('/api/waste-map-reports', requireAuth, async (req, res) => {
+    try {
+        const result = await pool.query(`
+            SELECT
+                issue_type,
+                location,
+                details,
+                latitude,
+                longitude,
+                created_at
+            FROM waste_reports
+            WHERE latitude IS NOT NULL
+              AND longitude IS NOT NULL
+            ORDER BY created_at DESC;
+        `);
+
+        res.json({
+            success: true,
+            reports: result.rows
+        });
+
+    } catch (error) {
+        console.error('Waste map reports error:', error);
+
+        res.status(500).json({
+            success: false,
+            reports: []
+        });
+    }
+});
+
 /* ================================================= */
 /* DATABASE TEST ROUTE */
 /* ================================================= */

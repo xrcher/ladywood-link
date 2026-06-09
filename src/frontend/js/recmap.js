@@ -8,7 +8,7 @@ L.tileLayer(
   }
 ).addTo(map);
 
-// Example markers
+// Markers
 L.marker([52.49348113607801, -1.9139657866556745])
   .addTo(map)
   .bindPopup("Enviro City");
