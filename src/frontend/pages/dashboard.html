@@ -59,7 +59,7 @@
         <span class="card-icon">🗑️</span>
         <div>
           <p>Waste Reports</p>
-          <h2>12 submitted</h2>
+          <h2><span id="dashboard-report-count">0</span> submitted</h2>
         </div>
       </a>
 
@@ -97,15 +97,15 @@
 
           <div class="profile-stats">
             <div>
-              <strong>12</strong>
+              <strong id="reportCount">0</strong>
               <span>Reports</span>
             </div>
 
             <div>
-              <strong>7</strong>
-              <span>Resolved</span>
-            </div>
+              <strong id="greenPointsCount">0</strong>
+              <span>Points</span>
           </div>
+      </div>
         </article>
 
         <article class="card">
@@ -193,6 +193,17 @@
             const targetEl = document.getElementById('dashboard-active-spills');
             if (targetEl) targetEl.textContent = 'Unavailable';
           });
+          
+  fetch('/api/user-overview')
+    .then(response => response.json())
+    .then(data => {
+        document.getElementById('dashboard-report-count').textContent = data.reports;
+        document.getElementById('reportCount').textContent = data.reports;
+        document.getElementById('greenPointsCount').textContent = data.points;
+    })
+    .catch(error => {
+        console.error('Failed to load overview:', error);
+    });
 </script>
 
 <script src="/js/points.js"></script>

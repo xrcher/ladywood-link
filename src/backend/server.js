@@ -456,6 +456,31 @@ app.get('/api/user-overview', requireAuth, async (req, res) => {
     }
 });
 
+app.get('/api/waste-report-count', requireAuth, async (req, res) => {
+    try {
+
+        const result = await pool.query(
+            `SELECT COUNT(*) AS total
+             FROM waste_reports
+             WHERE user_id = $1`,
+            [req.session.userId]
+        );
+
+        res.json({
+            success: true,
+            total: result.rows[0].total
+        });
+
+    } catch (error) {
+
+        console.error('Waste report count error:', error);
+
+        res.status(500).json({
+            success: false
+        });
+    }
+});
+
 /* ================================================= */
 /* DATABASE TEST ROUTE */
 /* ================================================= */
