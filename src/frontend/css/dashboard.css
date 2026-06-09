@@ -106,7 +106,7 @@ body {
   color: #5c866f !important;
   font-size: 1.3rem;
   border-radius: 16px;
-  transition: 0.2s ease;
+  transition: 0.1s ease;
   position: relative;
 }
 
@@ -180,7 +180,7 @@ body {
   transition: opacity 0.25s ease,
   visibility 0.25s ease;
 
-  transition-delay: 1.5s;
+  transition-delay: 0s;
 }
 
 .nav-icons a:hover::after {
