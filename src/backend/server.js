@@ -180,6 +180,17 @@ app.post('/redeem', requireAuth, async (req, res) => {
             [newPoints, req.session.userId]
         );
 
+        await pool.query(`
+            INSERT INTO reward_history
+                (user_id, reward_name, points_spent)
+            VALUES
+                ($1, $2, $3)
+        `, [
+            req.session.userId,
+            req.body.rewardName,
+            cost
+        ]);
+
         res.json({
             success: true,
             points: newPoints
@@ -478,6 +489,30 @@ app.get('/api/waste-report-count', requireAuth, async (req, res) => {
         res.status(500).json({
             success: false
         });
+    }
+});
+
+app.get('/api/reward-history', requireAuth, async (req, res) => {
+    try {
+
+        const result = await pool.query(`
+            SELECT
+                reward_name,
+                points_spent,
+                redeemed_at
+            FROM reward_history
+            WHERE user_id = $1
+            ORDER BY redeemed_at DESC
+            LIMIT 5
+        `, [req.session.userId]);
+
+        res.json(result.rows);
+
+    } catch (error) {
+
+        console.error(error);
+
+        res.status(500).json([]);
     }
 });
 

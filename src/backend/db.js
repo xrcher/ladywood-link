@@ -96,6 +96,20 @@ export async function initDb() {
         `);
 
         /* ================================================= */
+        /* REWARD HISTORY TABLE */
+        /* ================================================= */
+
+        await pool.query(`
+            CREATE TABLE IF NOT EXISTS reward_history (
+                id SERIAL PRIMARY KEY,
+                user_id UUID REFERENCES users(id) ON DELETE CASCADE,
+                reward_name VARCHAR(100) NOT NULL,
+                points_spent INTEGER NOT NULL,
+                redeemed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            );
+        `);
+
+        /* ================================================= */
         /* SEWAGE ALERTS TABLE */
         /* ================================================= */
 
