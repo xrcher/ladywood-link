@@ -6,6 +6,7 @@
     <title>LadywoodLink - Bin Collection</title>
     <script src="https://kit.fontawesome.com/692d4b5a4e.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/css/dashboard.css">
+    <link rel="stylesheet" href="/css/bin-collection.css">
 </head>
 <body>
 
@@ -30,127 +31,111 @@
 
     <main class="main-content">
 
-        <header class="top-header">
-            <div>
-                <h1>Bin Collection</h1>
-                <p>Find your collection day and learn what can go in each bin.</p>
+    <header class="top-header">
+        <div>
+            <h1>Bin Collection</h1>
+            <p>Find your collection day and learn what can go in each bin.</p>
+        </div>
+    </header>
+
+    <div class="bin-layout">
+
+        <div class="bin-left">
+
+            <section class="card postcode-card">
+
+                <p class="eyebrow">Collection Finder</p>
+                <h2>Enter Your Postcode</h2>
+
+                <div class="postcode-search">
+                    <input
+                        type="text"
+                        id="postcodeInput"
+                        placeholder="e.g. B16 8SZ"
+                    >
+
+                    <button id="postcodeBtn">
+                        Search
+                    </button>
+                </div>
+
+                <div id="collectionResult"></div>
+
+            </section>
+
+            <section class="bin-guide-grid">
+
+                <article class="card">
+                    <p class="eyebrow">Black Bin</p>
+                    <h2>General Waste</h2>
+
+                    <ul class="mini-report-list">
+                        <li>Food waste</li>
+                        <li>Nappies</li>
+                        <li>Pet waste</li>
+                        <li>Broken ceramics</li>
+                    </ul>
+                </article>
+
+                <article class="card">
+                    <p class="eyebrow">Blue Bin</p>
+                    <h2>Recycling</h2>
+
+                    <ul class="mini-report-list">
+                        <li>Paper</li>
+                        <li>Cardboard</li>
+                        <li>Plastic bottles</li>
+                        <li>Food tins</li>
+                    </ul>
+                </article>
+
+                <article class="card">
+                    <p class="eyebrow">Green Bin</p>
+                    <h2>Garden Waste</h2>
+
+                    <ul class="mini-report-list">
+                        <li>Grass cuttings</li>
+                        <li>Leaves</li>
+                        <li>Plants</li>
+                        <li>Small branches</li>
+                    </ul>
+                </article>
+
+            </section>
+
+        </div>
+
+        <aside class="card bin-calendar-card">
+
+            <div class="calendar-header">
+                <div>
+                    <p class="eyebrow">Collection Calendar</p>
+                    <h2 id="calendar-title">June 2026</h2>
+                </div>
+
+                <div class="calendar-buttons">
+                    <button id="prevMonthBtn" type="button">‹</button>
+                    <button id="nextMonthBtn" type="button">›</button>
+                </div>
             </div>
-        </header>
 
-        <!-- POSTCODE LOOKUP -->
+            <div class="calendar-grid" id="calendar-grid"></div>
+                
+            
 
-        <section class="card postcode-card">
-
-            <p class="eyebrow">Collection Finder</p>
-            <h2>Enter Your Postcode</h2>
-
-            <div class="postcode-search">
-
-                <input
-                    type="text"
-                    id="postcodeInput"
-                    placeholder="e.g. B16 8SZ"
-                >
-
-                <button id="postcodeBtn">
-                    Search
-                </button>
-
+            <div class="calendar-key">
+                <div><span class="key-dot general-dot"></span> General Waste</div>
+                <div><span class="key-dot recycling-dot"></span> Recycling</div>
+                <div><span class="key-dot garden-dot"></span> Garden Waste</div>
             </div>
 
-            <div id="collectionResult"></div>
+        </aside>
 
-        </section>
+    </div>
 
-        <!-- BIN GUIDE -->
-
-        <section class="dashboard-grid">
-
-            <article class="card">
-                <p class="eyebrow">Black Bin</p>
-                <h2>General Waste</h2>
-
-                <ul class="mini-report-list">
-                    <li>Food waste</li>
-                    <li>Nappies</li>
-                    <li>Pet waste</li>
-                    <li>Broken ceramics</li>
-                    <li>Non-recyclable packaging</li>
-                </ul>
-            </article>
-
-            <article class="card">
-                <p class="eyebrow">Blue Bin</p>
-                <h2>Recycling</h2>
-
-                <ul class="mini-report-list">
-                    <li>Paper</li>
-                    <li>Cardboard</li>
-                    <li>Plastic bottles</li>
-                    <li>Food tins</li>
-                    <li>Glass jars</li>
-                </ul>
-            </article>
-
-            <article class="card">
-                <p class="eyebrow">Green Bin</p>
-                <h2>Garden Waste</h2>
-
-                <ul class="mini-report-list">
-                    <li>Grass cuttings</li>
-                    <li>Leaves</li>
-                    <li>Plants</li>
-                    <li>Flowers</li>
-                    <li>Small branches</li>
-                </ul>
-            </article>
-
-        </section>
-
-        <!-- COLLECTION DAYS -->
-
-        <section style="margin-top:2rem;">
-
-            <article class="card">
-
-                <p class="eyebrow">Collection Schedule</p>
-                <h2>Typical Collection Pattern</h2>
-
-                <table class="collection-table">
-
-                    <thead>
-                        <tr>
-                            <th>Bin</th>
-                            <th>Frequency</th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-                        <tr>
-                            <td>General Waste</td>
-                            <td>Weekly</td>
-                        </tr>
-
-                        <tr>
-                            <td>Recycling</td>
-                            <td>Fortnightly</td>
-                        </tr>
-
-                        <tr>
-                            <td>Garden Waste</td>
-                            <td>Fortnightly</td>
-                        </tr>
-                    </tbody>
-
-                </table>
-
-            </article>
-
-        </section>
-
-        <footer class="footer">
-            © 2026 LadywoodLink · Community waste, sanitation and water alerts
-        </footer>
+    <footer class="footer">
+        © 2026 LadywoodLink · Community waste, sanitation and water alerts
+    </footer>
 
 </main>
 
