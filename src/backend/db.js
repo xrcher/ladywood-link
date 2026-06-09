@@ -22,7 +22,7 @@ export async function initDb() {
                 name VARCHAR(100) NOT NULL,
                 email VARCHAR(255) UNIQUE NOT NULL,
                 password VARCHAR(255) NOT NULL,
-                national_insurance VARCHAR(20) UNIQUE,
+                council_tax_number VARCHAR(50) UNIQUE,
                 green_points INTEGER DEFAULT 0,
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             );
@@ -35,7 +35,7 @@ export async function initDb() {
 
         await pool.query(`
             ALTER TABLE users
-            ADD COLUMN IF NOT EXISTS national_insurance VARCHAR(20) UNIQUE;
+            ADD COLUMN IF NOT EXISTS council_tax_number VARCHAR(50) UNIQUE;
         `);
 
         /* ================================================= */
@@ -45,7 +45,7 @@ export async function initDb() {
         await pool.query(`
             CREATE TABLE IF NOT EXISTS approved_residents (
                 id SERIAL PRIMARY KEY,
-                national_insurance VARCHAR(20) UNIQUE NOT NULL,
+                council_tax_number VARCHAR(50) UNIQUE NOT NULL,
                 postcode VARCHAR(10) NOT NULL,
                 area VARCHAR(100) NOT NULL
             );
@@ -53,12 +53,12 @@ export async function initDb() {
 
         await pool.query(`
             INSERT INTO approved_residents
-                (national_insurance, postcode, area)
+                (council_tax_number, postcode, area)
             VALUES
-                ('AB123456C', 'B16 8AA', 'Ladywood'),
-                ('CD987654E', 'B16 8AB', 'Ladywood'),
-                ('EF456789G', 'B16 9BA', 'Ladywood')
-            ON CONFLICT (national_insurance) DO NOTHING;
+                ('CT100001', 'B16 8AA', 'Ladywood'),
+                ('CT100002', 'B16 8AB', 'Ladywood'),
+                ('CT100003', 'B16 9BA', 'Ladywood')
+            ON CONFLICT (council_tax_number) DO NOTHING;
         `);
 
         /* ================================================= */
@@ -114,7 +114,6 @@ export async function initDb() {
             );
         `);
 
-        // Demo Data for Map
         await pool.query(`
             INSERT INTO sewage_alerts 
                 (location_name, river_catchment, latitude, longitude, spill_count, duration_hours, year_monitored, is_active_alert)
@@ -141,7 +140,7 @@ export async function initDb() {
 
         await pool.query(`
             INSERT INTO users 
-                (name, email, password, national_insurance)
+                (name, email, password, council_tax_number)
             VALUES 
                 ($1, $2, $3, $4),
                 ($5, $6, $7, $8)
@@ -150,12 +149,12 @@ export async function initDb() {
             'Admin',
             'admin@test.com',
             adminHash,
-            'AB123456C',
+            'CT100001',
 
             'Tester',
             'tester@test.com',
             testerHash,
-            'CD987654E'
+            'CT100002'
         ]);
 
         await pool.query(`
