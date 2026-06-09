@@ -119,9 +119,13 @@ export async function initDb() {
             INSERT INTO sewage_alerts 
                 (location_name, river_catchment, latitude, longitude, spill_count, duration_hours, year_monitored, is_active_alert)
             VALUES 
-                ('Hockley Brook Overflow', 'Tame (Catchment)', 52.4912, -1.9314, 42, 184.50, 2025, true),
-                ('River Rea Sewerage Network', 'Trent (Catchment)', 52.4741, -1.8892, 19, 62.15, 2025, false),
-                ('Bourn Brook Branch', 'Rea (Catchment)', 52.4485, -1.9421, 8, 14.30, 2025, false)
+                ('Hockley Brook Monitor', 'Tame (Catchment)', 52.4912, -1.9314, 42, 184.50, 2026, true),
+                ('Ladywood Drainage Monitor', 'Tame (Catchment)', 52.47993828460706, -1.9212873688002168, 30, 60, 2026, true),
+                ('Lucas Circus Sewage Monitor', 'Trent (Catchment)', 52.49387674125492, -1.9079114733928477, 10, 127, 2026, false),
+                ('Portlannd Drainage Monitor', 'Trent (Catchment)', 52.47623500185852, -1.9493181674865354, 20, 184, 2026, true),
+                ('Edgbaston Sewage Monitor', 'Edgbaston (Catchment)', 52.461540124807705, -1.9205724917036757, 6, 104, 2026, false),
+                ('River Rea Sewage Monitor', 'Trent (Catchment)', 52.4741, -1.8892, 19, 62.15, 2026, false),
+                ('Bourn Brook Sewage Monitor', 'Rea (Catchment)', 52.4485, -1.9421, 8, 14.30, 2025, false)
             ON CONFLICT (location_name) DO NOTHING;
         `);
 
