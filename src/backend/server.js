@@ -55,34 +55,6 @@ app.post('/register', authController.postRegister);
 app.get('/logout', authController.logout);
 
 /* ================================================= */
-/* DEVELOPMENT BYPASS - REMOVE BEFORE FINAL RELEASE */
-/* ================================================= */
-
-app.get('/dev-bypass', async (req, res) => {
-    try {
-        const result = await pool.query(
-            'SELECT id, name FROM users WHERE email = $1',
-            ['tester@test.com']
-        );
-
-        if (result.rows.length === 0) {
-            return res.status(404).send('Tester account not found.');
-        }
-
-        const tester = result.rows[0];
-
-        req.session.userId = tester.id;
-        req.session.userName = tester.name;
-
-        res.redirect('/dashboard');
-
-    } catch (error) {
-        console.error('Dev bypass error:', error);
-        res.status(500).send('Dev bypass failed.');
-    }
-});
-
-/* ================================================= */
 /* PAGE ROUTES */
 /* ================================================= */
 
@@ -207,6 +179,17 @@ app.post('/redeem', requireAuth, async (req, res) => {
             'UPDATE users SET green_points = $1 WHERE id = $2',
             [newPoints, req.session.userId]
         );
+
+        await pool.query(`
+            INSERT INTO reward_history
+                (user_id, reward_name, points_spent)
+            VALUES
+                ($1, $2, $3)
+        `, [
+            req.session.userId,
+            req.body.rewardName,
+            cost
+        ]);
 
         res.json({
             success: true,
@@ -480,6 +463,86 @@ app.get('/api/user-overview', requireAuth, async (req, res) => {
         res.status(500).json({
             success: false,
             message: 'Could not load overview data.'
+        });
+    }
+});
+
+app.get('/api/waste-report-count', requireAuth, async (req, res) => {
+    try {
+
+        const result = await pool.query(
+            `SELECT COUNT(*) AS total
+             FROM waste_reports
+             WHERE user_id = $1`,
+            [req.session.userId]
+        );
+
+        res.json({
+            success: true,
+            total: result.rows[0].total
+        });
+
+    } catch (error) {
+
+        console.error('Waste report count error:', error);
+
+        res.status(500).json({
+            success: false
+        });
+    }
+});
+
+app.get('/api/reward-history', requireAuth, async (req, res) => {
+    try {
+
+        const result = await pool.query(`
+            SELECT
+                reward_name,
+                points_spent,
+                redeemed_at
+            FROM reward_history
+            WHERE user_id = $1
+            ORDER BY redeemed_at DESC
+            LIMIT 5
+        `, [req.session.userId]);
+
+        res.json(result.rows);
+
+    } catch (error) {
+
+        console.error(error);
+
+        res.status(500).json([]);
+    }
+});
+
+app.get('/api/waste-map-reports', requireAuth, async (req, res) => {
+    try {
+        const result = await pool.query(`
+            SELECT
+                issue_type,
+                location,
+                details,
+                latitude,
+                longitude,
+                created_at
+            FROM waste_reports
+            WHERE latitude IS NOT NULL
+              AND longitude IS NOT NULL
+            ORDER BY created_at DESC;
+        `);
+
+        res.json({
+            success: true,
+            reports: result.rows
+        });
+
+    } catch (error) {
+        console.error('Waste map reports error:', error);
+
+        res.status(500).json({
+            success: false,
+            reports: []
         });
     }
 });

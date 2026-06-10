@@ -148,7 +148,7 @@
   }
   
   /* ================================================= */
-  /* HOW TO EARN POINTS */
+  /* HOW TO EARN POINTS + REWARDS HISTORY */
   /* ================================================= */
   
   .earn-points-card {
@@ -168,6 +168,27 @@
     margin-bottom: 8px;
     color: #202522;
   }
+
+  .bottom-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.info-card,
+.history-card {
+    background: white;
+    border-radius: 25px;
+    padding: 2rem;
+}
+
+.history-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #eee;
+}
   
   /* ================================================= */
   /* RESPONSIVE */

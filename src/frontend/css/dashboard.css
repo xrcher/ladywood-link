@@ -106,7 +106,7 @@ body {
   color: #5c866f !important;
   font-size: 1.3rem;
   border-radius: 16px;
-  transition: 0.2s ease;
+  transition: 0.1s ease;
   position: relative;
 }
 
@@ -180,7 +180,7 @@ body {
   transition: opacity 0.25s ease,
   visibility 0.25s ease;
 
-  transition-delay: 1.5s;
+  transition-delay: 0s;
 }
 
 .nav-icons a:hover::after {
@@ -1038,4 +1038,39 @@ body.colour-blue-yellow .marker.amber {
     flex-direction:column;
   }
   
+}
+
+/* ================================================= */
+/* MAP KEY */
+/* ================================================= */
+
+.map-key {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #e5e5e5;
+}
+
+.map-key h3 {
+    margin: 0 0 10px 0;
+    font-size: 0.9rem;
+}
+
+.key-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.blue-marker {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #3388ff;
+}
+
+.red-marker {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #d9534f;
 }

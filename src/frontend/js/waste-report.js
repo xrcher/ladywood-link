@@ -10,6 +10,26 @@ L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
 
 let selectedMarker = null;
 
+const urlParams = new URLSearchParams(window.location.search);
+const latFromUrl = urlParams.get("lat");
+const lngFromUrl = urlParams.get("lng");
+
+if (latFromUrl && lngFromUrl) {
+    const lat = Number(latFromUrl);
+    const lng = Number(lngFromUrl);
+
+    document.getElementById("waste-latitude").value = lat;
+    document.getElementById("waste-longitude").value = lng;
+
+    document.getElementById("waste-location").value =
+        `Selected map location: ${lat.toFixed(5)}, ${lng.toFixed(5)}`;
+
+    selectedMarker = L.marker([lat, lng]).addTo(wasteMap);
+    selectedMarker.bindPopup("Selected waste report location").openPopup();
+
+    wasteMap.setView([lat, lng], 16);
+}
+
 wasteMap.on("click", (event) => {
     const { lat, lng } = event.latlng;
 

@@ -22,7 +22,7 @@ export async function initDb() {
                 name VARCHAR(100) NOT NULL,
                 email VARCHAR(255) UNIQUE NOT NULL,
                 password VARCHAR(255) NOT NULL,
-                national_insurance VARCHAR(20) UNIQUE,
+                council_tax_number VARCHAR(50) UNIQUE,
                 green_points INTEGER DEFAULT 0,
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             );
@@ -35,7 +35,7 @@ export async function initDb() {
 
         await pool.query(`
             ALTER TABLE users
-            ADD COLUMN IF NOT EXISTS national_insurance VARCHAR(20) UNIQUE;
+            ADD COLUMN IF NOT EXISTS council_tax_number VARCHAR(50) UNIQUE;
         `);
 
         /* ================================================= */
@@ -45,7 +45,7 @@ export async function initDb() {
         await pool.query(`
             CREATE TABLE IF NOT EXISTS approved_residents (
                 id SERIAL PRIMARY KEY,
-                national_insurance VARCHAR(20) UNIQUE NOT NULL,
+                council_tax_number VARCHAR(50) UNIQUE NOT NULL,
                 postcode VARCHAR(10) NOT NULL,
                 area VARCHAR(100) NOT NULL
             );
@@ -53,12 +53,12 @@ export async function initDb() {
 
         await pool.query(`
             INSERT INTO approved_residents
-                (national_insurance, postcode, area)
+                (council_tax_number, postcode, area)
             VALUES
-                ('AB123456C', 'B16 8AA', 'Ladywood'),
-                ('CD987654E', 'B16 8AB', 'Ladywood'),
-                ('EF456789G', 'B16 9BA', 'Ladywood')
-            ON CONFLICT (national_insurance) DO NOTHING;
+                ('CT100001', 'B16 8AA', 'Ladywood'),
+                ('CT100002', 'B16 8AB', 'Ladywood'),
+                ('CT100003', 'B16 9BA', 'Ladywood')
+            ON CONFLICT (council_tax_number) DO NOTHING;
         `);
 
         /* ================================================= */
@@ -96,6 +96,20 @@ export async function initDb() {
         `);
 
         /* ================================================= */
+        /* REWARD HISTORY TABLE */
+        /* ================================================= */
+
+        await pool.query(`
+            CREATE TABLE IF NOT EXISTS reward_history (
+                id SERIAL PRIMARY KEY,
+                user_id UUID REFERENCES users(id) ON DELETE CASCADE,
+                reward_name VARCHAR(100) NOT NULL,
+                points_spent INTEGER NOT NULL,
+                redeemed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            );
+        `);
+
+        /* ================================================= */
         /* SEWAGE ALERTS TABLE */
         /* ================================================= */
 
@@ -114,14 +128,17 @@ export async function initDb() {
             );
         `);
 
-        // Demo Data for Map
         await pool.query(`
             INSERT INTO sewage_alerts 
                 (location_name, river_catchment, latitude, longitude, spill_count, duration_hours, year_monitored, is_active_alert)
             VALUES 
-                ('Hockley Brook Overflow', 'Tame (Catchment)', 52.4912, -1.9314, 42, 184.50, 2025, true),
-                ('River Rea Sewerage Network', 'Trent (Catchment)', 52.4741, -1.8892, 19, 62.15, 2025, false),
-                ('Bourn Brook Branch', 'Rea (Catchment)', 52.4485, -1.9421, 8, 14.30, 2025, false)
+                ('Hockley Brook Drainage Monitor', 'Tame (Catchment)', 52.4912, -1.9314, 42, 184.50, 2026, true),
+                ('Ladywood Drainage Monitor', 'Tame (Catchment)', 52.47993828460706, -1.9212873688002168, 30, 60, 2026, true),
+                ('Lucas Circus Sewage Monitor', 'Trent (Catchment)', 52.49387674125492, -1.9079114733928477, 10, 127, 2026, false),
+                ('Portlannd Drainage Monitor', 'Trent (Catchment)', 52.47623500185852, -1.9493181674865354, 20, 184, 2026, true),
+                ('Edgbaston Sewage Monitor', 'Edgbaston (Catchment)', 52.461540124807705, -1.9205724917036757, 6, 104, 2026, false),
+                ('River Rea Sewage Monitor', 'Trent (Catchment)', 52.4741, -1.8892, 19, 62.15, 2026, false),
+                ('Bourn Brook Sewage Monitor', 'Rea (Catchment)', 52.4485, -1.9421, 8, 14.30, 2025, false)
             ON CONFLICT (location_name) DO NOTHING;
         `);
 
@@ -137,7 +154,7 @@ export async function initDb() {
 
         await pool.query(`
             INSERT INTO users 
-                (name, email, password, national_insurance)
+                (name, email, password, council_tax_number)
             VALUES 
                 ($1, $2, $3, $4),
                 ($5, $6, $7, $8)
@@ -146,12 +163,12 @@ export async function initDb() {
             'Admin',
             'admin@test.com',
             adminHash,
-            'AB123456C',
+            'CT100001',
 
             'Tester',
             'tester@test.com',
             testerHash,
-            'CD987654E'
+            'CT100002'
         ]);
 
         await pool.query(`

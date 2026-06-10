@@ -1,0 +1,263 @@
+/* ================================================= */
+/* BIN COLLECTION PAGE */
+/* ================================================= */
+
+.main-content {
+    width: 100%;
+    max-width: none;
+    min-height: calc(100vh - 40px);
+    display: flex;
+    flex-direction: column;
+}
+
+.bin-layout {
+    flex: 1;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 28px;
+    align-items: stretch;
+}
+
+.bin-left {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+/* ================================================= */
+/* POSTCODE CARD */
+/* ================================================= */
+
+.postcode-card {
+    padding: 24px;
+    min-height: 180px;
+}
+
+.postcode-search {
+    display: flex;
+    gap: 14px;
+    margin-top: 18px;
+}
+
+.postcode-search input {
+    flex: 1;
+    padding: 15px 16px;
+    border-radius: 14px;
+    border: 1px solid #d8ded8;
+    font-size: 1rem;
+}
+
+.postcode-search button {
+    padding: 14px 24px;
+    border: none;
+    border-radius: 14px;
+    background: #5c866f;
+    color: #ffffff;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+#collectionResult {
+    margin-top: 16px;
+    font-weight: 700;
+}
+
+/* ================================================= */
+/* BIN CARDS VERTICAL */
+/* ================================================= */
+
+.bin-guide-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.bin-guide-grid .card {
+    padding: 22px 24px;
+    min-height: 210px;
+}
+
+.bin-guide-grid .card h2 {
+    margin: 0 0 10px;
+}
+
+.bin-guide-grid .mini-report-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px 18px;
+    margin-top: 12px;
+}
+
+.bin-guide-grid .mini-report-list li {
+    padding: 6px 0;
+    font-size: 0.95rem;
+}
+
+/* ================================================= */
+/* CALENDAR CARD */
+/* ================================================= */
+
+.bin-calendar-card {
+    height: 100%;
+    min-height: 680px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.calendar-grid {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+    margin-top: 22px;
+}
+
+.calendar-grid span {
+    text-align: center;
+    font-weight: 700;
+    color: #5c866f;
+    font-size: 0.85rem;
+}
+
+.calendar-grid div {
+    min-height: 68px;
+    border-radius: 14px;
+    background: #f7f9f6;
+    display: grid;
+    place-items: center;
+    font-weight: 800;
+}
+
+.collection {
+    color: #ffffff;
+}
+
+.general {
+    background: #202522 !important;
+}
+
+.recycling {
+    background: #5c866f !important;
+}
+
+.garden {
+    background: #7aa95c !important;
+}
+
+/* ================================================= */
+/* CALENDAR KEY */
+/* ================================================= */
+
+.calendar-key {
+    margin-top: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.key-dot {
+    display: inline-block;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+.general-dot {
+    background: #202522;
+}
+
+.recycling-dot {
+    background: #5c866f;
+}
+
+.garden-dot {
+    background: #7aa95c;
+}
+
+/* ================================================= */
+/* FOOTER */
+/* ================================================= */
+
+.footer {
+    margin-top: auto;
+}
+
+/* ================================================= */
+/* DARK MODE */
+/* ================================================= */
+
+body.dark-mode .postcode-card,
+body.dark-mode .bin-calendar-card,
+body.dark-mode .bin-guide-grid .card {
+    border: 1px solid #5c866f;
+}
+
+body.dark-mode .postcode-search input {
+    background: #2d312f;
+    color: #ffffff;
+    border: 1px solid #5c866f;
+}
+
+body.dark-mode .calendar-grid div {
+    background: #2d312f;
+    color: #ffffff;
+    border: 1px solid #5c866f;
+}
+
+body.dark-mode .collection {
+    color: #ffffff;
+}
+
+/* ================================================= */
+/* RESPONSIVE */
+/* ================================================= */
+
+@media (max-width: 1100px) {
+    .bin-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .bin-calendar-card {
+        min-height: auto;
+    }
+}
+
+@media (max-width: 800px) {
+    .postcode-search {
+        flex-direction: column;
+    }
+
+    .bin-guide-grid .mini-report-list {
+        grid-template-columns: 1fr;
+    }
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.calendar-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.calendar-buttons button {
+    width: 38px;
+    height: 38px;
+    border: none;
+    border-radius: 50%;
+    background: #5c866f;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.calendar-buttons button:hover {
+    background: #4f7561;
+}
