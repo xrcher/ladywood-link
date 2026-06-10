@@ -541,7 +541,7 @@ app.get('/api/bin-collection/:postcode',(req,res) => {
     const collections ={
 
         'B16 8SZ':{
-            nextCollection: 'Tuesday 9 June',
+            nextCollection: 'Tuesday 16 June',
             binType:'General Waste',
             area: 'Ladywood'
         },
@@ -553,7 +553,7 @@ app.get('/api/bin-collection/:postcode',(req,res) => {
         },
 
         'B16 8LP':{
-            nextCollection: "Tuesday 9 June",
+            nextCollection: "Tuesday 16 June",
             binType: "Garden Waste",
             area: "Ladywood"
         }
