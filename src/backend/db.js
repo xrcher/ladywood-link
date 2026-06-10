@@ -132,7 +132,7 @@ export async function initDb() {
             INSERT INTO sewage_alerts 
                 (location_name, river_catchment, latitude, longitude, spill_count, duration_hours, year_monitored, is_active_alert)
             VALUES 
-                ('Hockley Brook Monitor', 'Tame (Catchment)', 52.4912, -1.9314, 42, 184.50, 2026, true),
+                ('Hockley Brook Drainage Monitor', 'Tame (Catchment)', 52.4912, -1.9314, 42, 184.50, 2026, true),
                 ('Ladywood Drainage Monitor', 'Tame (Catchment)', 52.47993828460706, -1.9212873688002168, 30, 60, 2026, true),
                 ('Lucas Circus Sewage Monitor', 'Trent (Catchment)', 52.49387674125492, -1.9079114733928477, 10, 127, 2026, false),
                 ('Portlannd Drainage Monitor', 'Trent (Catchment)', 52.47623500185852, -1.9493181674865354, 20, 184, 2026, true),
